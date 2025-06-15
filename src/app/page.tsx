@@ -24,16 +24,7 @@ export default function Page() {
   const [viewMode, setViewMode] = useState<ViewMode>("initial");
   const [projects] = useState<Project[]>([]);
 
-  // useEffect(() => {
-  //   async function fetchProjects() {
-  //     const { data, error } = await supabase
-  //       .from("projects")
-  //       .select("id, title, description, tech_stack, link");
-  //     if (error) console.error("Error fetching projects:", error);
-  //     else setProjects(data || []);
-  //   }
-  //   fetchProjects();
-  // }, []);
+
 
   const handleViewModeChange = (mode: ViewMode) => {
     setViewMode(mode);
