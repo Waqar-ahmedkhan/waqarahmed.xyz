@@ -1,7 +1,299 @@
-export default function Home() {
-  return ( 
-    <div>
-       hello world
+
+"use client";
+import { useState, useEffect } from "react";
+import { RESUME_DATA } from "@/data/resume-data";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Card, CardHeader, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Section } from "@/components/ui/section";
+import { ProjectCard } from "@/components/project-card";
+import { SimpleView } from "@/components/simple-view";
+import { ViewSwitch, ViewMode } from "@/components/view-switch";
+import { GlobeIcon, MailIcon, ExternalLinkIcon, ArrowRightIcon } from "lucide-react";
+
+interface Project {
+  id: number;
+  title: string;
+  description: string;
+  tech_stack: string[];
+  link?: string;
+}
+
+export default function Page() {
+  const [viewMode, setViewMode] = useState<ViewMode>("initial");
+  const [projects] = useState<Project[]>([]);
+
+  // useEffect(() => {
+  //   async function fetchProjects() {
+  //     const { data, error } = await supabase
+  //       .from("projects")
+  //       .select("id, title, description, tech_stack, link");
+  //     if (error) console.error("Error fetching projects:", error);
+  //     else setProjects(data || []);
+  //   }
+  //   fetchProjects();
+  // }, []);
+
+  const handleViewModeChange = (mode: ViewMode) => {
+    setViewMode(mode);
+    localStorage.setItem("portfolioViewMode", mode);
+  };
+
+  useEffect(() => {
+    const savedViewMode = localStorage.getItem("portfolioViewMode") as ViewMode | null;
+    if (savedViewMode && ["simple", "detailed"].includes(savedViewMode)) {
+      setViewMode(savedViewMode);
+    }
+  }, []);
+
+  if (viewMode === "initial") {
+    return (
+      <div className="flex min-h-screen flex-col items-center justify-center bg-background px-4 py-8">
+        <div className="mb-8 text-center">
+          <h1 className="mb-6 text-3xl font-bold sm:text-4xl">
+            How would you like to view my portfolio?
+          </h1>
+          <p className="text-sm text-muted-foreground sm:text-base">
+            Choose a view mode to continue
+          </p>
+        </div>
+        <ViewSwitch
+          currentView="simple"
+          onChange={handleViewModeChange}
+          size="large"
+        />
+      </div>
+    );
+  }
+
+  if (viewMode === "simple") {
+    return (
+      <div className="animate-scale-in">
+        <SimpleView />
+        <div className="fixed bottom-6 left-1/2 z-50 -translate-x-1/2 sm:bottom-8">
+          <ViewSwitch currentView={viewMode} onChange={handleViewModeChange} />
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="animate-scale-in">
+      <main className="container relative mx-auto min-h-screen scroll-my-12 overflow-auto bg-background p-4 sm:p-6 md:p-16 print:p-12">
+        <section className="mx-auto w-full max-w-3xl space-y-10 rounded-2xl text-foreground print:bg-white print:text-black">
+          <div className="flex items-center justify-between gap-8 rounded-xl border border-border p-4">
+            <div className="flex-1 space-y-2.5">
+              <h1 className="text-3xl font-bold tracking-tight">{RESUME_DATA.name}</h1>
+              <p className="max-w-md text-pretty font-mono text-sm text-muted-foreground print:text-[12px]">
+                {RESUME_DATA.about}
+              </p>
+              <p className="max-w-md items-center text-pretty font-mono text-xs text-muted-foreground">
+                <a
+                  className="inline-flex gap-x-1.5 align-baseline leading-none hover:underline"
+                  href={RESUME_DATA.locationLink}
+                  target="_blank"
+                >
+                  <GlobeIcon className="h-3 w-3" />
+                  {RESUME_DATA.location}
+                </a>
+              </p>
+              <div className="flex gap-x-1 pt-1 font-mono text-sm text-muted-foreground print:hidden">
+                {RESUME_DATA.contact.email && (
+                  <Button variant="outline" size="icon" asChild>
+                    <a href={`mailto:${RESUME_DATA.contact.email}`}>
+                      <MailIcon className="h-4 w-4" />
+                    </a>
+                  </Button>
+                )}
+                {RESUME_DATA.contact.social.map((social) => (
+                  <Button
+                    key={social.name}
+                    variant="outline"
+                    size="icon"
+                    asChild
+                  >
+                    <a href={social.url} target="_blank">
+                      <social.icon className="h-4 w-4" />
+                    </a>
+                  </Button>
+                ))}
+              </div>
+            </div>
+            <Avatar className="hidden h-32 w-32 rounded-xl border-2 border-border md:block">
+              <AvatarImage
+                alt={RESUME_DATA.name}
+                src={RESUME_DATA.avatarUrl}
+                className="rounded-xl"
+              />
+              <AvatarFallback>{RESUME_DATA.initials}</AvatarFallback>
+            </Avatar>
+          </div>
+
+          <Section>
+            <h2 className="text-xl font-bold">About</h2>
+            <p className="text-pretty font-mono text-sm text-muted-foreground print:text-[12px]">
+              {RESUME_DATA.summary}
+            </p>
+          </Section>
+
+          <Section>
+            <h2 className="text-xl font-bold">Key Highlights</h2>
+            <div className="-mx-3 grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-4 print:grid-cols-4 print:gap-2">
+              {RESUME_DATA.keyHighlights.map((point) => (
+                <Card key={point.title} className="flex flex-col items-start gap-2 p-4">
+                  <div className="text-2xl">{point.icon}</div>
+                  <div>
+                    <h3 className="font-semibold">{point.title}</h3>
+                    <p className="text-sm text-muted-foreground">{point.description}</p>
+                  </div>
+                </Card>
+              ))}
+            </div>
+          </Section>
+
+          <Section>
+            <h2 className="text-xl font-bold">Work Experience</h2>
+            {RESUME_DATA.work.map((work) => (
+              <Card key={work.company}>
+                <CardHeader>
+                  <div className="flex items-center justify-between gap-x-2 text-base">
+                    <h3 className="inline-flex items-center justify-center gap-x-1 font-semibold leading-none">
+                      <a className="hover:underline" href={work.link}>
+                        {work.company}
+                      </a>
+                      <span className="inline-flex gap-x-1">
+                        {work.badges.map((badge) => (
+                          <Badge
+                            variant="secondary"
+                            className="align-middle text-xs print:text-[8px]"
+                            key={badge}
+                          >
+                            {badge}
+                          </Badge>
+                        ))}
+                      </span>
+                    </h3>
+                    <div className="text-sm tabular-nums text-muted-foreground">
+                      {work.start} - {work.end ?? "Present"}
+                    </div>
+                  </div>
+                  <h4 className="font-mono text-sm leading-none print:text-[12px]">
+                    {work.title}
+                  </h4>
+                </CardHeader>
+                <CardContent className="mt-2">
+                  <p className="mb-2 text-xs print:text-[10px]">{work.description}</p>
+                  {work.bulletPoints && (
+                    <ul className="mt-2 text-xs print:text-[10px]">
+                      {work.bulletPoints.map(
+                        (
+                          point: { text: string; links?: { url: string }[] },
+                          index: number
+                        ) => (
+                          <li key={index} className="mb-1 flex items-center gap-x-2">
+                            <ArrowRightIcon className="h-3 w-3 flex-shrink-0 text-muted-foreground" />
+                            <span className="flex items-center gap-x-1">
+                              {point.text}
+                              {point.links?.map((link: { url: string }, linkIndex: number) => (
+                                <a
+                                  key={linkIndex}
+                                  href={link.url}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="inline-flex items-center hover:text-blue-500"
+                                >
+                                  <ExternalLinkIcon className="ml-1 h-3 w-3" />
+                                </a>
+                              ))}
+                            </span>
+                          </li>
+                        )
+                      )}
+                    </ul>
+                  )}
+                </CardContent>
+              </Card>
+            ))}
+          </Section>
+
+          <Section>
+            <h2 className="text-xl font-bold">Education</h2>
+            {RESUME_DATA.education.map((education) => (
+              <Card key={education.school}>
+                <CardHeader>
+                  <div className="flex items-center justify-between gap-x-2 text-base">
+                    <h3 className="font-semibold leading-none">{education.school}</h3>
+                    <div className="text-sm tabular-nums text-muted-foreground">
+                      {education.start} - {education.end}
+                    </div>
+                  </div>
+                </CardHeader>
+                <CardContent className="mt-2 print:text-[12px]">
+                  {education.degree}
+                </CardContent>
+              </Card>
+            ))}
+          </Section>
+
+          <Section>
+            <h2 className="text-xl font-bold">Skills</h2>
+            <div className="flex flex-wrap gap-1">
+              {RESUME_DATA.skills.map((skill) => (
+                <Badge className="print:text-[10px]" key={skill}>
+                  {skill}
+                </Badge>
+              ))}
+            </div>
+          </Section>
+
+          <Section className="print-force-new-page scroll-mb-16">
+            <h2 className="text-xl font-bold">Projects</h2>
+            <div className="-mx-3 grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3 print:grid-cols-3 print:gap-2">
+              {projects.map((project) => (
+                <ProjectCard
+                  key={project.id}
+                  title={project.title}
+                  description={project.description}
+                  tags={project.tech_stack}
+                  link={project.link}
+                />
+              ))}
+            </div>
+          </Section>
+
+          <Section>
+            <h2 className="text-xl font-bold">Achievements</h2>
+            {RESUME_DATA.achievements.map((achievement) => (
+              <Card key={achievement.title}>
+                <CardHeader>
+                  <div className="flex items-center justify-between gap-x-2 text-base">
+                    <h3 className="flex items-center gap-x-2 font-semibold leading-none">
+                      {achievement.title}
+                      {achievement.reference.map((ref) => (
+                        <a
+                          key={ref.url}
+                          href={ref.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center hover:text-blue-400"
+                        >
+                          <ExternalLinkIcon className="h-4 w-4" />
+                        </a>
+                      ))}
+                    </h3>
+                  </div>
+                </CardHeader>
+                <CardContent className="mt-2">{achievement.by}</CardContent>
+              </Card>
+            ))}
+          </Section>
+        </section>
+
+        <div className="fixed bottom-6 left-1/2 z-50 -translate-x-1/2 sm:bottom-8">
+          <ViewSwitch currentView={viewMode} onChange={handleViewModeChange} />
+        </div>
+      </main>
     </div>
   );
 }

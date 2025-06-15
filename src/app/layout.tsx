@@ -1,8 +1,10 @@
-import type { Metadata } from "next";
+
+import { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Script from "next/script";
-import { AppThemeProvider } from "@/components/theme-provider";
+import { ThemeProvider } from "@/components/theme-provider";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 const inter = Inter({ subsets: ["latin"], display: "swap" });
 
@@ -81,7 +83,6 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        {/* Google Tag Manager - Head */}
         <Script id="gtm-script" strategy="afterInteractive">
           {`
             (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -94,8 +95,7 @@ export default function RootLayout({
       </head>
       <body
         className={`${inter.className} bg-white text-black dark:bg-zinc-900 dark:text-white transition-colors`}
-      >
-        {/* Google Tag Manager - NoScript */}
+    suppressHydrationWarning  >
         <noscript>
           <iframe
             src="https://www.googletagmanager.com/ns.html?id=GTM-NPKQCQK3"
@@ -104,8 +104,17 @@ export default function RootLayout({
             style={{ display: "none", visibility: "hidden" }}
           ></iframe>
         </noscript>
-
-        <AppThemeProvider>{children}</AppThemeProvider>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <div className="fixed top-4 right-4 z-50">
+            <ThemeToggle />
+          </div>
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

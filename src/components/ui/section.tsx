@@ -1,10 +1,10 @@
-import { cn } from "@/lib/utils";
-import React from "react";
 
-export function Section({ className, ...props }: React.HTMLAttributes<HTMLElement>) {
+import { cn } from "@/lib/utils";
+
+export function Section({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) {
   return (
     <section
-      className={cn("flex min-h-0 flex-col gap-y-3", className)}
+      className={cn("py-6 print:py-4", className)}
       {...props}
     />
   );
