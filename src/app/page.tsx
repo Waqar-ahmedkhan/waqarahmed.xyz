@@ -49,7 +49,7 @@ export default function Page() {
     return (
       <div className="flex min-h-screen flex-col items-center justify-center bg-background px-4 py-8">
         <div className="mb-8 text-center">
-          <h1 className="mb-6 text-3xl font-bold sm:text-4xl">
+          <h1 className="mb-6 text-2xl font-bold sm:text-4xl">
             How would you like to view my portfolio?
           </h1>
           <p className="text-sm text-muted-foreground sm:text-base">

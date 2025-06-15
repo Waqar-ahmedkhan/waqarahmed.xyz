@@ -1,12 +1,15 @@
-
 import { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Poppins } from "next/font/google";
 import "./globals.css";
 import Script from "next/script";
 import { ThemeProvider } from "@/components/theme-provider";
 import { ThemeToggle } from "@/components/theme-toggle";
 
-const inter = Inter({ subsets: ["latin"], display: "swap" });
+const poppins = Poppins({ 
+  subsets: ["latin"], 
+  display: "swap",
+  weight: ["400", "500", "600", "700"],
+});
 
 export const metadata: Metadata = {
   title: "Waqar Ahmed | Full Stack, DevOps & AI Engineer 🚀",
@@ -94,8 +97,9 @@ export default function RootLayout({
         </Script>
       </head>
       <body
-        className={`${inter.className} bg-white text-black dark:bg-zinc-900  dark:text-white transition-colors`}
-    suppressHydrationWarning  >
+        className={`${poppins.className} bg-white text-black dark:bg-zinc-900 dark:text-white transition-colors`}
+        suppressHydrationWarning
+      >
         <noscript>
           <iframe
             src="https://www.googletagmanager.com/ns.html?id=GTM-NPKQCQK3"
