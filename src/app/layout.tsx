@@ -94,7 +94,7 @@ export default function RootLayout({
         </Script>
       </head>
       <body
-        className={`${inter.className} bg-white text-black dark:bg-zinc-900 dark:text-white transition-colors`}
+        className={`${inter.className} bg-white text-black dark:bg-zinc-900  dark:text-white transition-colors`}
     suppressHydrationWarning  >
         <noscript>
           <iframe

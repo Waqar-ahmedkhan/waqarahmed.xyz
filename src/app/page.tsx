@@ -22,9 +22,16 @@ interface Project {
 
 export default function Page() {
   const [viewMode, setViewMode] = useState<ViewMode>("initial");
-  const [projects] = useState<Project[]>([]);
-
-
+  // Initialize projects from RESUME_DATA
+  const [projects] = useState<Project[]>(
+    RESUME_DATA.projects.map((proj, index) => ({
+      id: index + 1, // Assign a unique ID based on index
+      title: proj.title,
+      description: proj.description,
+      tech_stack: Array.from(proj.techStack), // Convert readonly techStack to mutable array
+      link: proj.link?.href, // Map link.href to link
+    }))
+  );
 
   const handleViewModeChange = (mode: ViewMode) => {
     setViewMode(mode);
