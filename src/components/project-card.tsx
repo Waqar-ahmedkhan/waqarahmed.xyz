@@ -7,6 +7,7 @@ interface Props {
   description: string;
   tags: readonly string[];
   link?: string;
+  isMobile: boolean
 }
 
 export function ProjectCard({ title, description, tags, link }: Props) {
