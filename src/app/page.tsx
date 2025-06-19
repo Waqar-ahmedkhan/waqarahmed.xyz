@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, useEffect, useMemo, useCallback } from "react";
@@ -12,6 +11,7 @@ import { ProjectCard } from "@/components/project-card";
 import { SimpleView } from "@/components/simple-view";
 import { ViewSwitch, ViewMode } from "@/components/view-switch";
 import { GlobeIcon, MailIcon, ExternalLinkIcon, ArrowRightIcon } from "lucide-react";
+import ChatbotWidget from "@/components/ChatbotWidget"; // Import chatbot component
 
 interface Project {
   id: number;
@@ -589,6 +589,9 @@ export default function Page() {
             aria-label="Switch portfolio view mode"
           />
         </div>
+
+        {/* Add Chatbot Widget */}
+        <ChatbotWidget />
       </main>
     </div>
   );
