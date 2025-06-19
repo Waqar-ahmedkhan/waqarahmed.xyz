@@ -8,6 +8,9 @@ import {
   YoutubeIcon,
 } from "@/components/icons";
 
+
+
+
 export const RESUME_DATA = {
   name: "Waqar Ahmed",
   initials: "WA",

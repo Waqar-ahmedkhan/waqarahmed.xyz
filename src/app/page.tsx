@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, useEffect, useMemo, useCallback } from "react";
@@ -30,16 +31,16 @@ export default function Page() {
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 640);
     };
-    
+
     checkMobile();
-    window.addEventListener('resize', checkMobile);
-    
-    return () => window.removeEventListener('resize', checkMobile);
+    window.addEventListener("resize", checkMobile);
+
+    return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
   const projects = useMemo<Project[]>(
     () =>
-      RESUME_DATA.projects.map((proj, index) => ({
+      RESUME_DATA.projects.map((proj: typeof RESUME_DATA.projects[number], index: number) => ({
         id: index + 1,
         title: proj.title,
         description: proj.description,
@@ -78,9 +79,12 @@ export default function Page() {
     }
   }, []);
 
-  const generateExcerpt = useCallback((text: string, maxLength: number = EXCERPT_MAX_LENGTH) => {
-    return text.length > maxLength ? `${text.slice(0, maxLength - 3)}...` : text;
-  }, []);
+  const generateExcerpt = useCallback(
+    (text: string, maxLength: number = EXCERPT_MAX_LENGTH) => {
+      return text.length > maxLength ? `${text.slice(0, maxLength - 3)}...` : text;
+    },
+    []
+  );
 
   if (viewMode === "initial") {
     return (
@@ -127,7 +131,9 @@ export default function Page() {
           {/* Header Section */}
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-8 rounded-xl border border-border p-4 sm:px-6 sm:py-3 shadow-sm transition-all hover:shadow-md animate-fade-in">
             <div className="flex-1 space-y-2 sm:space-y-3">
-              <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight font-sans">{RESUME_DATA.name}</h1>
+              <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight font-sans">
+                {RESUME_DATA.name}
+              </h1>
               <p className="max-w-md text-pretty font-mono text-sm sm:text-base text-muted-foreground print:text-[12px] my-2 sm:my-3">
                 {RESUME_DATA.about}
               </p>
@@ -173,18 +179,25 @@ export default function Page() {
                 ))}
               </div>
             </div>
-            <Avatar className={`${isMobile ? 'mt-4' : ''} h-24 w-24 sm:h-28 sm:w-28 md:h-36 md:w-36 rounded-xl border-2 border-border`}>
+            <Avatar
+              className={`${isMobile ? "mt-4" : ""} h-24 w-24 sm:h-28 sm:w-28 md:h-36 md:w-36 rounded-xl border-2 border-border`}
+            >
               <AvatarImage
                 alt={RESUME_DATA.name}
                 src={RESUME_DATA.avatarUrl}
                 className="rounded-xl"
               />
-              <AvatarFallback className="text-xl sm:text-2xl">{RESUME_DATA.initials}</AvatarFallback>
+              <AvatarFallback className="text-xl sm:text-2xl">
+                {RESUME_DATA.initials}
+              </AvatarFallback>
             </Avatar>
           </div>
 
           {/* About Section */}
-          <Section className="my-8 sm:my-12 animate-fade-in" style={{ animationDelay: "0.1s" }}>
+          <Section
+            className="my-8 sm:my-12 animate-fade-in"
+            style={{ animationDelay: "0.1s" }}
+          >
             <h2 className="text-xl sm:text-2xl font-extrabold font-sans">About</h2>
             <p className="text-pretty font-mono text-sm sm:text-base text-muted-foreground print:text-[12px] mt-4 sm:mt-6">
               {RESUME_DATA.summary}
@@ -192,8 +205,13 @@ export default function Page() {
           </Section>
 
           {/* Key Highlights Section */}
-          <Section className="my-8 sm:my-12 animate-fade-in" style={{ animationDelay: "0.2s" }}>
-            <h2 className="text-xl sm:text-2xl font-extrabold font-sans">Key Highlights</h2>
+          <Section
+            className="my-8 sm:my-12 animate-fade-in"
+            style={{ animationDelay: "0.2s" }}
+          >
+            <h2 className="text-xl sm:text-2xl font-extrabold font-sans">
+              Key Highlights
+            </h2>
             <div className="-mx-2 sm:-mx-3 grid grid-cols-1 gap-3 sm:gap-4 sm:grid-cols-2 lg:grid-cols-3 print:grid-cols-3 print:gap-2">
               {RESUME_DATA.keyHighlights.map((point, index) => (
                 <Card
@@ -203,8 +221,12 @@ export default function Page() {
                 >
                   <div className="text-2xl sm:text-3xl">{point.icon}</div>
                   <div>
-                    <h3 className="font-semibold text-base sm:text-lg">{point.title}</h3>
-                    <p className="text-xs sm:text-sm text-muted-foreground mt-1 sm:mt-2">{point.description}</p>
+                    <h3 className="font-semibold text-base sm:text-lg">
+                      {point.title}
+                    </h3>
+                    <p className="text-xs sm:text-sm text-muted-foreground mt-1 sm:mt-2">
+                      {point.description}
+                    </p>
                   </div>
                 </Card>
               ))}
@@ -212,8 +234,13 @@ export default function Page() {
           </Section>
 
           {/* Work Experience Section */}
-          <Section className="my-8 sm:my-12 animate-fade-in" style={{ animationDelay: "0.3s" }}>
-            <h2 className="text-xl sm:text-2xl font-extrabold font-sans">Work Experience</h2>
+          <Section
+            className="my-8 sm:my-12 animate-fade-in"
+            style={{ animationDelay: "0.3s" }}
+          >
+            <h2 className="text-xl sm:text-2xl font-extrabold font-sans">
+              Work Experience
+            </h2>
             {RESUME_DATA.work.map((work, index) => (
               <Card
                 key={work.company}
@@ -253,11 +280,16 @@ export default function Page() {
                   </h4>
                 </CardHeader>
                 <CardContent className="mt-2 sm:mt-4 p-0 sm:p-0">
-                  <p className="mb-2 sm:mb-3 text-xs print:text-[10px]">{work.description}</p>
+                  <p className="mb-2 sm:mb-3 text-xs print:text-[10px]">
+                    {work.description}
+                  </p>
                   {work.bulletPoints && (
                     <ul className="mt-2 sm:mt-3 text-xs print:text-[10px]">
                       {work.bulletPoints.map((point, idx) => (
-                        <li key={idx} className="mb-1 sm:mb-2 flex items-center gap-x-2">
+                        <li
+                          key={idx}
+                          className="mb-1 sm:mb-2 flex items-center gap-x-2"
+                        >
                           <ArrowRightIcon className="h-3 w-3 flex-shrink-0 text-muted-foreground" />
                           <span>{point.text}</span>
                         </li>
@@ -270,8 +302,13 @@ export default function Page() {
           </Section>
 
           {/* Education Section */}
-          <Section className="my-8 sm:my-12 animate-fade-in" style={{ animationDelay: "0.4s" }}>
-            <h2 className="text-xl sm:text-2xl font-extrabold font-sans">Education</h2>
+          <Section
+            className="my-8 sm:my-12 animate-fade-in"
+            style={{ animationDelay: "0.4s" }}
+          >
+            <h2 className="text-xl sm:text-2xl font-extrabold font-sans">
+              Education
+            </h2>
             {RESUME_DATA.education.map((education, index) => (
               <Card
                 key={education.school}
@@ -280,7 +317,9 @@ export default function Page() {
               >
                 <CardHeader className="p-0 pb-3 sm:pb-0">
                   <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 sm:gap-x-2 text-sm sm:text-base">
-                    <h3 className="font-semibold leading-none">{education.school}</h3>
+                    <h3 className="font-semibold leading-none">
+                      {education.school}
+                    </h3>
                     <div className="text-xs sm:text-sm tabular-nums text-muted-foreground">
                       {education.start} - {education.end}
                     </div>
@@ -289,7 +328,9 @@ export default function Page() {
                 <CardContent className="mt-2 sm:mt-4 p-0 sm:p-0 print:text-[12px]">
                   {education.degree}
                   {education.description && (
-                    <p className="mt-1 sm:mt-2 text-xs text-muted-foreground">{education.description}</p>
+                    <p className="mt-1 sm:mt-2 text-xs text-muted-foreground">
+                      {education.description}
+                    </p>
                   )}
                 </CardContent>
               </Card>
@@ -297,7 +338,10 @@ export default function Page() {
           </Section>
 
           {/* Skills Section */}
-          <Section className="my-8 sm:my-12 animate-fade-in" style={{ animationDelay: "0.5s" }}>
+          <Section
+            className="my-8 sm:my-12 animate-fade-in"
+            style={{ animationDelay: "0.5s" }}
+          >
             <h2 className="text-xl sm:text-2xl font-extrabold font-sans">Skills</h2>
             <div className="flex flex-wrap gap-1 sm:gap-2">
               {RESUME_DATA.skills.map((skill, index) => (
@@ -312,14 +356,69 @@ export default function Page() {
             </div>
           </Section>
 
+          {/* Certifications Section */}
+          <Section
+            className="my-8 sm:my-12 animate-fade-in"
+            style={{ animationDelay: "0.55s" }}
+          >
+            <h2 className="text-xl sm:text-2xl font-extrabold font-sans">
+              Certifications
+            </h2>
+            {RESUME_DATA.certifications.map((certification, index) => (
+              <Card
+                key={certification.title}
+                className="p-4 sm:p-6 shadow-sm transition-all hover:shadow-md hover:scale-[1.02]"
+                style={{ animationDelay: `${0.1 * (index + 1)}s` }}
+              >
+                <CardHeader className="p-0 pb-2 sm:pb-0">
+                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 sm:gap-x-2 text-sm sm:text-base">
+                    <h3 className="flex items-center gap-x-1 sm:gap-x-2 font-semibold leading-none">
+                      {certification.title}
+                      <a
+                        href={certification.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center hover:underline transition-all"
+                        aria-label={`View ${certification.title} certificate`}
+                      >
+                        <ExternalLinkIcon className="h-3 w-3 sm:h-4 sm:w-4" />
+                      </a>
+                    </h3>
+                    <div className="text-xs sm:text-sm tabular-nums text-muted-foreground">
+                      {certification.year}
+                    </div>
+                  </div>
+                </CardHeader>
+                <CardContent className="mt-1 sm:mt-4 p-0 sm:p-0">
+                  <p className="text-xs sm:text-sm text-muted-foreground">
+                    {certification.issuer}
+                  </p>
+                  {certification.description && (
+                    <p className="mt-1 sm:mt-2 text-xs text-muted-foreground">
+                      {certification.description}
+                    </p>
+                  )}
+                </CardContent>
+              </Card>
+            ))}
+          </Section>
+
           {/* Projects Section */}
-          <Section className="print-force-new-page scroll-mb-16 my-8 sm:my-12 animate-fade-in" style={{ animationDelay: "0.6s" }}>
-            <h2 className="text-xl sm:text-2xl font-extrabold font-sans">Projects</h2>
+          <Section
+            className="print-force-new-page scroll-mb-16 my-8 sm:my-12 animate-fade-in"
+            style={{ animationDelay: "0.6s" }}
+          >
+            <h2 className="text-xl sm:text-2xl font-extrabold font-sans">
+              Projects
+            </h2>
             <div className="-mx-2 sm:-mx-3 grid grid-cols-1 gap-3 sm:gap-4 sm:grid-cols-2 lg:grid-cols-3 print:grid-cols-3 print:gap-2">
               {projects
                 .filter((project) => !project.tech_stack.includes("Medium"))
                 .map((project, index) => (
-                  <div key={project.id} style={{ animationDelay: `${0.1 * (index + 1)}s` }}>
+                  <div
+                    key={project.id}
+                    style={{ animationDelay: `${0.1 * (index + 1)}s` }}
+                  >
                     <ProjectCard
                       title={project.title}
                       description={project.description}
@@ -333,13 +432,15 @@ export default function Page() {
           </Section>
 
           {/* Blog Section */}
-          <Section className="my-8 sm:my-12 animate-fade-in" style={{ animationDelay: "0.7s" }}>
+          <Section
+            className="my-8 sm:my-12 animate-fade-in"
+            style={{ animationDelay: "0.7s" }}
+          >
             <h2 className="text-xl sm:text-2xl font-extrabold font-sans">Blog</h2>
             <div className="mb-2 sm:mb-4 text-xs sm:text-sm text-muted-foreground">
               {blogProjects.length > 0
                 ? "Check out my latest insights and articles:"
-                : "Blog posts coming soon! Check out my Medium profile for updates."
-              }
+                : "Blog posts coming soon! Check out my Medium profile for updates."}
             </div>
             <div className="-mx-2 sm:-mx-3 grid grid-cols-1 gap-3 sm:gap-4 sm:grid-cols-2 lg:grid-cols-3 print:grid-cols-3 print:gap-2">
               {blogProjects.map((post, index) => (
@@ -349,13 +450,17 @@ export default function Page() {
                   style={{ animationDelay: `${0.1 * (index + 1)}s` }}
                 >
                   <CardHeader className="p-0 pb-2 sm:pb-0">
-                    <h3 className="font-semibold text-base sm:text-lg">{post.title}</h3>
+                    <h3 className="font-semibold text-base sm:text-lg">
+                      {post.title}
+                    </h3>
                     <div className="text-xs sm:text-sm tabular-nums text-muted-foreground">
                       Medium | 2024
                     </div>
                   </CardHeader>
                   <CardContent className="p-0 pt-2 sm:pt-0">
-                    <p className="text-xs sm:text-sm text-muted-foreground mb-2 sm:mb-4">{generateExcerpt(post.description)}</p>
+                    <p className="text-xs sm:text-sm text-muted-foreground mb-2 sm:mb-4">
+                      {generateExcerpt(post.description)}
+                    </p>
                     {post.link && (
                       <Button
                         variant="link"
@@ -363,8 +468,13 @@ export default function Page() {
                         className="p-0 h-auto hover:underline transition-all text-xs sm:text-sm"
                         aria-label={`Read more about ${post.title}`}
                       >
-                        <a href={post.link} target="_blank" rel="noopener noreferrer">
-                          Read More <ArrowRightIcon className="ml-1 h-3 w-3 sm:h-4 sm:w-4" />
+                        <a
+                          href={post.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          Read More{" "}
+                          <ArrowRightIcon className="ml-1 h-3 w-3 sm:h-4 sm:w-4" />
                         </a>
                       </Button>
                     )}
@@ -375,8 +485,13 @@ export default function Page() {
           </Section>
 
           {/* Achievements Section */}
-          <Section className="my-8 sm:my-12 animate-fade-in" style={{ animationDelay: "0.8s" }}>
-            <h2 className="text-xl sm:text-2xl font-extrabold font-sans">Achievements</h2>
+          <Section
+            className="my-8 sm:my-12 animate-fade-in"
+            style={{ animationDelay: "0.8s" }}
+          >
+            <h2 className="text-xl sm:text-2xl font-extrabold font-sans">
+              Achievements
+            </h2>
             {RESUME_DATA.achievements.map((achievement, index) => (
               <Card
                 key={achievement.title}
@@ -387,25 +502,78 @@ export default function Page() {
                   <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 sm:gap-x-2 text-sm sm:text-base">
                     <h3 className="flex items-center gap-x-1 sm:gap-x-2 font-semibold leading-none">
                       {achievement.title}
-                      {Array.from(achievement.reference as readonly { url: string }[]).map((ref) => (
-                        <a
-                          key={ref.url}
-                          href={ref.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center hover:underline transition-all"
-                          aria-label={`View reference for ${achievement.title}`}
-                        >
-                          <ExternalLinkIcon className="h-3 w-3 sm:h-4 sm:w-4" />
-                        </a>
-                      ))}
+                      {Array.from(achievement.reference as readonly { url: string }[]).map(
+                        (ref) => (
+                          <a
+                            key={ref.url}
+                            href={ref.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center hover:underline transition-all"
+                            aria-label={`View reference for ${achievement.title}`}
+                          >
+                            <ExternalLinkIcon className="h-3 w-3 sm:h-4 sm:w-4" />
+                          </a>
+                        )
+                      )}
                     </h3>
                   </div>
                 </CardHeader>
                 <CardContent className="mt-1 sm:mt-4 p-0 sm:p-0">
                   {achievement.by} | {achievement.year}
                   {achievement.description && (
-                    <p className="mt-1 sm:mt-2 text-xs text-muted-foreground">{achievement.description}</p>
+                    <p className="mt-1 sm:mt-2 text-xs text-muted-foreground">
+                      {achievement.description}
+                    </p>
+                  )}
+                </CardContent>
+              </Card>
+            ))}
+          </Section>
+
+          {/* Volunteer Experience Section */}
+          <Section
+            className="my-8 sm:my-12 animate-fade-in"
+            style={{ animationDelay: "0.9s" }}
+          >
+            <h2 className="text-xl sm:text-2xl font-extrabold font-sans">
+              Volunteer Experience
+            </h2>
+            {RESUME_DATA.volunteerExperience.map((volunteer, index) => (
+              <Card
+                key={volunteer.organization}
+                className="p-4 sm:p-6 shadow-sm transition-all hover:shadow-md hover:scale-[1.02]"
+                style={{ animationDelay: `${0.1 * (index + 1)}s` }}
+              >
+                <CardHeader className="p-0 pb-3 sm:pb-0">
+                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 sm:gap-x-2 text-sm sm:text-base">
+                    <h3 className="font-semibold leading-none">
+                      {volunteer.organization}
+                    </h3>
+                    <div className="text-xs sm:text-sm tabular-nums text-muted-foreground">
+                      {volunteer.start} - {volunteer.end ?? "Present"}
+                    </div>
+                  </div>
+                  <h4 className="font-mono text-xs sm:text-sm leading-none print:text-[12px] mt-1 sm:mt-2">
+                    {volunteer.role}
+                  </h4>
+                </CardHeader>
+                <CardContent className="mt-2 sm:mt-4 p-0 sm:p-0">
+                  <p className="mb-2 sm:mb-3 text-xs print:text-[10px]">
+                    {volunteer.description}
+                  </p>
+                  {volunteer.bulletPoints && (
+                    <ul className="mt-2 sm:mt-3 text-xs print:text-[10px]">
+                      {volunteer.bulletPoints.map((point, idx) => (
+                        <li
+                          key={idx}
+                          className="mb-1 sm:mb-2 flex items-center gap-x-2"
+                        >
+                          <ArrowRightIcon className="h-3 w-3 flex-shrink-0 text-muted-foreground" />
+                          <span>{point.text}</span>
+                        </li>
+                      ))}
+                    </ul>
                   )}
                 </CardContent>
               </Card>
