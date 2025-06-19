@@ -118,8 +118,64 @@ export const RESUME_DATA = {
     "REST APIs",
     "Git",
     "CI/CD",
+    "turborepo",
+    "monorepo",
+    "OOP",
+    "mongodb",
+    "mysql",
+    "prisma"
   ],
-  certifications: [],
+  certifications: [
+    {
+      title: "Machine Learning Specialization",
+      issuer: "Stanford University & DeepLearning.AI",
+      year: "2025",
+      link: "https://www.coursera.org/specializations/machine-learning",
+      description: "Mastered foundational AI/ML concepts, including supervised/unsupervised learning, regression, and neural networks using Python and TensorFlow."
+    },
+    {
+      title: "Deep Learning Specialization",
+      issuer: "DeepLearning.AI",
+      year: "2025",
+      link: "https://www.coursera.org/specializations/deep-learning",
+      description: "Developed expertise in neural networks, CNNs, RNNs, and NLP/computer vision applications using PyTorch and TensorFlow."
+    },
+    {
+      title: "MLOps | Machine Learning Operations Specialization",
+      issuer: "DeepLearning.AI",
+      year: "2025",
+      link: "https://www.coursera.org/specializations/mlops-machine-learning-operations",
+      description: "Learned to deploy and manage ML models in production using AWS SageMaker, Docker, and CI/CD pipelines."
+    },
+    {
+      title: "AWS Cloud Technology Consultant Professional Certificate",
+      issuer: "Amazon Web Services",
+      year: "2025",
+      link: "https://www.coursera.org/professional-certificates/aws-cloud-technology-consultant",
+      description: "Gained skills in AWS cloud architecture, DevOps, and containerization with EC2, S3, IAM, and CloudFormation."
+    },
+    {
+      title: "Fundamentals of Machine Learning and Artificial Intelligence",
+      issuer: "Amazon Web Services",
+      year: "2025",
+      link: "https://www.coursera.org/learn/fundamentals-machine-learning-artificial-intelligence",
+      description: "Explored AI/ML foundations and AWS services like SageMaker for cloud-based ML workflows."
+    },
+    {
+      title: "DevOps and AI on AWS Professional Certificate",
+      issuer: "Amazon Web Services",
+      year: "2025",
+      link: "https://www.coursera.org/professional-certificates/devops-and-ai-on-aws",
+      description: "Mastered DevOps practices, IaC, and AI integration using AWS Lambda, CloudFormation, and CI/CD."
+    },
+    {
+      title: "DeepLearning.AI Data Engineering Professional Certificate",
+      issuer: "DeepLearning.AI & Amazon Web Services",
+      year: "2025",
+      link: "https://www.coursera.org/professional-certificates/deeplearning-ai-data-engineering",
+      description: "Built data pipelines and architectures for ML and analytics using AWS and open-source tools."
+    }
+  ],
   achievements: [
     {
       title: "National Incubation Center Fellow",
@@ -128,11 +184,20 @@ export const RESUME_DATA = {
       description: "Recognized for contributions to startup development and technical mentorship.",
       reference: [],
     },
+    {
+      title: "Top Coder in Kohat",
+      by: "Kohat University of Science and Technology",
+      year: "2024",
+      description: "Awarded for exceptional performance in competitive programming and hackathons in Kohat, showcasing problem-solving and coding expertise.",
+      reference: [],
+    },
   ],
   keyHighlights: [
     { title: "Experience", description: "1+ years in full-stack development", icon: "💼" },
     { title: "Mentorship", description: "Mentored startups at NIC Kohat", icon: "🎓" },
     { title: "Community", description: "Active contributor to tech workshops", icon: "🌐" },
+    { title: "Certifications", description: "Earned 7 Coursera certificates in ML, AWS, and DevOps", icon: "🏆" },
+    { title: "Competitive Coding", description: "Recognized as Top Coder in Kohat", icon: "💻" },
   ],
   projects: [
     {
@@ -153,14 +218,46 @@ export const RESUME_DATA = {
       description: "Personal portfolio showcasing projects and skills.",
       link: { label: "waqarahmed.xyz", href: "https://waqarahmed.xyz" },
     },
+    {
+      title: "MLOps Pipeline for Startup Analytics",
+      techStack: ["AWS SageMaker", "Docker", "Kubernetes", "Python"],
+      description: "Implemented a production-ready ML pipeline for startup metrics, based on DeepLearning.AI MLOps Specialization.",
+      link: { label: "github.com", href: "https://github.com/waqarahmed/mlops-pipeline" },
+    },
+    {
+      title: "Real-Time Chat Application",
+      techStack: ["React", "Node.js", "Socket.IO", "MongoDB"],
+      description: "Developed a scalable real-time chat application with authentication and message persistence.",
+      link: { label: "github.com", href: "https://github.com/waqarahmed/realtime-chat" },
+    },
+    {
+      title: "Serverless Task Manager",
+      techStack: ["AWS Lambda", "API Gateway", "DynamoDB", "React"],
+      description: "Built a serverless task management app with cloud-native architecture and CI/CD integration.",
+      link: { label: "github.com", href: "https://github.com/waqarahmed/serverless-task-manager" },
+    },
+    {
+      title: "Neural Network from Scratch",
+      techStack: ["Python", "NumPy", "TensorFlow"],
+      description: "Implemented a neural network for image classification, inspired by Andrej Karpathy’s Zero to Hero tutorials.",
+      link: { label: "github.com", href: "https://github.com/waqarahmed/neural-network-scratch" },
+    },
   ],
   volunteerExperience: [
     {
       organization: "National Incubation Center, Kohat",
-      role: "Technical Mentor",
+      role: "Technical Mentor & Hackathon Organizer",
       start: "2024",
       end: "Present",
-      description: "Mentored startups in web development and DevOps practices.",
+      description: "Mentored startups in web development and DevOps practices, and organized multiple hackathons to foster innovation and coding skills among youth in South Khyber Pakhtunkhwa.",
+      bulletPoints: [
+        { text: "Led mentorship for startups in building MVPs using React, Node.js, and AWS." },
+        { text: "Organized KIC Hackathon 2024, engaging 50+ participants in AI and web development challenges." },
+        { text: "Co-organized South KP CodeFest 2024, focusing on real-world problem-solving with 30+ teams." },
+        { text: "Facilitated NIC Kohat AI Hackathon 2024, mentoring participants in ML model development." },
+        { text: "Organized KUST Innovation Hackathon 2025, promoting DevOps and cloud solutions." },
+        { text: "Supported KIC CodeJam 2025, guiding 40+ students in competitive programming and full-stack development." },
+      ],
     },
   ],
   publications: [],
