@@ -23,7 +23,7 @@ export const RESUME_DATA = {
   personalWebsiteUrl: "https://waqarahmed.xyz",
   contact: {
     email: "contact@waqarahmed.xyz",
-    tel: "+92-300-1234567",
+    tel: "+92-3700-057225",
     social: [
       { name: "GitHub", url: "https://github.com/Waqar-ahmedkhan", icon: GitHubIcon },
       { name: "LinkedIn", url: "https://www.linkedin.com/in/waqar-ahmed-49416b237/", icon: LinkedInIcon },
