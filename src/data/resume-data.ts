@@ -1,4 +1,3 @@
-
 import {
   GitHubIcon,
   LinkedInIcon,
@@ -258,89 +257,132 @@ export const RESUME_DATA = {
   keyHighlights: [
     {
       title: "Experience",
-      description: "1+ years in full-stack development",
-      icon: "💼",
+      description: "1+ years in full-stack & AI development",
+      icon: "Briefcase",
     },
     {
-      title: "Mentorship",
-      description: "Mentored startups at NIC Kohat",
-      icon: "🎓",
+      title: "Teaching",
+      description: "Mentored 100+ students in AI and web dev",
+      icon: "BookOpen",
     },
     {
       title: "Community",
-      description: "Active contributor to tech workshops",
-      icon: "🌐",
+      description: "10k+ followers across social platforms",
+      icon: "Users",
     },
     {
       title: "Certifications",
-      description: "Earned 7 Coursera certificates in ML, AWS, and DevOps",
-      icon: "🏆",
+      description: "7 Coursera certificates in ML & DevOps",
+      icon: "Award",
     },
     {
-      title: "Competitive Coding",
-      description: "Recognized as Top Coder in Kohat",
-      icon: "💻",
+      title: "Hackathons",
+      description: "Organized & won 5+ hackathons",
+      icon: "Rocket",
+    },
+    {
+      title: "Open Source",
+      description: "20+ contributions to AI & web projects",
+      icon: "Code",
     },
     {
       title: "Innovation",
-      description: "Won Best Poster Award for EduAI at Tech-Talks 2025",
-      icon: "🚀",
+      description: "Best Poster Award for EduAI 2025",
+      icon: "Star",
+    },
+    {
+      title: "Startups",
+      description: "Contributed to 3 startup MVPs at NIC",
+      icon: "Globe",
     },
   ],
   projects: [
     {
       title: "EduAI: Personalized Learning Platform",
       techStack: ["Python", "TensorFlow", "React", "Firebase"],
-      description: "AI-powered platform for personalized, inclusive education, awarded Best Poster 2025.",
-      link: { label: "github.com", href: "https://github.com/Waqar-ahmedkhan/EduAI" },
+      description:
+        "AI-powered platform for personalized, inclusive education, awarded Best Poster 2025.",
+      link: {
+        label: "github.com",
+        href: "https://github.com/Waqar-ahmedkhan/EduAI",
+      },
     },
     {
       title: "EduAI Recommender Model",
       techStack: ["Python", "TensorFlow", "Machine Learning"],
-      description: "Recommendation system enhancing EduAI with AI-driven personalized content suggestions.",
-      link: { label: "github.com", href: "https://github.com/Waqar-ahmedkhan/recommender_model_for_EduAI" },
+      description:
+        "Recommendation system enhancing EduAI with AI-driven personalized content suggestions.",
+      link: {
+        label: "github.com",
+        href: "https://github.com/Waqar-ahmedkhan/recommender_model_for_EduAI",
+      },
     },
     {
       title: "AI E-Commerce Platform",
       techStack: ["Next.js", "TypeScript", "Firebase"],
-      description: "E-commerce platform with AI-driven product recommendations for enhanced user experience.",
-      link: { label: "github.com", href: "https://github.com/waqarahmed/ai-ecommerce" },
+      description:
+        "E-commerce platform with AI-driven product recommendations for enhanced user experience.",
+      link: {
+        label: "github.com",
+        href: "https://github.com/waqarahmed/ai-ecommerce",
+      },
     },
     {
       title: "Startup Dashboard",
       techStack: ["React", "Node.js", "MongoDB"],
-      description: "Dashboard for real-time monitoring of startup metrics at NIC Kohat.",
-      link: { label: "github.com", href: "https://github.com/waqarahmed/startup-dashboard" },
+      description:
+        "Dashboard for real-time monitoring of startup metrics at NIC Kohat.",
+      link: {
+        label: "github.com",
+        href: "https://github.com/waqarahmed/startup-dashboard",
+      },
     },
     {
       title: "Portfolio Website",
       techStack: ["Next.js", "TypeScript", "Tailwind CSS"],
-      description: "Personal portfolio showcasing technical projects and professional skills.",
+      description:
+        "Personal portfolio showcasing technical projects and professional skills.",
       link: { label: "waqarahmed.xyz", href: "https://waqarahmed.xyz" },
     },
     {
       title: "MLOps Pipeline",
       techStack: ["AWS SageMaker", "Docker", "Python"],
-      description: "Production-ready ML pipeline for startup analytics, inspired by DeepLearning.AI.",
-      link: { label: "github.com", href: "https://github.com/waqarahmed/mlops-pipeline" },
+      description:
+        "Production-ready ML pipeline for startup analytics, inspired by DeepLearning.AI.",
+      link: {
+        label: "github.com",
+        href: "https://github.com/waqarahmed/mlops-pipeline",
+      },
     },
     {
       title: "Real-Time Chat App",
       techStack: ["React", "Node.js", "Socket.IO"],
-      description: "Scalable chat application with real-time messaging and user authentication.",
-      link: { label: "github.com", href: "https://github.com/waqarahmed/realtime-chat" },
+      description:
+        "Scalable chat application with real-time messaging and user authentication.",
+      link: {
+        label: "github.com",
+        href: "https://github.com/waqarahmed/realtime-chat",
+      },
     },
     {
       title: "Serverless Task Manager",
       techStack: ["AWS Lambda", "DynamoDB", "React"],
-      description: "Serverless task management app with cloud-native CI/CD integration.",
-      link: { label: "github.com", href: "https://github.com/waqarahmed/serverless-task-manager" },
+      description:
+        "Serverless task management app with cloud-native CI/CD integration.",
+      link: {
+        label: "github.com",
+        href: "https://github.com/waqarahmed/serverless-task-manager",
+      },
     },
     {
       title: "Neural Network",
       techStack: ["Python", "NumPy", "TensorFlow"],
-      description: "Custom neural network for image classification, inspired by Karpathy’s tutorials.",
-      link: { label: "github.com", href: "https://github.com/waqarahmed/neural-network-scratch" },
+      description:
+        "Custom neural network for image classification, inspired by Karpathy’s tutorials.",
+      link: {
+        label: "github.com",
+        href: "https://github.com/waqarahmed/neural-network-scratch",
+      },
     },
   ],
   volunteerExperience: [
