@@ -1,43 +1,44 @@
+"use client";
+
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence, Variants } from "framer-motion"; // Correct import for Variants
+import { motion, AnimatePresence, Variants } from "framer-motion";
 import { MessageCircle, X } from "lucide-react";
 
-// Define animation variants with proper Typescript types
 const containerVariants: Variants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { 
-    opacity: 1, 
-    y: 0, 
-    transition: { 
+  hidden: { opacity: 0, y: 10 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
       type: "spring",
-      stiffness: 80,
-      damping: 12,
-      duration: 0.4
-    }
+      stiffness: 100,
+      damping: 15,
+      duration: 0.3,
+    },
   },
-  exit: { opacity: 0, y: 20, transition: { duration: 0.3 } }
+  exit: { opacity: 0, y: 10, transition: { duration: 0.2 } },
 };
 
 const textVariants: Variants = {
-  hidden: { opacity: 0, y: 15 },
-  visible: { 
-    opacity: 1, 
-    y: 0, 
-    transition: { 
+  hidden: { opacity: 0, y: 10 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
       type: "spring",
-      stiffness: 90,
-      damping: 10,
-      delay: 0.1
-    }
-  }
+      stiffness: 100,
+      damping: 15,
+      delay: 0.1,
+    },
+  },
 };
 
-const ChatbotWidget: React.FC = () => {
+export const ChatbotWidget: React.FC = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const chatUrl: string = "https://cdn.botpress.cloud/webchat/v3.0/shareable.html?configUrl=https://files.bpcontent.cloud/2025/06/19/14/20250619141011-EC61UX4E.json";
+  const chatUrl: string =
+    "https://cdn.botpress.cloud/webchat/v3.0/shareable.html?configUrl=https://files.bpcontent.cloud/2025/06/19/14/20250619141011-EC61UX4E.json";
 
   useEffect(() => {
-    // Auto-open chatbot with a 1-second delay
     const timer = setTimeout(() => setIsOpen(true), 1000);
     return () => clearTimeout(timer);
   }, []);
@@ -45,16 +46,15 @@ const ChatbotWidget: React.FC = () => {
   const toggleChat = (): void => setIsOpen(!isOpen);
 
   return (
-    <div className="fixed bottom-6 right-6 z-50">
+    <div className="fixed bottom-4 right-4 z-50">
       <motion.button
         onClick={toggleChat}
-        className="flex items-center justify-center w-14 h-14 rounded-full bg-gradient-to-br from-cyan-400 to-purple-500 text-white shadow-md hover:shadow-lg hover:scale-110 transition-all duration-200"
-        whileHover={{ rotate: 360, transition: { duration: 1 } }}
+        className="flex items-center justify-center w-12 h-12 rounded-full bg-foreground text-background border border-border hover:bg-gray-700 transition-all duration-200"
+        whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
-        animate={{ scale: [1, 1.03, 1], transition: { duration: 1.5, repeat: Infinity, ease: "easeInOut" } }}
         aria-label={isOpen ? "Close chat" : "Open chat"}
       >
-        {isOpen ? <X size={24} /> : <MessageCircle size={24} />}
+        {isOpen ? <X size={20} /> : <MessageCircle size={20} />}
       </motion.button>
 
       <AnimatePresence>
@@ -64,18 +64,18 @@ const ChatbotWidget: React.FC = () => {
             initial="hidden"
             animate="visible"
             exit="exit"
-            className="absolute bottom-20 right-0 w-80 h-[520px] sm:w-96 rounded-xl overflow-hidden bg-gray-900/80 backdrop-blur-md border border-cyan-400/30 shadow-lg"
+            className="absolute bottom-16 right-0 w-80 h-[480px] rounded-lg overflow-hidden bg-background border border-border shadow-lg"
           >
-            <div className="flex items-center justify-between p-3 bg-gradient-to-r from-cyan-500/70 to-purple-600/70 text-white">
+            <div className="flex items-center justify-between p-2 bg-muted border-b border-border">
               <motion.h3
                 variants={textVariants}
-                className="text-sm font-bold tracking-wide"
+                className="text-sm font-semibold text-foreground"
               >
-                Waqar’s AI Assistant
+                AI Assistant
               </motion.h3>
               <button
                 onClick={toggleChat}
-                className="p-1 rounded-full bg-white/10 hover:bg-white/20 transition-colors duration-200"
+                className="p-1 rounded-full hover:bg-muted-foreground/10 transition-colors duration-200"
                 aria-label="Close chat"
               >
                 <X size={16} />
@@ -83,9 +83,9 @@ const ChatbotWidget: React.FC = () => {
             </div>
             <iframe
               src={chatUrl}
-              title="Waqar Ahmed Chatbot"
-              className="w-full h-[calc(100%-48px)] border-0"
-              style={{ background: "linear-gradient(135deg, #1e293b, #2d3748)" }}
+              title="AI Chatbot"
+              className="w-full h-[calc(100%-40px)] border-0"
+              style={{ background: "transparent" }}
               allow="microphone; camera"
             />
           </motion.div>

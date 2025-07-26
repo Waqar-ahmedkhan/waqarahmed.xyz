@@ -1,3 +1,4 @@
+
 import {
   GitHubIcon,
   LinkedInIcon,
@@ -16,7 +17,7 @@ export const RESUME_DATA = {
   about:
     "Full Stack & DevOps Engineer focused on scalable cloud solutions and AI systems",
   summary:
-    "Computer Science student and Full Stack Developer with 1+ years of experience in building web applications and contributing to AI and startup ecosystems. Skilled in React, Node.js, Next.js, and DevOps tools like Docker, Kubernetes, and Terraform. Actively mentors developers and contributes to tech communities.",
+    "Computer Science student and Full Stack Developer with 1+ years of experience in building web applications and contributing to AI and startup ecosystems. Skilled in React, Node.js, Next.js, and DevOps tools like Docker, Kubernetes, and Terraform. Actively mentors developers and contributes to tech communities. Awarded Best Project Poster for EduAI at Tech-Talks & Posters Symposium 2025.",
   avatarUrl:
     "https://avatars.githubusercontent.com/u/150153359?s=400&u=e098fda35355c395f842fed288c8bafc339e28fb&v=4",
   personalWebsiteUrl: "https://waqarahmed.xyz",
@@ -240,6 +241,19 @@ export const RESUME_DATA = {
         "Awarded for exceptional performance in competitive programming and hackathons in Kohat, showcasing problem-solving and coding expertise.",
       reference: [],
     },
+    {
+      title: "Best Poster Award – Tech-Talks & Posters Symposium 2025",
+      by: "Institute of Computing, Kohat University of Science and Technology",
+      year: "2025",
+      description:
+        "Received the Best Project Poster award for EduAI, an AI-powered personalized learning platform, recognized for innovation, clarity, and real-world impact at the Tech-Talks & Posters Symposium 2025. Pitched directly to Vice Chancellor Prof. Dr. Syed Zafar Ilyas, in collaboration with Hammad Ahmad and Faisal Minhas.",
+      reference: [
+        {
+          label: "LinkedIn Post",
+          href: "https://www.linkedin.com/posts/institute-of-computing-kust-277822373_fyp2025-techtalks2025-ioc-activity-7354022815928320000--FKO",
+        },
+      ],
+    },
   ],
   keyHighlights: [
     {
@@ -267,73 +281,66 @@ export const RESUME_DATA = {
       description: "Recognized as Top Coder in Kohat",
       icon: "💻",
     },
+    {
+      title: "Innovation",
+      description: "Won Best Poster Award for EduAI at Tech-Talks 2025",
+      icon: "🚀",
+    },
   ],
   projects: [
     {
+      title: "EduAI: Personalized Learning Platform",
+      techStack: ["Python", "TensorFlow", "React", "Firebase"],
+      description: "AI-powered platform for personalized, inclusive education, awarded Best Poster 2025.",
+      link: { label: "github.com", href: "https://github.com/Waqar-ahmedkhan/EduAI" },
+    },
+    {
+      title: "EduAI Recommender Model",
+      techStack: ["Python", "TensorFlow", "Machine Learning"],
+      description: "Recommendation system enhancing EduAI with AI-driven personalized content suggestions.",
+      link: { label: "github.com", href: "https://github.com/Waqar-ahmedkhan/recommender_model_for_EduAI" },
+    },
+    {
       title: "AI E-Commerce Platform",
       techStack: ["Next.js", "TypeScript", "Firebase"],
-      description:
-        "E-commerce platform with AI-driven product recommendations.",
-      link: {
-        label: "github.com",
-        href: "https://github.com/waqarahmed/ai-ecommerce",
-      },
+      description: "E-commerce platform with AI-driven product recommendations for enhanced user experience.",
+      link: { label: "github.com", href: "https://github.com/waqarahmed/ai-ecommerce" },
     },
     {
       title: "Startup Dashboard",
-      techStack: ["React", "Node.js", "Express.js", "MongoDB"],
-      description:
-        "Dashboard for monitoring startup metrics and performance at NIC Kohat.",
-      link: {
-        label: "github.com",
-        href: "https://github.com/waqarahmed/startup-dashboard",
-      },
+      techStack: ["React", "Node.js", "MongoDB"],
+      description: "Dashboard for real-time monitoring of startup metrics at NIC Kohat.",
+      link: { label: "github.com", href: "https://github.com/waqarahmed/startup-dashboard" },
     },
     {
       title: "Portfolio Website",
       techStack: ["Next.js", "TypeScript", "Tailwind CSS"],
-      description: "Personal portfolio showcasing projects and skills.",
+      description: "Personal portfolio showcasing technical projects and professional skills.",
       link: { label: "waqarahmed.xyz", href: "https://waqarahmed.xyz" },
     },
     {
-      title: "MLOps Pipeline for Startup Analytics",
-      techStack: ["AWS SageMaker", "Docker", "Kubernetes", "Python"],
-      description:
-        "Implemented a production-ready ML pipeline for startup metrics, based on DeepLearning.AI MLOps Specialization.",
-      link: {
-        label: "github.com",
-        href: "https://github.com/waqarahmed/mlops-pipeline",
-      },
+      title: "MLOps Pipeline",
+      techStack: ["AWS SageMaker", "Docker", "Python"],
+      description: "Production-ready ML pipeline for startup analytics, inspired by DeepLearning.AI.",
+      link: { label: "github.com", href: "https://github.com/waqarahmed/mlops-pipeline" },
     },
     {
-      title: "Real-Time Chat Application",
-      techStack: ["React", "Node.js", "Socket.IO", "MongoDB"],
-      description:
-        "Developed a scalable real-time chat application with authentication and message persistence.",
-      link: {
-        label: "github.com",
-        href: "https://github.com/waqarahmed/realtime-chat",
-      },
+      title: "Real-Time Chat App",
+      techStack: ["React", "Node.js", "Socket.IO"],
+      description: "Scalable chat application with real-time messaging and user authentication.",
+      link: { label: "github.com", href: "https://github.com/waqarahmed/realtime-chat" },
     },
     {
       title: "Serverless Task Manager",
-      techStack: ["AWS Lambda", "API Gateway", "DynamoDB", "React"],
-      description:
-        "Built a serverless task management app with cloud-native architecture and CI/CD integration.",
-      link: {
-        label: "github.com",
-        href: "https://github.com/waqarahmed/serverless-task-manager",
-      },
+      techStack: ["AWS Lambda", "DynamoDB", "React"],
+      description: "Serverless task management app with cloud-native CI/CD integration.",
+      link: { label: "github.com", href: "https://github.com/waqarahmed/serverless-task-manager" },
     },
     {
-      title: "Neural якості Network from Scratch",
+      title: "Neural Network",
       techStack: ["Python", "NumPy", "TensorFlow"],
-      description:
-        "Implemented a neural network for image classification, inspired by Andrej Karpathy’s Zero to Hero tutorials.",
-      link: {
-        label: "github.com",
-        href: "https://github.com/waqarahmed/neural-network-scratch",
-      },
+      description: "Custom neural network for image classification, inspired by Karpathy’s tutorials.",
+      link: { label: "github.com", href: "https://github.com/waqarahmed/neural-network-scratch" },
     },
   ],
   volunteerExperience: [
@@ -374,7 +381,7 @@ export const RESUME_DATA = {
         "Organized and delivered seminars on Artificial Intelligence to educate students on its applications and impact, tailored for Medical Lab Technology students and matric-level students.",
       bulletPoints: [
         {
-          text: "Conducted a seminar on 'AI and Its Impact in the Medical Field' for MLT students, highlighting AI's role in diagnostics, pathology, and personalized medicine.",
+          text: "Conducted a seminar on 'AI and Its Impact in the Medical Field' for MLT students, highlighting AI’s role in diagnostics, pathology, and personalized medicine.",
         },
         {
           text: "Led a seminar on 'AI and Its Use Cases' for matric and other students, introducing AI applications in education, healthcare, and local challenges in Pakistan.",
