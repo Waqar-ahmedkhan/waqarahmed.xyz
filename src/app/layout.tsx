@@ -59,7 +59,7 @@ export const metadata: Metadata = {
       "Explore Waqar Ahmed's portfolio showcasing AI-driven projects, DevOps expertise, and cloud-native solutions built with Next.js, React, and AWS.",
     images: [
       {
-        url: "/og.png",
+        url: "/image.png",
         width: 1200,
         height: 630,
         alt: "Waqar Ahmed Portfolio Preview",
