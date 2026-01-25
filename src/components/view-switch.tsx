@@ -73,7 +73,6 @@ export const ViewSwitch = ({
       role="tablist"
       aria-label="View mode selection"
     >
-      {/* Animated tab indicator – flat, no gradient */}
       <motion.div
         className="absolute rounded-lg bg-primary/20"
         variants={indicatorVariants}

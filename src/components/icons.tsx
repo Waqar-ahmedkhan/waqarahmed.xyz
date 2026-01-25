@@ -67,7 +67,6 @@ export function XIcon({ size = 24, ...props }: IconProps) {
   );
 }
 
-// Better X/Twitter icon with the actual X logo
 export function TwitterXIcon({ size = 24, ...props }: IconProps) {
   return (
     <svg
@@ -84,7 +83,6 @@ export function TwitterXIcon({ size = 24, ...props }: IconProps) {
   );
 }
 
-// Improved Medium icon with better representation
 export function MediumIcon({ size = 24, ...props }: IconProps) {
   return (
     <svg
@@ -149,7 +147,6 @@ export function YoutubeIcon({ size = 24, ...props }: IconProps) {
   );
 }
 
-// Additional popular social media icons
 export function InstagramIcon({ size = 24, ...props }: IconProps) {
   return (
     <svg
