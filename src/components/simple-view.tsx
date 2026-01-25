@@ -7,7 +7,7 @@ const contactButtonClass =
   "h-9 w-9 rounded-lg border border-border bg-background transition-colors duration-200 hover:border-border hover:bg-accent hover:text-accent-foreground";
 
 export function SimpleView() {
-  let delay = 0.8;
+  const delay = 0.8;
   const links: { key: string; href: string; label: string; icon: React.ReactNode }[] = [];
 
   if (RESUME_DATA.contact.email) {

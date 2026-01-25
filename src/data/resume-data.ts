@@ -225,7 +225,7 @@ export const RESUME_DATA = {
         "Delivered workshops and mentorship sessions on MLOps, full-stack development, and DevOps practices."
       ),
     },
-  ],
+  ] as WorkEntry[],
   skills: [
     "JavaScript",
     "TypeScript",
