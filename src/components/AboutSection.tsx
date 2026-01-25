@@ -13,7 +13,7 @@ export function AboutSection({ animationDelay = "0.1s" }: AboutSectionProps) {
       className="my-6 sm:my-8 md:my-10 animate-fade-in"
       style={{ animationDelay }}
     >
-      <h2 className="text-lg sm:text-xl md:text-2xl font-bold font-sans text-foreground">
+      <h2 className="text-lg sm:text-xl md:text-2xl font-bold font-sans text-foreground animate-fade-in-subtle">
         About
       </h2>
       <p className="text-xs sm:text-sm text-muted-foreground mt-2 sm:mt-3">

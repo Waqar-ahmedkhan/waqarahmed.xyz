@@ -1,15 +1,21 @@
 import { Metadata } from "next";
-import { Poppins } from "next/font/google";
+import { Sora, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import Script from "next/script";
 import { ThemeProvider } from "@/components/theme-provider";
 import { ThemeToggle } from "@/components/theme-toggle";
 
-const poppins = Poppins({
+const sora = Sora({
   subsets: ["latin"],
   display: "swap",
   weight: ["400", "500", "600", "700"],
-  variable: "--font-poppins",
+  variable: "--font-sans-family",
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-mono-family",
 });
 
 export const metadata: Metadata = {
@@ -44,10 +50,7 @@ export const metadata: Metadata = {
   publisher: "Waqar Ahmed",
   metadataBase: new URL("https://waqarahmed.xyz"),
   alternates: {
-    canonical: "/",
-    languages: {
-      "en-US": "/en-US",
-    },
+    canonical: "https://waqarahmed.xyz/",
   },
   openGraph: {
     type: "website",
@@ -88,10 +91,6 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-  verification: {
-    google: "your-google-site-verification-code",
-    yandex: "your-yandex-verification-code",
-  },
   other: {
     "theme-color": "#0f172a",
     "apple-mobile-web-app-title": "Waqar Ahmed Portfolio",
@@ -105,14 +104,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html
+      lang="en"
+      className={`${sora.variable} ${jetbrainsMono.variable}`}
+      suppressHydrationWarning
+    >
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
         <meta name="format-detection" content="telephone=no" />
-        <Script id="gtm-script" strategy="afterInteractive">
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
+        <link rel="preconnect" href="https://avatars.githubusercontent.com" />
+        <Script id="gtm-script" strategy="lazyOnload">
           {`
             (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
             new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -159,7 +164,7 @@ export default function RootLayout({
         </Script>
       </head>
       <body
-        className={`${poppins.className} bg-background text-foreground transition-colors min-h-screen`}
+        className={`${sora.className} bg-background text-foreground transition-colors duration-300 min-h-screen`}
         suppressHydrationWarning
       >
         <noscript>

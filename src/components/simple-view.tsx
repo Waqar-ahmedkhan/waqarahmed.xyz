@@ -3,52 +3,28 @@ import { Button } from "@/components/ui/button";
 import { RESUME_DATA } from "@/data/resume-data";
 import { GlobeIcon, MailIcon } from "lucide-react";
 
+const contactButtonClass =
+  "h-9 w-9 rounded-lg border border-border bg-background transition-colors duration-200 hover:border-border hover:bg-accent hover:text-accent-foreground";
+
 export function SimpleView() {
   let delay = 0.8;
-  const allButtons = [];
+  const links: { key: string; href: string; label: string; icon: React.ReactNode }[] = [];
 
   if (RESUME_DATA.contact.email) {
-    allButtons.push(
-      <Button
-        key="email"
-        variant="outline"
-        size="icon"
-        className="h-10 w-10 rounded-full border-border transition-all duration-300 hover:scale-110 hover:border-gray-600 hover:bg-gray-900 animate-slide-up"
-        style={{ 
-          animation: `slideUpFade 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) ${delay.toFixed(1)}s forwards`, 
-          opacity: 0,
-          transform: 'translateY(20px)'
-        }}
-        asChild
-      >
-        <a href={`mailto:${RESUME_DATA.contact.email}`} aria-label="Email">
-          <MailIcon className="h-5 w-5 transition-transform duration-200" />
-        </a>
-      </Button>
-    );
-    delay += 0.15;
+    links.push({
+      key: "email",
+      href: `mailto:${RESUME_DATA.contact.email}`,
+      label: "Email",
+      icon: <MailIcon className="h-5 w-5" />,
+    });
   }
-
-  RESUME_DATA.contact.social.forEach((social) => {
-    allButtons.push(
-      <Button
-        key={social.name}
-        variant="outline"
-        size="icon"
-        className="h-10 w-10 rounded-full border-border transition-all duration-300 hover:scale-110 hover:border-gray-600 hover:bg-gray-900"
-        style={{ 
-          animation: `slideUpFade 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) ${delay.toFixed(1)}s forwards`, 
-          opacity: 0,
-          transform: 'translateY(20px)'
-        }}
-        asChild
-      >
-        <a href={social.url} target="_blank" aria-label={social.name}>
-          <social.icon className="h-5 w-5 transition-transform duration-200" />
-        </a>
-      </Button>
-    );
-    delay += 0.15;
+  RESUME_DATA.contact.social.forEach((s) => {
+    links.push({
+      key: s.name,
+      href: s.url,
+      label: s.name,
+      icon: <s.icon className="h-5 w-5" />,
+    });
   });
 
   return (
@@ -134,19 +110,6 @@ export function SimpleView() {
           animation-delay: 1.2s;
         }
 
-        .stagger-container > * {
-          transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-
-        .stagger-container:hover > * {
-          transform: scale(1.05);
-        }
-
-        .stagger-container > *:hover {
-          transform: scale(1.15) !important;
-          z-index: 10;
-          position: relative;
-        }
       `}</style>
       
       <div className="flex min-h-screen flex-col items-center justify-center bg-background p-4 text-foreground sm:p-6">
@@ -161,17 +124,34 @@ export function SimpleView() {
             {RESUME_DATA.summary}
           </p>
           <p className="animate-text-reveal-4 mb-8 flex items-center justify-center text-xs text-muted-foreground transition-all duration-300">
-            <GlobeIcon className="mr-1 h-3 w-3 transition-transform duration-200" />
+            <GlobeIcon className="mr-1 h-3 w-3" />
             <a
-              className="hover:text-foreground hover:underline transition-all duration-200"
+              className="hover:text-foreground hover:underline transition-colors duration-200"
               href={RESUME_DATA.locationLink}
               target="_blank"
             >
               {RESUME_DATA.location}
             </a>
           </p>
-          <div className="flex flex-wrap justify-center gap-3 stagger-container">
-            {allButtons}
+          <div className="flex flex-wrap justify-center gap-2">
+            {links.map(({ key, href, label, icon }, i) => (
+              <Button
+                key={key}
+                variant="outline"
+                size="icon"
+                className={contactButtonClass}
+                style={{
+                  animation: `slideUpFade 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) ${(delay + i * 0.15).toFixed(1)}s forwards`,
+                  opacity: 0,
+                  transform: "translateY(20px)",
+                }}
+                asChild
+              >
+                <a href={href} target={key === "email" ? undefined : "_blank"} rel={key === "email" ? undefined : "noopener noreferrer"} aria-label={label}>
+                  {icon}
+                </a>
+              </Button>
+            ))}
           </div>
         </div>
       </div>

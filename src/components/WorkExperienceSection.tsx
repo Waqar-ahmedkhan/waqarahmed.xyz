@@ -3,7 +3,6 @@
 import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Section } from "@/components/ui/section";
-import { ArrowRightIcon } from "lucide-react";
 import { RESUME_DATA } from "@/data/resume-data";
 
 interface WorkExperienceSectionProps {
@@ -16,7 +15,7 @@ export function WorkExperienceSection({ animationDelay = "0.3s" }: WorkExperienc
       className="my-6 sm:my-8 md:my-10 animate-fade-in"
       style={{ animationDelay }}
     >
-      <h2 className="text-lg sm:text-xl md:text-2xl font-bold font-sans text-foreground">
+      <h2 className="text-lg sm:text-xl md:text-2xl font-bold font-sans text-foreground animate-fade-in-subtle">
         Work Experience
       </h2>
       <div className="space-y-3 sm:space-y-4 md:space-y-5">
@@ -63,13 +62,12 @@ export function WorkExperienceSection({ animationDelay = "0.3s" }: WorkExperienc
                 {work.description}
               </p>
               {work.bulletPoints && (
-                <ul className="mt-2 sm:mt-3 text-xs sm:text-sm text-muted-foreground">
+                <ul className="mt-2 sm:mt-3 text-xs sm:text-sm text-muted-foreground space-y-1.5">
                   {work.bulletPoints.map((point, idx) => (
                     <li
                       key={idx}
-                      className="mb-1 sm:mb-2 flex items-start gap-x-2"
+                      className="flex items-start gap-3 border-l-2 border-primary/30 pl-3 py-0.5"
                     >
-                      <ArrowRightIcon className="h-3 w-3 sm:h-4 sm:w-4 flex-shrink-0 text-muted-foreground mt-1" />
                       <span>{point.text}</span>
                     </li>
                   ))}

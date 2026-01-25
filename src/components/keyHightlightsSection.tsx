@@ -26,7 +26,7 @@ export function KeyHighlightsSection({ animationDelay = "0.2s" }: KeyHighlightsS
       className="my-6 sm:my-8 md:my-10 animate-fade-in"
       style={{ animationDelay }}
     >
-      <h2 className="text-lg sm:text-xl md:text-2xl font-bold font-sans text-foreground">
+      <h2 className="text-lg sm:text-xl md:text-2xl font-bold font-sans text-foreground animate-fade-in-subtle">
         Key Highlights
       </h2>
       <div className="grid grid-cols-1 gap-3 sm:gap-4 md:gap-5 sm:grid-cols-2 lg:grid-cols-3 print:grid-cols-3 print:gap-2">
@@ -35,10 +35,10 @@ export function KeyHighlightsSection({ animationDelay = "0.2s" }: KeyHighlightsS
           return (
             <Card
               key={point.title}
-              className="flex flex-col items-start gap-2 p-4 sm:p-5 h-[120px] sm:h-[140px] border border-border hover:border-gray-700 transition-all duration-300"
+              className="group flex flex-col items-start gap-2 p-4 sm:p-5 h-[120px] sm:h-[140px] border border-border hover:border-gray-700 transition-all duration-300"
               style={{ animationDelay: `${0.1 * (index + 1)}s` }}
             >
-              <Icon className="h-5 w-5 sm:h-6 sm:w-6 text-foreground" />
+              <Icon className="h-5 w-5 sm:h-6 sm:w-6 text-foreground transition-transform duration-300 group-hover:scale-110" />
               <div>
                 <h3 className="font-semibold text-sm sm:text-base text-foreground">
                   {point.title}

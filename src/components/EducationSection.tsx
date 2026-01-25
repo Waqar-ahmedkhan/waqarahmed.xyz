@@ -14,7 +14,7 @@ export function EducationSection({ animationDelay = "0.4s" }: EducationSectionPr
       className="my-6 sm:my-8 md:my-10 animate-fade-in"
       style={{ animationDelay }}
     >
-      <h2 className="text-lg sm:text-xl md:text-2xl font-bold font-sans text-foreground">
+      <h2 className="text-lg sm:text-xl md:text-2xl font-bold font-sans text-foreground animate-fade-in-subtle">
         Education
       </h2>
       <div className="space-y-3 sm:space-y-4 md:space-y-5">

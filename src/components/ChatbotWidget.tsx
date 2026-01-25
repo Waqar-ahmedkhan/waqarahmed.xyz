@@ -87,6 +87,7 @@ export const ChatbotWidget: React.FC = () => {
               className="w-full h-[calc(100%-40px)] border-0"
               style={{ background: "transparent" }}
               allow="microphone; camera"
+              loading="lazy"
             />
           </motion.div>
         )}

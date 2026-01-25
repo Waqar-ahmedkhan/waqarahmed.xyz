@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { memo } from "react";
 
-const MotionButton = motion(Button);
+const MotionButton = motion.create(Button);
 
 export type ViewMode = "initial" | "simple" | "detailed";
 
@@ -24,37 +24,38 @@ export const ViewSwitch = ({
   const isLarge = size === "large";
   const shouldReduceMotion = useReducedMotion();
 
+  const easeSmooth = [0.25, 0.1, 0.25, 1] as const;
+
   const containerVariants: Variants = {
-    hidden: { opacity: 0, y: 20, scale: 0.95 },
+    hidden: { opacity: 0, y: 20, scale: 0.98 },
     visible: {
       opacity: 1,
       y: 0,
       scale: 1,
-      transition: { duration: shouldReduceMotion ? 0 : 0.4, ease: [0.4, 0, 0.2, 1] },
+      transition: { duration: shouldReduceMotion ? 0 : 0.55, ease: easeSmooth },
     },
   };
 
-  // Adjusted indicator variants to use pixel values for precise alignment
   const indicatorVariants: Variants = {
     simple: {
       x: 0,
       transition: shouldReduceMotion
         ? { duration: 0 }
-        : { type: "spring", stiffness: 400, damping: 40, mass: 0.8 },
+        : { type: "spring", stiffness: 250, damping: 30, mass: 1 },
     },
     detailed: {
-      x: "100%", // Move to the right half of the container
+      x: "100%",
       transition: shouldReduceMotion
         ? { duration: 0 }
-        : { type: "spring", stiffness: 400, damping: 40, mass: 0.8 },
+        : { type: "spring", stiffness: 250, damping: 30, mass: 1 },
     },
   };
 
   const buttonVariants: Variants = shouldReduceMotion
     ? {}
     : {
-        hover: { scale: 1.02, transition: { duration: 0.2 } },
-        tap: { scale: 0.98, transition: { duration: 0.1 } },
+        hover: { scale: 1.02, transition: { duration: 0.3, ease: easeSmooth } },
+        tap: { scale: 0.98, transition: { duration: 0.2, ease: easeSmooth } },
       };
 
   const modes: ViewMode[] = ["simple", "detailed"];
@@ -62,9 +63,8 @@ export const ViewSwitch = ({
   return (
     <motion.div
       className={cn(
-        "relative flex items-center gap-1 rounded-2xl border border-border/50 bg-background/80 backdrop-blur-xl shadow-lg",
-        "before:absolute before:inset-0 before:rounded-2xl before:bg-gradient-to-r before:from-transparent before:via-border/10 before:to-transparent",
-        isLarge ? "h-14 w-72 p-1" : "h-12 w-60 p-1",
+        "relative flex items-center gap-0 rounded-xl border border-border bg-background/95 backdrop-blur-sm shadow-sm",
+        isLarge ? "h-12 w-64 p-0.5" : "h-10 w-56 p-0.5",
         className
       )}
       variants={containerVariants}
@@ -73,30 +73,14 @@ export const ViewSwitch = ({
       role="tablist"
       aria-label="View mode selection"
     >
-      {/* Animated background indicator */}
+      {/* Animated tab indicator – flat, no gradient */}
       <motion.div
-        className="absolute rounded-xl bg-gradient-to-r from-primary/20 via-primary/30 to-primary/20 shadow-md"
+        className="absolute rounded-lg bg-primary/20"
         variants={indicatorVariants}
         animate={currentView}
         style={{
-          height: "calc(100% - 8px)",
-          width: "calc(50% - 4px)", // Adjusted for padding
-          top: "4px",
-          left: "4px",
-        }}
-      />
-
-      {/* Subtle glow effect */}
-      <motion.div
-        className="absolute rounded-xl bg-primary/10 blur-sm"
-        animate={{
-          x: currentView === "simple" ? "0%" : "100%", // Aligned with indicator
-          opacity: shouldReduceMotion ? 0 : 0.6,
-          transition: { duration: shouldReduceMotion ? 0 : 0.3 },
-        }}
-        style={{
           height: "calc(100% - 4px)",
-          width: "calc(50% - 4px)", // Consistent with indicator
+          width: "calc(50% - 2px)",
           top: "2px",
           left: "2px",
         }}
@@ -111,10 +95,12 @@ export const ViewSwitch = ({
             variant="ghost"
             onClick={() => onChange(mode)}
             className={cn(
-              "relative z-10 flex-1 rounded-xl border-0 font-medium transition-colors duration-200",
-              "focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-0",
-              isLarge ? "h-12 text-base" : "h-10 text-sm",
-              isActive ? "text-primary shadow-sm" : "text-muted-foreground hover:text-foreground",
+              "relative z-10 flex-1 rounded-lg border-0 font-medium transition-colors duration-200",
+              "focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+              isLarge ? "h-11 text-sm" : "h-9 text-sm",
+              isActive
+                ? "text-primary"
+                : "text-muted-foreground hover:text-foreground",
               "bg-transparent hover:bg-transparent"
             )}
             variants={buttonVariants}
@@ -125,20 +111,7 @@ export const ViewSwitch = ({
             aria-label={`Switch to ${mode} view`}
             tabIndex={0}
           >
-            <span className="relative flex items-center justify-center">
-              {mode.charAt(0).toUpperCase() + mode.slice(1)}
-              {isActive && (
-                <motion.div
-                  className="absolute -top-1 -right-1 h-1.5 w-1.5 rounded-full bg-primary"
-                  initial={{ scale: 0, opacity: 0 }}
-                  animate={{ scale: 1, opacity: 1 }}
-                  transition={{
-                    delay: shouldReduceMotion ? 0 : 0.1,
-                    duration: shouldReduceMotion ? 0 : 0.2,
-                  }}
-                />
-              )}
-            </span>
+            {mode.charAt(0).toUpperCase() + mode.slice(1)}
           </MotionButton>
         );
       })}

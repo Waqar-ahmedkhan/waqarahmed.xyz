@@ -29,7 +29,7 @@ export function BlogSection({
       className="my-6 sm:my-8 md:my-10 animate-fade-in"
       style={{ animationDelay }}
     >
-      <h2 className="text-lg sm:text-xl md:text-2xl font-bold font-sans text-foreground">
+      <h2 className="text-lg sm:text-xl md:text-2xl font-bold font-sans text-foreground animate-fade-in-subtle">
         Blog
       </h2>
       <div className="text-xs sm:text-sm text-muted-foreground mt-2 sm:mt-3">

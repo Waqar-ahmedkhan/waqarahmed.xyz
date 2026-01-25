@@ -15,7 +15,7 @@ export function AchievementsSection({ animationDelay = "0.8s" }: AchievementsSec
       className="my-6 sm:my-8 md:my-10 animate-fade-in"
       style={{ animationDelay }}
     >
-      <h2 className="text-lg sm:text-xl md:text-2xl font-bold font-sans text-foreground">
+      <h2 className="text-lg sm:text-xl md:text-2xl font-bold font-sans text-foreground animate-fade-in-subtle">
         Achievements
       </h2>
       <div className="space-y-3 sm:space-y-4 md:space-y-5">
@@ -29,20 +29,18 @@ export function AchievementsSection({ animationDelay = "0.8s" }: AchievementsSec
               <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 sm:gap-x-2 text-sm sm:text-base">
                 <h3 className="flex items-center gap-x-1 font-semibold text-foreground">
                   <span>{achievement.title}</span>
-                  {Array.from(achievement.reference as readonly { url: string }[]).map(
-                    (ref) => (
+{Array.from(achievement.reference ?? []).map((ref) => (
                       <a
-                        key={ref.url}
-                        href={ref.url}
+                        key={ref.href}
+                        href={ref.href}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center hover:text-blue-400 transition-colors duration-200"
-                        aria-label={`View reference for ${achievement.title}`}
+                        aria-label={ref.label || `View reference for ${achievement.title}`}
                       >
                         <ExternalLink className="h-3 w-3 sm:h-4 sm:w-4" />
                       </a>
-                    )
-                  )}
+                    ))}
                 </h3>
               </div>
             </CardHeader>

@@ -1,12 +1,15 @@
-
 "use client";
-
 import { useState, useEffect, useMemo, useCallback } from "react";
+import dynamic from "next/dynamic";
 import { RESUME_DATA } from "@/data/resume-data";
 import { ViewSwitch, ViewMode } from "@/components/view-switch";
 import { SimpleView } from "@/components/simple-view";
-import { ChatbotWidget } from "@/components/ChatbotWidget";
 import { HeaderSection } from "@/components/HeaderSection";
+
+const ChatbotWidget = dynamic(
+  () => import("@/components/ChatbotWidget").then((m) => m.ChatbotWidget),
+  { ssr: false, loading: () => null }
+);
 import { AboutSection } from "@/components/AboutSection";
 import { KeyHighlightsSection } from "@/components/keyHightlightsSection";
 import { WorkExperienceSection } from "@/components/WorkExperienceSection";
@@ -95,7 +98,7 @@ export default function Page() {
     return (
       <div className="flex min-h-screen flex-col items-center justify-center bg-background px-4 py-8 sm:px-6 md:px-8 animate-scale-in">
         <div className="mb-8 text-center">
-          <h1 className="mb-6 text-2xl font-extrabold tracking-tight sm:text-4xl md:text-5xl font-sans">
+          <h1 className="mb-6 text-2xl font-extrabold tracking-tight sm:text-4xl md:text-5xl font-sans animate-fade-in-up">
             Explore My Portfolio
           </h1>
           <p className="text-sm text-muted-foreground sm:text-base md:text-lg">
@@ -106,7 +109,7 @@ export default function Page() {
           currentView="simple"
           onChange={handleViewModeChange}
           size="large"
-          className="transition-transform hover:scale-105 shadow-md rounded-full p-2 sm:p-3 md:p-4 bg-background"
+          className="rounded-2xl border border-border bg-background/95 shadow-sm p-2 sm:p-3"
           aria-label="Select portfolio view mode"
         />
       </div>
@@ -121,7 +124,7 @@ export default function Page() {
           <ViewSwitch
             currentView={viewMode}
             onChange={handleViewModeChange}
-            className="transition-transform hover:scale-105 shadow-md rounded-full p-2 sm:p-3 md:p-4 bg-background"
+            className="rounded-2xl border border-border bg-background/95 shadow-sm p-2 sm:p-3"
             aria-label="Switch portfolio view mode"
           />
         </div>
@@ -150,7 +153,7 @@ export default function Page() {
           <ViewSwitch
             currentView={viewMode}
             onChange={handleViewModeChange}
-            className="transition-transform hover:scale-105 shadow-md rounded-full p-1 sm:p-2 md:p-3 bg-background"
+            className="rounded-2xl border border-border bg-background/95 shadow-sm p-2 sm:p-3"
             aria-label="Switch portfolio view mode"
           />
         </div>
