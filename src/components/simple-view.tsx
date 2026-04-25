@@ -114,6 +114,9 @@ export function SimpleView() {
       
       <div className="flex min-h-screen flex-col items-center justify-center bg-background p-4 text-foreground sm:p-6">
         <div className="max-w-[90%] text-center sm:max-w-md animate-gentle-float">
+          <div className="animate-text-reveal-1 mx-auto mb-4 inline-flex rounded-lg border border-border bg-background px-4 py-1.5 text-xs font-medium text-muted-foreground shadow-sm sm:text-sm">
+            Web Apps / SaaS / Agentic AI
+          </div>
           <h1 className="animate-text-reveal-1 mb-4 text-4xl font-bold sm:text-5xl transition-all duration-300">
             {RESUME_DATA.name}
           </h1>

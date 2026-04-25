@@ -20,16 +20,26 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Waqar Ahmed | Full Stack, DevOps & AI Engineer",
+    default: "Waqar Ahmed | Full Stack AI Developer",
     template: "%s | Waqar Ahmed Portfolio",
   },
   description:
-    "Waqar Ahmed, a Full Stack and DevOps Engineer specializing in AI, Machine Learning, and cloud-native solutions. Explore projects, certifications, and expertise in Next.js, React, and MLOps from Islamabad, Pakistan.",
+    "Waqar Ahmed is a Full Stack AI Developer with 3+ years of experience turning real business problems into startup MVPs, SaaS apps, dashboards, backend APIs, web apps, and agentic AI systems.",
   keywords: [
     "Waqar Ahmed",
+    "Full Stack AI Developer",
     "Full Stack Developer",
     "DevOps Engineer",
     "AI Engineer",
+    "Startup MVP Developer",
+    "SaaS Developer",
+    "Coworking SaaS",
+    "Product Engineer",
+    "Entrepreneurship",
+    "Agentic AI",
+    "LangChain",
+    "LangGraph",
+    "OpenAI API",
     "Machine Learning",
     "MLOps",
     "Next.js",
@@ -38,7 +48,9 @@ export const metadata: Metadata = {
     "AWS",
     "Docker",
     "Kubernetes",
-    "Cloud Native",
+    "Web Apps",
+    "App Development",
+    "Problem Solving",
     "Portfolio",
     "Islamabad",
     "Pakistan",
@@ -57,9 +69,9 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://waqarahmed.xyz",
     siteName: "Waqar Ahmed Portfolio",
-    title: "Waqar Ahmed | Full Stack, DevOps & AI Engineer",
+    title: "Waqar Ahmed | Full Stack AI Developer",
     description:
-      "Explore Waqar Ahmed's portfolio showcasing AI-driven projects, DevOps expertise, and cloud-native solutions built with Next.js, React, and AWS.",
+      "Explore Waqar Ahmed's portfolio of startup MVPs, SaaS apps, product dashboards, backend APIs, agentic AI systems, nonprofit platforms, business websites, and web apps.",
     images: [
       {
         url: "/image.png",
@@ -74,9 +86,9 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     site: "@Mr___WaQAR",
     creator: "@Mr___WaQAR",
-    title: "Waqar Ahmed | Full Stack, DevOps & AI Engineer",
+    title: "Waqar Ahmed | Full Stack AI Developer",
     description:
-      "Discover Waqar Ahmed's work in AI, DevOps, and Full Stack Development. View projects, certifications, and contributions.",
+      "Full Stack AI Developer solving real product, startup, business, nonprofit, and operations problems with web apps, backend systems, SaaS products, and agentic AI.",
     images: ["/og.png"],
   },
   robots: {
@@ -132,8 +144,8 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "Person",
               "name": "Waqar Ahmed",
-              "jobTitle": "Full Stack & DevOps Engineer",
-              "description": "Specializing in AI, Machine Learning, and cloud-native solutions in Islamabad, Pakistan.",
+              "jobTitle": "Full Stack AI Developer",
+              "description": "Full Stack AI Developer with 3+ years of experience turning business problems into startup MVPs, SaaS apps, dashboards, backend APIs, agentic AI systems, nonprofit platforms, company websites, and web apps.",
               "url": "https://waqarahmed.xyz",
               "sameAs": [
                 "https://github.com/Waqar-ahmedkhan",
@@ -153,7 +165,7 @@ export default function RootLayout({
               "image": "https://avatars.githubusercontent.com/u/150153359?s=400",
               "worksFor": {
                 "@type": "Organization",
-                "name": "Viral Mobitech (Private) Limited"
+                "name": "Geekinate"
               },
               "alumniOf": {
                 "@type": "EducationalOrganization",

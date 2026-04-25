@@ -1,121 +1,86 @@
 "use client";
-import { motion, useReducedMotion, Variants } from "framer-motion";
-import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { memo } from "react";
 
-const MotionButton = motion.create(Button);
-
 export type ViewMode = "initial" | "simple" | "detailed";
+
+const VIEW_MODES = [
+  { value: "simple", label: "Simple" },
+  { value: "detailed", label: "Detailed" },
+] as const;
 
 interface ViewSwitchProps {
   currentView: ViewMode;
   onChange: (mode: ViewMode) => void;
   size?: "default" | "large";
   className?: string;
+  "aria-label"?: string;
 }
 
-export const ViewSwitch = ({
+const ViewSwitchComponent = ({
   currentView,
   onChange,
   size = "default",
   className,
+  "aria-label": ariaLabel = "View mode selection",
 }: ViewSwitchProps) => {
   const isLarge = size === "large";
-  const shouldReduceMotion = useReducedMotion();
-
-  const easeSmooth = [0.25, 0.1, 0.25, 1] as const;
-
-  const containerVariants: Variants = {
-    hidden: { opacity: 0, y: 20, scale: 0.98 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      transition: { duration: shouldReduceMotion ? 0 : 0.55, ease: easeSmooth },
-    },
-  };
-
-  const indicatorVariants: Variants = {
-    simple: {
-      x: 0,
-      transition: shouldReduceMotion
-        ? { duration: 0 }
-        : { type: "spring", stiffness: 250, damping: 30, mass: 1 },
-    },
-    detailed: {
-      x: "100%",
-      transition: shouldReduceMotion
-        ? { duration: 0 }
-        : { type: "spring", stiffness: 250, damping: 30, mass: 1 },
-    },
-  };
-
-  const buttonVariants: Variants = shouldReduceMotion
-    ? {}
-    : {
-        hover: { scale: 1.02, transition: { duration: 0.3, ease: easeSmooth } },
-        tap: { scale: 0.98, transition: { duration: 0.2, ease: easeSmooth } },
-      };
-
-  const modes: ViewMode[] = ["simple", "detailed"];
+  const activeMode = currentView === "detailed" ? "detailed" : "simple";
 
   return (
-    <motion.div
+    <div
       className={cn(
-        "relative flex items-center gap-0 rounded-xl border border-border bg-background/95 backdrop-blur-sm shadow-sm",
-        isLarge ? "h-12 w-64 p-0.5" : "h-10 w-56 p-0.5",
+        "relative grid grid-cols-2 items-center overflow-hidden rounded-full border border-border/70 bg-background/95 p-1 shadow-lg shadow-black/5 backdrop-blur-xl",
+        "transition-[box-shadow,border-color,background-color] duration-300 ease-[var(--ease-out-smooth)] motion-reduce:transition-none",
+        "focus-within:border-primary/35 focus-within:ring-2 focus-within:ring-primary/20",
+        "dark:border-white/10 dark:bg-black/80 dark:shadow-black/30",
+        isLarge ? "h-14 w-72" : "h-12 w-64",
         className
       )}
-      variants={containerVariants}
-      initial="hidden"
-      animate="visible"
       role="tablist"
-      aria-label="View mode selection"
+      aria-label={ariaLabel}
     >
-      <motion.div
-        className="absolute rounded-lg bg-primary/20"
-        variants={indicatorVariants}
-        animate={currentView}
-        style={{
-          height: "calc(100% - 4px)",
-          width: "calc(50% - 2px)",
-          top: "2px",
-          left: "2px",
-        }}
+      <div
+        className={cn(
+          "pointer-events-none absolute left-1 top-1 h-[calc(100%-0.5rem)] w-[calc(50%-0.25rem)] rounded-full bg-primary shadow-sm shadow-primary/25",
+          "translate-x-0 transform-gpu transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] will-change-transform motion-reduce:transition-none",
+          activeMode === "detailed" && "translate-x-full"
+        )}
       />
 
-      {modes.map((mode) => {
-        const isActive = currentView === mode;
+      {VIEW_MODES.map(({ value, label }) => {
+        const isActive = activeMode === value;
 
         return (
-          <MotionButton
-            key={mode}
-            variant="ghost"
-            onClick={() => onChange(mode)}
+          <button
+            key={value}
+            type="button"
+            onClick={() => {
+              if (!isActive) {
+                onChange(value);
+              }
+            }}
             className={cn(
-              "relative z-10 flex-1 rounded-lg border-0 font-medium transition-colors duration-200",
-              "focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background",
-              isLarge ? "h-11 text-sm" : "h-9 text-sm",
+              "relative z-10 flex h-full min-w-0 items-center justify-center rounded-full border-0 bg-transparent px-4 font-medium outline-none",
+              "transition-[color,transform] duration-200 ease-[var(--ease-out-smooth)] motion-reduce:transition-none",
+              "focus-visible:outline-none active:scale-[0.985] motion-reduce:active:scale-100",
+              isLarge ? "text-[0.95rem]" : "text-sm",
               isActive
-                ? "text-primary"
-                : "text-muted-foreground hover:text-foreground",
-              "bg-transparent hover:bg-transparent"
+                ? "text-primary-foreground"
+                : "text-muted-foreground hover:text-foreground"
             )}
-            variants={buttonVariants}
-            whileHover={shouldReduceMotion ? undefined : "hover"}
-            whileTap={shouldReduceMotion ? undefined : "tap"}
             role="tab"
             aria-selected={isActive}
-            aria-label={`Switch to ${mode} view`}
+            aria-label={`Switch to ${value} view`}
             tabIndex={0}
           >
-            {mode.charAt(0).toUpperCase() + mode.slice(1)}
-          </MotionButton>
+            {label}
+          </button>
         );
       })}
-    </motion.div>
+    </div>
   );
 };
 
-export default memo(ViewSwitch);
+export const ViewSwitch = memo(ViewSwitchComponent);
+export default ViewSwitch;

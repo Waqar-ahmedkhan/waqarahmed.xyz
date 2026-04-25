@@ -109,7 +109,6 @@ export default function Page() {
           currentView="simple"
           onChange={handleViewModeChange}
           size="large"
-          className="rounded-2xl border border-border bg-background/95 shadow-sm p-2 sm:p-3"
           aria-label="Select portfolio view mode"
         />
       </div>
@@ -124,7 +123,6 @@ export default function Page() {
           <ViewSwitch
             currentView={viewMode}
             onChange={handleViewModeChange}
-            className="rounded-2xl border border-border bg-background/95 shadow-sm p-2 sm:p-3"
             aria-label="Switch portfolio view mode"
           />
         </div>
@@ -153,7 +151,6 @@ export default function Page() {
           <ViewSwitch
             currentView={viewMode}
             onChange={handleViewModeChange}
-            className="rounded-2xl border border-border bg-background/95 shadow-sm p-2 sm:p-3"
             aria-label="Switch portfolio view mode"
           />
         </div>

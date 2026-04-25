@@ -140,9 +140,9 @@ export const RESUME_DATA = {
   location: "Islamabad, Pakistan",
   locationLink: "https://www.google.com/maps/place/Islamabad",
   about:
-    "Full Stack & DevOps Engineer focused on scalable cloud solutions and AI systems",
+    "Full Stack AI Developer solving real business problems with web apps and agentic AI systems",
   summary:
-    "Computer Science student and Full Stack Developer with 1+ years of experience in building web applications and contributing to AI and startup ecosystems. Skilled in React, Node.js, Next.js, and DevOps tools like Docker, Kubernetes, and Terraform. Actively mentors developers and contributes to tech communities. Awarded Best Project Poster for EduAI at Tech-Talks & Posters Symposium 2025.",
+    "Full Stack AI Developer with 3+ years of experience turning messy business ideas into working software: startup MVPs, SaaS apps, dashboards, backend APIs, company websites, nonprofit platforms, AI assistants, and agentic AI workflows. I work across React, Next.js, Node.js, TypeScript, databases, Docker, AWS, OpenAI API, LangChain, and LangGraph, with a product-first problem-solving mindset: understand the problem, design the system, ship the feature, measure the value, and keep improving the product.",
   avatarUrl:
     "https://avatars.githubusercontent.com/u/150153359?s=400&u=e098fda35355c395f842fed288c8bafc339e28fb&v=4",
   personalWebsiteUrl: "https://waqarahmed.xyz",
@@ -187,29 +187,45 @@ export const RESUME_DATA = {
   ],
   work: [
     {
+      company: "Geekinate",
+      badges: ["Islamabad I-8", "Full-Time"],
+      title: "Full-Stack Developer",
+      start: "Aug 2025",
+      end: "Present",
+      description:
+        "Own full-stack delivery for company, client, and product work where the goal is not just to build pages, but to solve business, growth, trust, and operational problems.",
+      bulletPoints: bullets(
+        "Build and improve projects including Space Manager, Geekinate, Shifa Foundation, Twinhub, Next-Chat, Secure Pulse, and Lilia.",
+        "Translate vague stakeholder goals into user flows, responsive interfaces, backend integrations, and release-ready product updates.",
+        "Connect frontend execution with APIs, databases, authentication, reporting, deployment awareness, and AI workflows so features are useful beyond the UI."
+      ),
+    },
+    {
       company: "Viral Mobitech (Private) Limited",
       badges: ["Remote", "Part-Time"],
       title: "Full-Stack Developer",
-      start: "2024",
-      end: "Present",
+      start: "Dec 2024",
+      end: "Dec 2025",
       description:
-        "Develop and maintain scalable full-stack applications using React, Node.js, and MongoDB.",
+        "Built and improved full-stack product features where reliability, usability, and fast iteration mattered to delivery.",
       bulletPoints: bullets(
-        "Collaborate with designers and backend teams to implement modern UI/UX components.",
-        "Optimize application performance and deliver new features in agile sprints."
+        "Delivered reusable React interfaces connected to Node.js APIs and MongoDB-backed data flows.",
+        "Worked with design and backend teams to turn requirements into user-facing releases instead of isolated code tasks.",
+        "Improved product flows, fixed defects, supported performance work, and shipped through agile sprint cycles."
       ),
     },
     {
       company: "National Incubation Center (NIC), Kohat",
-      badges: ["On-site", "Full-Time"],
-      title: "Full-Stack Developer",
-      start: "2024",
-      end: "2025",
+      badges: ["Founder", "Incubated"],
+      title: "Startup Founder & Full-Stack Developer",
+      start: "Jan 2024",
+      end: "Dec 2024",
       description:
-        "Led full-stack development for startup MVPs using Next.js, Firebase, and Express.js.",
+        "Worked as a founder at NIC Kohat, turning startup problems into MVP scope, product flows, dashboards, and technical execution.",
       bulletPoints: bullets(
-        "Built dashboards, internal tools, and automated systems to support incubated startups.",
-        "Provided technical mentorship to early-stage teams during ideation and launch phases."
+        "Converted early startup ideas into product scope, user journeys, screens, APIs, data models, and practical architecture.",
+        "Built MVP and dashboard workflows that made startup progress easier to track, report, and improve.",
+        "Worked with mentors, founders, and startup teams on validation, technical tradeoffs, launch preparation, and product execution."
       ),
     },
     {
@@ -219,10 +235,11 @@ export const RESUME_DATA = {
       start: "2024",
       end: "2025",
       description:
-        "Contributed to AI-focused research proposals and tech grant applications.",
+        "Supported entrepreneurship, AI research direction, technical planning, and founder/student mentorship across early product ideas.",
       bulletPoints: bullets(
-        "Provided technical support for early-stage startup ideas across multiple NIC branches.",
-        "Delivered workshops and mentorship sessions on MLOps, full-stack development, and DevOps practices."
+        "Helped teams evaluate what should be built, what should be validated first, and what technical path made sense.",
+        "Delivered sessions on MLOps, full-stack engineering, DevOps, web app delivery, and practical agentic AI implementation.",
+        "Connected students and founders with modern engineering workflows that move ideas closer to real-world adoption."
       ),
     },
   ] as WorkEntry[],
@@ -243,6 +260,14 @@ export const RESUME_DATA = {
     "Ansible",
     "Terraform",
     "AWS",
+    "OpenAI API",
+    "LangChain",
+    "LangGraph",
+    "AI Agents",
+    "RAG",
+    "Redux",
+    "Material UI",
+    "Vite",
     "Prometheus",
     "Grafana",
     "MLOps",
@@ -281,12 +306,12 @@ export const RESUME_DATA = {
         "Learned to deploy and manage ML models in production using AWS SageMaker, Docker, and CI/CD pipelines.",
     },
     {
-      title: "AWS Cloud Technology Consultant Professional Certificate",
+      title: "AWS Technology Consultant Professional Certificate",
       issuer: "Amazon Web Services",
       year: "2025",
       link: "https://www.coursera.org/professional-certificates/aws-cloud-technology-consultant",
       description:
-        "Gained skills in AWS cloud architecture, DevOps, and containerization with EC2, S3, IAM, and CloudFormation.",
+        "Gained skills in AWS architecture, DevOps, and containerization with EC2, S3, IAM, and infrastructure templates.",
     },
     {
       title: "Fundamentals of Machine Learning and Artificial Intelligence",
@@ -294,7 +319,7 @@ export const RESUME_DATA = {
       year: "2025",
       link: "https://www.coursera.org/learn/fundamentals-machine-learning-artificial-intelligence",
       description:
-        "Explored AI/ML foundations and AWS services like SageMaker for cloud-based ML workflows.",
+        "Explored AI/ML foundations and AWS services like SageMaker for machine learning workflows.",
     },
     {
       title: "DevOps and AI on AWS Professional Certificate",
@@ -302,7 +327,7 @@ export const RESUME_DATA = {
       year: "2025",
       link: "https://www.coursera.org/professional-certificates/devops-and-ai-on-aws",
       description:
-        "Mastered DevOps practices, IaC, and AI integration using AWS Lambda, CloudFormation, and CI/CD.",
+        "Mastered DevOps practices, infrastructure as code, AI integration, AWS Lambda, and CI/CD.",
     },
     {
       title: "DeepLearning.AI Data Engineering Professional Certificate",
@@ -315,18 +340,18 @@ export const RESUME_DATA = {
   ],
   achievements: [
     {
-      title: "National Incubation Center Fellow",
+      title: "Founder at NIC Kohat",
       by: "National Incubation Center, Kohat",
       year: "2024",
       description:
-        "Recognized for contributions to startup development and technical mentorship.",
+        "Recognized as a founder at NIC Kohat, working on startup MVP development, product validation, technical execution, and practical problem solving.",
     },
     {
-      title: "Top Coder in Kohat",
-      by: "Kohat University of Science and Technology",
-      year: "2024",
+      title: "Top Coder in Islamabad",
+      by: "Islamabad, Pakistan",
+      year: "2026",
       description:
-        "Awarded for exceptional performance in competitive programming and hackathons in Kohat, showcasing problem-solving and coding expertise.",
+        "Recognized for strong problem-solving, competitive programming, and full-stack engineering performance in Islamabad's developer ecosystem.",
     },
     {
       title: "Best Poster Award – Tech-Talks & Posters Symposium 2025",
@@ -343,80 +368,129 @@ export const RESUME_DATA = {
     },
   ],
   keyHighlights: [
-    { title: "Experience", description: "1+ years in full-stack & AI development" },
-    { title: "Teaching", description: "Mentored 100+ students in AI and web dev" },
-    { title: "Community", description: "10k+ followers across social platforms" },
-    { title: "Certifications", description: "7 Coursera certificates in ML & DevOps" },
-    { title: "Hackathons", description: "Organized & won 5+ hackathons" },
-    { title: "Open Source", description: "20+ contributions to AI & web projects" },
-    { title: "Innovation", description: "Best Poster Award for EduAI 2025" },
-    { title: "Startups", description: "Contributed to 3 startup MVPs at NIC" },
+    { title: "Experience", description: "3+ years shipping web apps, SaaS products, and agentic AI systems" },
+    { title: "Teaching", description: "Mentored 100+ learners on AI, web, DevOps, and MVP building" },
+    { title: "Community", description: "Active across startup, founder, AI, and developer ecosystems" },
+    { title: "Certifications", description: "7 Coursera credentials across ML, AWS, DevOps, and data" },
+    { title: "Hackathons", description: "Organized and won 5+ innovation, AI, and coding events" },
+    { title: "Open Source", description: "Public work across web apps, AI systems, and agentic workflows" },
+    { title: "Innovation", description: "Best Poster Award for EduAI, a real education problem solver" },
+    { title: "Startups", description: "Built startup MVPs and SaaS workflows from problem framing to delivery" },
   ],
   projects: [
     {
       title: "EduAI: Personalized Learning Platform",
       techStack: ["Python", "TensorFlow", "React", "Firebase"],
       description:
-        "AI-powered platform for personalized, inclusive education, awarded Best Poster 2025.",
+        "Personalized learning platform built to solve one-size-fits-all education with adaptive AI workflows.",
       link: link("github.com", "https://github.com/Waqar-ahmedkhan/EduAI"),
     },
     {
       title: "EduAI Recommender Model",
       techStack: ["Python", "TensorFlow", "Machine Learning"],
       description:
-        "Recommendation system enhancing EduAI with AI-driven personalized content suggestions.",
+        "Recommendation engine that turns learner progress signals into more relevant content suggestions.",
       link: link(
         "github.com",
         "https://github.com/Waqar-ahmedkhan/recommender_model_for_EduAI"
       ),
     },
     {
+      title: "Space Manager",
+      techStack: ["React", "Vite", "Redux", "Material UI", "MUI X", "Vercel"],
+      description:
+        "Coworking SaaS platform that helps space operators centralize bookings, customers, availability, reporting, and admin workflows.",
+      link: link("spacemanager.vercel.app", "https://spacemanager.vercel.app/"),
+    },
+    {
+      title: "Geekinate Main Website",
+      techStack: ["React", "Next.js", "TypeScript", "Tailwind CSS"],
+      description:
+        "Company website work focused on stronger service positioning, client trust, responsive UX, and maintainable delivery.",
+    },
+    {
+      title: "Twinhub Main Website",
+      techStack: ["Website UX", "SEO", "Responsive Design"],
+      description:
+        "Coworking website improvements that clarify offers, support customer decisions, and strengthen business credibility.",
+    },
+    {
+      title: "Shifa Foundation USA Improvements",
+      techStack: ["WordPress", "UX", "Performance Research"],
+      description:
+        "Nonprofit platform improvements focused on campaign clarity, donor trust, mobile UX, and donation-path friction.",
+    },
+    {
+      title: "Next-Chat Backend And OTP",
+      techStack: ["Node.js", "Express.js", "REST APIs", "Authentication"],
+      description:
+        "Authentication and OTP backend work that improves onboarding trust, account verification, and messaging readiness.",
+    },
+    {
+      title: "Secure Pulse Backend Stabilization",
+      techStack: ["Backend APIs", "Debugging", "Platform Stability"],
+      description:
+        "Backend stabilization work focused on reliability, maintainability, fewer delivery blockers, and cleaner platform behavior.",
+    },
+    {
+      title: "Lilia Plant-Based LLM",
+      techStack: ["LLM Apps", "AI Product", "RAG"],
+      description:
+        "Domain-specific AI assistant concept for plant-based knowledge, retrieval workflows, and decision support.",
+    },
+    {
+      title: "Al Khair Al Arab Website",
+      techStack: ["Next.js", "TypeScript", "Tailwind CSS", "SEO"],
+      description:
+        "Construction and environmental services website designed for business trust, service clarity, leads, and SEO.",
+    },
+    {
       title: "AI E-Commerce Platform",
       techStack: ["Next.js", "TypeScript", "Firebase"],
       description:
-        "E-commerce platform with AI-driven product recommendations for enhanced user experience.",
+        "Commerce product concept that uses AI personalization to improve discovery, relevance, and buyer experience.",
       link: link("github.com", "https://github.com/waqarahmed/ai-ecommerce"),
     },
     {
       title: "Startup Dashboard",
       techStack: ["React", "Node.js", "MongoDB"],
       description:
-        "Dashboard for real-time monitoring of startup metrics at NIC Kohat.",
+        "Founder and incubation dashboard that turns scattered startup updates into trackable operational insight.",
       link: link("github.com", "https://github.com/waqarahmed/startup-dashboard"),
     },
     {
       title: "Portfolio Website",
       techStack: ["Next.js", "TypeScript", "Tailwind CSS"],
       description:
-        "Personal portfolio showcasing technical projects and professional skills.",
+        "Developer brand platform built to communicate engineering judgment, project ownership, and proof of work.",
       link: link("waqarahmed.xyz", "https://waqarahmed.xyz"),
     },
     {
       title: "MLOps Pipeline",
       techStack: ["AWS SageMaker", "Docker", "Python"],
       description:
-        "Production-ready ML pipeline for startup analytics, inspired by DeepLearning.AI.",
+        "ML operations workflow exploring how models move from experiments into reproducible, deployable systems.",
       link: link("github.com", "https://github.com/waqarahmed/mlops-pipeline"),
     },
     {
       title: "Real-Time Chat App",
       techStack: ["React", "Node.js", "Socket.IO"],
       description:
-        "Scalable chat application with real-time messaging and user authentication.",
+        "Messaging system prototype solving live communication with sockets, authentication foundations, and state flow.",
       link: link("github.com", "https://github.com/waqarahmed/realtime-chat"),
     },
     {
       title: "Serverless Task Manager",
       techStack: ["AWS Lambda", "DynamoDB", "React"],
       description:
-        "Serverless task management app with cloud-native CI/CD integration.",
+        "Serverless productivity app using managed backend patterns to reduce operations and improve delivery speed.",
       link: link("github.com", "https://github.com/waqarahmed/serverless-task-manager"),
     },
     {
       title: "Neural Network",
       techStack: ["Python", "NumPy", "TensorFlow"],
       description:
-        "Custom neural network for image classification, inspired by Karpathy's tutorials.",
+        "Machine learning project focused on understanding model behavior, training loops, and image classification.",
       link: link("github.com", "https://github.com/waqarahmed/neural-network-scratch"),
     },
   ],
@@ -433,7 +507,7 @@ export const RESUME_DATA = {
         "Organized KIC Hackathon 2024, engaging 50+ participants in AI and web development challenges.",
         "Co-organized South KP CodeFest 2024, focusing on real-world problem-solving with 30+ teams.",
         "Facilitated NIC Kohat AI Hackathon 2024, mentoring participants in ML model development.",
-        "Organized KUST Innovation Hackathon 2025, promoting DevOps and cloud solutions.",
+        "Organized KUST Innovation Hackathon 2025, promoting DevOps, web apps, and AI solutions.",
         "Supported KIC CodeJam 2025, guiding 40+ students in competitive programming and full-stack development."
       ),
     },
