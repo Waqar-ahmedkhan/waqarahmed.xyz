@@ -1,5 +1,3 @@
-"use client";
-
 import { Section } from "@/components/ui/section";
 import { ProjectCard } from "@/components/project-card";
 
@@ -13,26 +11,28 @@ interface Project {
 
 interface ProjectsSectionProps {
   projects: Project[];
-  isMobile: boolean;
   animationDelay?: string;
 }
 
 export function ProjectsSection({
   projects,
-  isMobile,
   animationDelay = "0.6s",
 }: ProjectsSectionProps) {
   return (
     <Section
-      className="my-6 sm:my-8 md:my-10 animate-fade-in"
+      className="my-4 sm:my-6 md:my-8 animate-fade-in"
       style={{ animationDelay }}
     >
-      <h2 className="text-lg sm:text-xl md:text-2xl font-bold font-sans text-foreground animate-fade-in-subtle">
+      <h2 className="text-base sm:text-lg md:text-xl font-semibold font-sans text-foreground animate-fade-in-subtle">
         Projects
       </h2>
-      <div className="grid grid-cols-1 gap-3 sm:gap-4 md:gap-5 sm:grid-cols-2 lg:grid-cols-3 print:grid-cols-3 print:gap-2">
+      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 print:grid-cols-3 print:gap-2">
         {projects
-          .filter((project) => !project.tech_stack.includes("Medium"))
+          .filter(
+            (project) =>
+              !project.tech_stack.includes("Medium") &&
+              !project.tech_stack.includes("Blog")
+          )
           .map((project, index) => (
             <div
               key={project.id}
@@ -43,7 +43,6 @@ export function ProjectsSection({
                 description={project.description}
                 tags={project.tech_stack}
                 link={project.link}
-                isMobile={isMobile}
               />
             </div>
           ))}

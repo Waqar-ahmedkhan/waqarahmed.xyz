@@ -1,35 +1,33 @@
 import { Metadata } from "next";
-import { Sora, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import Script from "next/script";
 import { ThemeProvider } from "@/components/theme-provider";
 import { ThemeToggle } from "@/components/theme-toggle";
 
-const sora = Sora({
-  subsets: ["latin"],
-  display: "swap",
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-sans-family",
-});
-
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-mono-family",
-});
+const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID;
 
 export const metadata: Metadata = {
   title: {
-    default: "Waqar Ahmed | Full Stack, DevOps & AI Engineer",
+    default: "Waqar Ahmed | Full Stack AI Developer",
     template: "%s | Waqar Ahmed Portfolio",
   },
   description:
-    "Waqar Ahmed, a Full Stack and DevOps Engineer specializing in AI, Machine Learning, and cloud-native solutions. Explore projects, certifications, and expertise in Next.js, React, and MLOps from Islamabad, Pakistan.",
+    "Waqar Ahmed is a Full Stack AI Developer with 3+ years of experience turning real business problems into startup MVPs, SaaS apps, dashboards, backend APIs, web apps, and agentic AI systems.",
   keywords: [
     "Waqar Ahmed",
+    "Full Stack AI Developer",
     "Full Stack Developer",
     "DevOps Engineer",
     "AI Engineer",
+    "Startup MVP Developer",
+    "SaaS Developer",
+    "Coworking SaaS",
+    "Product Engineer",
+    "Entrepreneurship",
+    "Agentic AI",
+    "LangChain",
+    "LangGraph",
+    "OpenAI API",
     "Machine Learning",
     "MLOps",
     "Next.js",
@@ -38,7 +36,9 @@ export const metadata: Metadata = {
     "AWS",
     "Docker",
     "Kubernetes",
-    "Cloud Native",
+    "Web Apps",
+    "App Development",
+    "Problem Solving",
     "Portfolio",
     "Islamabad",
     "Pakistan",
@@ -57,9 +57,9 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://waqarahmed.xyz",
     siteName: "Waqar Ahmed Portfolio",
-    title: "Waqar Ahmed | Full Stack, DevOps & AI Engineer",
+    title: "Waqar Ahmed | Full Stack AI Developer",
     description:
-      "Explore Waqar Ahmed's portfolio showcasing AI-driven projects, DevOps expertise, and cloud-native solutions built with Next.js, React, and AWS.",
+      "Explore Waqar Ahmed's portfolio of startup MVPs, SaaS apps, product dashboards, backend APIs, agentic AI systems, nonprofit platforms, business websites, and web apps.",
     images: [
       {
         url: "/image.png",
@@ -74,10 +74,10 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     site: "@Mr___WaQAR",
     creator: "@Mr___WaQAR",
-    title: "Waqar Ahmed | Full Stack, DevOps & AI Engineer",
+    title: "Waqar Ahmed | Full Stack AI Developer",
     description:
-      "Discover Waqar Ahmed's work in AI, DevOps, and Full Stack Development. View projects, certifications, and contributions.",
-    images: ["/og.png"],
+      "Full Stack AI Developer solving real product, startup, business, nonprofit, and operations problems with web apps, backend systems, SaaS products, and agentic AI.",
+    images: ["/image.png"],
   },
   robots: {
     index: true,
@@ -106,34 +106,36 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${sora.variable} ${jetbrainsMono.variable}`}
       suppressHydrationWarning
     >
       <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
         <meta name="format-detection" content="telephone=no" />
-        <link rel="preconnect" href="https://www.googletagmanager.com" />
         <link rel="preconnect" href="https://avatars.githubusercontent.com" />
-        <Script id="gtm-script" strategy="lazyOnload">
-          {`
-            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-            })(window,document,'script','dataLayer','GTM-NPKQCQK3');
-          `}
-        </Script>
+        {GTM_ID ? (
+          <>
+            <link rel="preconnect" href="https://www.googletagmanager.com" />
+            <Script id="gtm-script" strategy="lazyOnload">
+              {`
+                (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+                j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+                'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+                })(window,document,'script','dataLayer','${GTM_ID}');
+              `}
+            </Script>
+          </>
+        ) : null}
         <Script id="json-ld" type="application/ld+json">
           {`
             {
               "@context": "https://schema.org",
               "@type": "Person",
               "name": "Waqar Ahmed",
-              "jobTitle": "Full Stack & DevOps Engineer",
-              "description": "Specializing in AI, Machine Learning, and cloud-native solutions in Islamabad, Pakistan.",
+              "jobTitle": "Full Stack AI Developer",
+              "description": "Full Stack AI Developer with 3+ years of experience turning business problems into startup MVPs, SaaS apps, dashboards, backend APIs, agentic AI systems, nonprofit platforms, company websites, and web apps.",
               "url": "https://waqarahmed.xyz",
               "sameAs": [
                 "https://github.com/Waqar-ahmedkhan",
@@ -153,7 +155,7 @@ export default function RootLayout({
               "image": "https://avatars.githubusercontent.com/u/150153359?s=400",
               "worksFor": {
                 "@type": "Organization",
-                "name": "Viral Mobitech (Private) Limited"
+                "name": "Geekinate"
               },
               "alumniOf": {
                 "@type": "EducationalOrganization",
@@ -164,17 +166,19 @@ export default function RootLayout({
         </Script>
       </head>
       <body
-        className={`${sora.className} bg-background text-foreground transition-colors duration-300 min-h-screen`}
+        className="min-h-screen bg-background text-foreground transition-colors duration-300"
         suppressHydrationWarning
       >
-        <noscript>
-          <iframe
-            src="https://www.googletagmanager.com/ns.html?id=GTM-NPKQCQK3"
-            height="0"
-            width="0"
-            style={{ display: "none", visibility: "hidden" }}
-          ></iframe>
-        </noscript>
+        {GTM_ID ? (
+          <noscript>
+            <iframe
+              src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
+              height="0"
+              width="0"
+              style={{ display: "none", visibility: "hidden" }}
+            ></iframe>
+          </noscript>
+        ) : null}
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
@@ -184,9 +188,9 @@ export default function RootLayout({
           <div className="fixed top-4 right-4 z-50">
             <ThemeToggle />
           </div>
-          <main className="container mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
             {children}
-          </main>
+          </div>
         </ThemeProvider>
       </body>
     </html>
