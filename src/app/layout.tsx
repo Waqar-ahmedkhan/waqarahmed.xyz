@@ -196,7 +196,7 @@ export default function RootLayout({
           <div className="fixed top-4 right-4 z-50">
             <ThemeToggle />
           </div>
-          <main className="container mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+          <main className="container mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
             {children}
           </main>
         </ThemeProvider>

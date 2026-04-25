@@ -138,7 +138,7 @@ export default function Page() {
   return (
     <div className="animate-scale-in bg-background">
       <main className="container relative mx-auto min-h-screen scroll-my-12 overflow-auto p-4 sm:p-6 md:p-8 lg:p-12 xl:p-16 print:p-12">
-        <section className="mx-auto w-full max-w-3xl space-y-8 sm:space-y-10 md:space-y-12 rounded-2xl text-foreground print:bg-white print:text-black">
+        <section className="mx-auto w-full max-w-4xl space-y-8 sm:space-y-10 md:space-y-12 rounded-2xl text-foreground print:bg-white print:text-black">
           <HeaderSection isMobile={isMobile} />
           <AboutSection />
           <KeyHighlightsSection />

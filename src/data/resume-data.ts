@@ -193,11 +193,11 @@ export const RESUME_DATA = {
       start: "Aug 2025",
       end: "Present",
       description:
-        "Own full-stack delivery for company, client, and product work where the goal is not just to build pages, but to solve business, growth, trust, and operational problems.",
+        "Building business-facing web apps, SaaS workflows, backend integrations, and AI-enabled product features for company and client projects.",
       bulletPoints: bullets(
-        "Build and improve projects including Space Manager, Geekinate, Shifa Foundation, Twinhub, Next-Chat, Secure Pulse, and Lilia.",
-        "Translate vague stakeholder goals into user flows, responsive interfaces, backend integrations, and release-ready product updates.",
-        "Connect frontend execution with APIs, databases, authentication, reporting, deployment awareness, and AI workflows so features are useful beyond the UI."
+        "Architected and improved Space Manager, a coworking SaaS product that centralizes bookings, customers, availability, reporting, and admin workflows.",
+        "Built and shipped user-facing website and product flows for Geekinate, Shifa Foundation, Twinhub, Next-Chat, Secure Pulse, and Lilia using modern React/Next.js patterns.",
+        "Connected responsive interfaces with APIs, databases, authentication, reporting, deployment workflows, and AI features to solve real operational problems."
       ),
     },
     {
@@ -207,11 +207,11 @@ export const RESUME_DATA = {
       start: "Dec 2024",
       end: "Dec 2025",
       description:
-        "Owned full-stack product delivery across frontend interfaces, backend APIs, database-backed workflows, and production feature improvements.",
+        "Delivered full-stack product features across frontend interfaces, backend APIs, MongoDB workflows, and production application improvements.",
       bulletPoints: bullets(
-        "Built reusable React interfaces and connected them with Node.js APIs, MongoDB data models, and real application workflows.",
-        "Translated product and design requirements into complete user-facing releases across UI, API integration, validation, and state handling.",
-        "Improved product flows, resolved bugs, supported performance work, and shipped reliable features through agile delivery cycles."
+        "Designed and built reusable React interfaces connected to Node.js APIs and MongoDB-backed data flows for real product use cases.",
+        "Turned product and design requirements into complete releases across UI, API integration, validation, state handling, and edge-case fixes.",
+        "Improved user flows, resolved production defects, supported performance work, and shipped reliable features through agile delivery cycles."
       ),
     },
     {
@@ -221,11 +221,11 @@ export const RESUME_DATA = {
       start: "Jan 2024",
       end: "Dec 2024",
       description:
-        "Worked as a founder at NIC Kohat, turning startup problems into MVP scope, product flows, dashboards, and technical execution.",
+        "Built startup MVP direction at NIC Kohat by converting early ideas into product scope, technical architecture, dashboards, and launch-ready workflows.",
       bulletPoints: bullets(
-        "Converted early startup ideas into product scope, user journeys, screens, APIs, data models, and practical architecture.",
-        "Built MVP and dashboard workflows that made startup progress easier to track, report, and improve.",
-        "Worked with mentors, founders, and startup teams on validation, technical tradeoffs, launch preparation, and product execution."
+        "Designed MVP user journeys, screens, APIs, data models, and practical architecture for startup ideas moving from validation to execution.",
+        "Built dashboard and reporting workflows that helped track startup progress, operational activity, and decision-making signals.",
+        "Worked with mentors, founders, and startup teams on product validation, technical tradeoffs, launch preparation, and execution."
       ),
     },
     {
@@ -235,11 +235,11 @@ export const RESUME_DATA = {
       start: "2024",
       end: "2025",
       description:
-        "Supported entrepreneurship, AI research direction, technical planning, and founder/student mentorship across early product ideas.",
+        "Supported AI-focused entrepreneurship, research planning, grant direction, and technical mentorship for students and early-stage founders.",
       bulletPoints: bullets(
-        "Helped teams evaluate what should be built, what should be validated first, and what technical path made sense.",
-        "Delivered sessions on MLOps, full-stack engineering, DevOps, web app delivery, and practical agentic AI implementation.",
-        "Connected students and founders with modern engineering workflows that move ideas closer to real-world adoption."
+        "Helped teams evaluate product feasibility, validation priorities, technical architecture, and implementation paths before building.",
+        "Delivered mentorship on MLOps, full-stack engineering, DevOps, web app delivery, and practical agentic AI implementation.",
+        "Guided students and founders toward engineering workflows that turn ideas into usable products, proposals, and prototypes."
       ),
     },
   ] as WorkEntry[],
@@ -396,14 +396,14 @@ export const RESUME_DATA = {
       title: "EduAI: Personalized Learning Platform",
       techStack: ["Python", "TensorFlow", "React", "Firebase"],
       description:
-        "Personalized learning platform built to solve one-size-fits-all education with adaptive AI workflows.",
+        "Designed and built an AI-powered learning platform that personalizes education workflows for students instead of using one-size-fits-all content.",
       link: link("github.com", "https://github.com/Waqar-ahmedkhan/EduAI"),
     },
     {
       title: "EduAI Recommender Model",
       techStack: ["Python", "TensorFlow", "Machine Learning"],
       description:
-        "Recommendation engine that turns learner progress signals into more relevant content suggestions.",
+        "Built a recommendation model that turns learner progress signals into relevant content suggestions and adaptive learning support.",
       link: link(
         "github.com",
         "https://github.com/Waqar-ahmedkhan/recommender_model_for_EduAI"
@@ -413,63 +413,63 @@ export const RESUME_DATA = {
       title: "Space Manager",
       techStack: ["React", "Vite", "Redux", "Material UI", "MUI X", "Vercel"],
       description:
-        "Coworking SaaS platform that helps space operators centralize bookings, customers, availability, reporting, and admin workflows.",
+        "Contributed to a coworking SaaS platform that centralizes bookings, customers, availability, reporting, and admin workflows for space operators.",
       link: link("spacemanager.vercel.app", "https://spacemanager.vercel.app/"),
     },
     {
       title: "Geekinate Main Website",
       techStack: ["React", "Next.js", "TypeScript", "Tailwind CSS"],
       description:
-        "Company website work focused on stronger service positioning, client trust, responsive UX, and maintainable delivery.",
+        "Built and improved company website sections focused on service positioning, client trust, responsive UX, and maintainable delivery.",
     },
     {
       title: "Twinhub Main Website",
       techStack: ["Website UX", "SEO", "Responsive Design"],
       description:
-        "Coworking website improvements that clarify offers, support customer decisions, and strengthen business credibility.",
+        "Improved a coworking website experience to clarify offers, support customer decisions, and strengthen business credibility.",
     },
     {
       title: "Shifa Foundation USA Improvements",
       techStack: ["WordPress", "UX", "Performance Research"],
       description:
-        "Nonprofit platform improvements focused on campaign clarity, donor trust, mobile UX, and donation-path friction.",
+        "Improved nonprofit web flows around campaign clarity, donor trust, mobile responsiveness, and donation-path friction.",
     },
     {
       title: "Next-Chat Backend And OTP",
       techStack: ["Node.js", "Express.js", "REST APIs", "Authentication"],
       description:
-        "Authentication and OTP backend work that improves onboarding trust, account verification, and messaging readiness.",
+        "Built backend authentication and OTP flows that improve onboarding trust, account verification, and messaging readiness.",
     },
     {
       title: "Secure Pulse Backend Stabilization",
       techStack: ["Backend APIs", "Debugging", "Platform Stability"],
       description:
-        "Backend stabilization work focused on reliability, maintainability, fewer delivery blockers, and cleaner platform behavior.",
+        "Stabilized backend APIs by resolving reliability issues, reducing delivery blockers, and improving maintainability.",
     },
     {
       title: "Lilia Plant-Based LLM",
       techStack: ["LLM Apps", "AI Product", "RAG"],
       description:
-        "Domain-specific AI assistant concept for plant-based knowledge, retrieval workflows, and decision support.",
+        "Developed domain-specific LLM product direction for plant-based knowledge, retrieval workflows, and AI decision support.",
     },
     {
       title: "Al Khair Al Arab Website",
       techStack: ["Next.js", "TypeScript", "Tailwind CSS", "SEO"],
       description:
-        "Construction and environmental services website designed for business trust, service clarity, leads, and SEO.",
+        "Built a business website for construction and environmental services focused on trust, service clarity, leads, and SEO readiness.",
     },
     {
       title: "AI E-Commerce Platform",
       techStack: ["Next.js", "TypeScript", "Firebase"],
       description:
-        "Commerce product concept that uses AI personalization to improve discovery, relevance, and buyer experience.",
+        "Built an AI-enabled commerce concept that improves product discovery, relevance, and buyer experience with personalization workflows.",
       link: link("github.com", "https://github.com/waqarahmed/ai-ecommerce"),
     },
     {
       title: "Startup Dashboard",
       techStack: ["React", "Node.js", "MongoDB"],
       description:
-        "Founder and incubation dashboard that turns scattered startup updates into trackable operational insight.",
+        "Designed a startup operations dashboard that turns scattered founder updates into trackable metrics, records, and reporting insight.",
       link: link("github.com", "https://github.com/waqarahmed/startup-dashboard"),
     },
     {
