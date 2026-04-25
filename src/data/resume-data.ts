@@ -202,16 +202,16 @@ export const RESUME_DATA = {
     },
     {
       company: "Viral Mobitech (Private) Limited",
-      badges: ["Remote", "Part-Time"],
+      badges: ["Hybrid", "Full-Time"],
       title: "Full-Stack Developer",
       start: "Dec 2024",
       end: "Dec 2025",
       description:
-        "Built and improved full-stack product features where reliability, usability, and fast iteration mattered to delivery.",
+        "Owned full-stack product delivery across frontend interfaces, backend APIs, database-backed workflows, and production feature improvements.",
       bulletPoints: bullets(
-        "Delivered reusable React interfaces connected to Node.js APIs and MongoDB-backed data flows.",
-        "Worked with design and backend teams to turn requirements into user-facing releases instead of isolated code tasks.",
-        "Improved product flows, fixed defects, supported performance work, and shipped through agile sprint cycles."
+        "Built reusable React interfaces and connected them with Node.js APIs, MongoDB data models, and real application workflows.",
+        "Translated product and design requirements into complete user-facing releases across UI, API integration, validation, and state handling.",
+        "Improved product flows, resolved bugs, supported performance work, and shipped reliable features through agile delivery cycles."
       ),
     },
     {
@@ -378,6 +378,20 @@ export const RESUME_DATA = {
     { title: "Startups", description: "Built startup MVPs and SaaS workflows from problem framing to delivery" },
   ],
   projects: [
+    {
+      title: "Why AI Agents Are Harder Than Chatbots",
+      techStack: ["Blog", "AI Agents", "LangGraph", "Vector Search"],
+      description:
+        "A practical article explaining why agents are harder than chatbots: tool calling, retrieval, planning, memory, workflow execution, evaluation, cost, and reliability.",
+      link: link("Read article", "/blog/why-ai-agents-are-harder-than-chatbots"),
+    },
+    {
+      title: "Real Full Stack AI Is More Than Prompting OpenAI",
+      techStack: ["Blog", "Full Stack AI", "Agentic AI", "Evaluation"],
+      description:
+        "A complete article explaining why production AI products need UI, backend orchestration, databases, auth, vector search, tool calling, cost control, evaluation, and deployment.",
+      link: link("Read article", "/blog/full-stack-ai-development"),
+    },
     {
       title: "EduAI: Personalized Learning Platform",
       techStack: ["Python", "TensorFlow", "React", "Firebase"],

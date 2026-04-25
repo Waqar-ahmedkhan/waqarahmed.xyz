@@ -1,0 +1,68 @@
+<svg width="1200" height="720" viewBox="0 0 1200 720" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Full Stack AI Architecture</title>
+  <desc id="desc">A layered architecture diagram showing UI, auth, backend, databases, vector search, tool calling, evaluation, cost control, and deployment around an AI system.</desc>
+  <rect width="1200" height="720" rx="36" fill="#050816"/>
+  <rect x="40" y="40" width="1120" height="640" rx="28" fill="#0B1020" stroke="#1F2A44" stroke-width="2"/>
+  <path d="M70 132H1130" stroke="#1F2A44" stroke-width="2"/>
+  <text x="74" y="94" fill="#F8FAFC" font-family="Inter, Arial, sans-serif" font-size="34" font-weight="700">Real Full Stack AI</text>
+  <text x="74" y="122" fill="#94A3B8" font-family="Inter, Arial, sans-serif" font-size="16">Not a prompt wrapper. A production system with product, data, operations, and intelligence working together.</text>
+  <g opacity="0.45">
+    <path d="M90 176H1110M90 248H1110M90 320H1110M90 392H1110M90 464H1110M90 536H1110M90 608H1110" stroke="#172033"/>
+    <path d="M180 160V632M300 160V632M420 160V632M540 160V632M660 160V632M780 160V632M900 160V632M1020 160V632" stroke="#172033"/>
+  </g>
+  <defs>
+    <linearGradient id="card" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#111B33"/>
+      <stop offset="1" stop-color="#09111F"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#38BDF8"/>
+      <stop offset="0.5" stop-color="#34D399"/>
+      <stop offset="1" stop-color="#FBBF24"/>
+    </linearGradient>
+  </defs>
+  <g>
+    <rect x="96" y="178" width="240" height="112" rx="18" fill="url(#card)" stroke="#263653"/>
+    <rect x="116" y="198" width="58" height="58" rx="14" fill="#0EA5E9" opacity="0.16"/>
+    <text x="192" y="221" fill="#E2E8F0" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="700">UI and UX</text>
+    <text x="192" y="246" fill="#94A3B8" font-family="Inter, Arial, sans-serif" font-size="13">Interfaces, states, feedback, trust, and user flows.</text>
+  </g>
+  <g>
+    <rect x="480" y="178" width="240" height="112" rx="18" fill="url(#card)" stroke="#263653"/>
+    <rect x="500" y="198" width="58" height="58" rx="14" fill="#34D399" opacity="0.16"/>
+    <text x="576" y="221" fill="#E2E8F0" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="700">Backend API</text>
+    <text x="576" y="246" fill="#94A3B8" font-family="Inter, Arial, sans-serif" font-size="13">Orchestration, auth, rate limits, jobs, and business logic.</text>
+  </g>
+  <g>
+    <rect x="864" y="178" width="240" height="112" rx="18" fill="url(#card)" stroke="#263653"/>
+    <rect x="884" y="198" width="58" height="58" rx="14" fill="#FBBF24" opacity="0.16"/>
+    <text x="960" y="221" fill="#E2E8F0" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="700">AI Runtime</text>
+    <text x="960" y="246" fill="#94A3B8" font-family="Inter, Arial, sans-serif" font-size="13">Models, prompts, tool calls, memory, and guardrails.</text>
+  </g>
+  <g>
+    <rect x="96" y="364" width="240" height="112" rx="18" fill="url(#card)" stroke="#263653"/>
+    <text x="122" y="406" fill="#E2E8F0" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="700">Product Data</text>
+    <text x="122" y="432" fill="#94A3B8" font-family="Inter, Arial, sans-serif" font-size="13">Users, roles, settings, history, billing, and audit trails.</text>
+  </g>
+  <g>
+    <rect x="480" y="364" width="240" height="112" rx="18" fill="url(#card)" stroke="#263653"/>
+    <text x="506" y="406" fill="#E2E8F0" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="700">Vector Search</text>
+    <text x="506" y="432" fill="#94A3B8" font-family="Inter, Arial, sans-serif" font-size="13">Embeddings, retrieval, chunking, ranking, and citations.</text>
+  </g>
+  <g>
+    <rect x="864" y="364" width="240" height="112" rx="18" fill="url(#card)" stroke="#263653"/>
+    <text x="890" y="406" fill="#E2E8F0" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="700">Tools and Agents</text>
+    <text x="890" y="432" fill="#94A3B8" font-family="Inter, Arial, sans-serif" font-size="13">APIs, workflows, actions, approvals, and recovery paths.</text>
+  </g>
+  <g>
+    <rect x="190" y="552" width="820" height="82" rx="20" fill="#08111F" stroke="#263653"/>
+    <rect x="218" y="580" width="764" height="8" rx="4" fill="#172033"/>
+    <rect x="218" y="580" width="536" height="8" rx="4" fill="url(#accent)"/>
+    <text x="230" y="610" fill="#E2E8F0" font-family="Inter, Arial, sans-serif" font-size="17" font-weight="700">Evaluation, cost control, observability, and deployment wrap the whole system.</text>
+  </g>
+  <path d="M336 234H480" stroke="#38BDF8" stroke-width="3" stroke-linecap="round"/>
+  <path d="M720 234H864" stroke="#34D399" stroke-width="3" stroke-linecap="round"/>
+  <path d="M600 290V364" stroke="#FBBF24" stroke-width="3" stroke-linecap="round"/>
+  <path d="M336 420H480" stroke="#38BDF8" stroke-width="3" stroke-linecap="round"/>
+  <path d="M720 420H864" stroke="#34D399" stroke-width="3" stroke-linecap="round"/>
+</svg>

@@ -59,7 +59,12 @@ export default function Page() {
   );
 
   const blogProjects = useMemo(
-    () => projects.filter((project) => project.tech_stack.includes("Medium")),
+    () =>
+      projects.filter(
+        (project) =>
+          project.tech_stack.includes("Blog") ||
+          project.tech_stack.includes("Medium")
+      ),
     [projects]
   );
 

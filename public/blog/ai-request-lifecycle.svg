@@ -1,0 +1,86 @@
+<svg width="1200" height="720" viewBox="0 0 1200 720" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Full Stack AI Request Lifecycle</title>
+  <desc id="desc">A lifecycle diagram showing how a user request moves through UI, authentication, context retrieval, model reasoning, tool execution, validation, response, and evaluation logging.</desc>
+  <rect width="1200" height="720" rx="36" fill="#050816"/>
+  <rect x="48" y="48" width="1104" height="624" rx="28" fill="#0B1020" stroke="#263653" stroke-width="2"/>
+  <text x="82" y="105" fill="#F8FAFC" font-family="Inter, Arial, sans-serif" font-size="34" font-weight="700">One AI Request Is a Whole System</text>
+  <text x="82" y="134" fill="#94A3B8" font-family="Inter, Arial, sans-serif" font-size="16">Production AI is a controlled path from user intent to safe action, response, logging, and improvement.</text>
+  <defs>
+    <linearGradient id="accent" x1="84" y1="0" x2="1116" y2="0" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#38BDF8"/>
+      <stop offset="0.5" stop-color="#34D399"/>
+      <stop offset="1" stop-color="#F59E0B"/>
+    </linearGradient>
+    <linearGradient id="card" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#101B33"/>
+      <stop offset="1" stop-color="#08111F"/>
+    </linearGradient>
+  </defs>
+  <path d="M160 278H1040" stroke="url(#accent)" stroke-width="8" stroke-linecap="round"/>
+  <path d="M1040 278C1080 278 1080 442 1040 442H160" stroke="url(#accent)" stroke-width="8" stroke-linecap="round" opacity="0.85"/>
+  <g font-family="Inter, Arial, sans-serif">
+    <g>
+      <circle cx="160" cy="278" r="38" fill="#07111F" stroke="#38BDF8" stroke-width="4"/>
+      <text x="148" y="286" fill="#E2E8F0" font-size="24" font-weight="700">1</text>
+      <text x="90" y="356" fill="#E2E8F0" font-size="18" font-weight="700">User Intent</text>
+      <text x="70" y="382" fill="#94A3B8" font-size="13">Goal, input, files, and workflow state</text>
+    </g>
+    <g>
+      <circle cx="306" cy="278" r="38" fill="#07111F" stroke="#38BDF8" stroke-width="4"/>
+      <text x="294" y="286" fill="#E2E8F0" font-size="24" font-weight="700">2</text>
+      <text x="250" y="214" fill="#E2E8F0" font-size="18" font-weight="700">Auth Gate</text>
+      <text x="226" y="239" fill="#94A3B8" font-size="13">Roles, tenant, permissions, limits</text>
+    </g>
+    <g>
+      <circle cx="452" cy="278" r="38" fill="#07111F" stroke="#34D399" stroke-width="4"/>
+      <text x="440" y="286" fill="#E2E8F0" font-size="24" font-weight="700">3</text>
+      <text x="380" y="356" fill="#E2E8F0" font-size="18" font-weight="700">Retrieve Context</text>
+      <text x="356" y="382" fill="#94A3B8" font-size="13">Database, vectors, files, history</text>
+    </g>
+    <g>
+      <circle cx="598" cy="278" r="38" fill="#07111F" stroke="#34D399" stroke-width="4"/>
+      <text x="586" y="286" fill="#E2E8F0" font-size="24" font-weight="700">4</text>
+      <text x="540" y="214" fill="#E2E8F0" font-size="18" font-weight="700">Plan</text>
+      <text x="504" y="239" fill="#94A3B8" font-size="13">Prompt, model, budget, format</text>
+    </g>
+    <g>
+      <circle cx="744" cy="278" r="38" fill="#07111F" stroke="#F59E0B" stroke-width="4"/>
+      <text x="732" y="286" fill="#E2E8F0" font-size="24" font-weight="700">5</text>
+      <text x="690" y="356" fill="#E2E8F0" font-size="18" font-weight="700">Use Tools</text>
+      <text x="654" y="382" fill="#94A3B8" font-size="13">APIs, reports, actions, approvals</text>
+    </g>
+    <g>
+      <circle cx="890" cy="278" r="38" fill="#07111F" stroke="#F59E0B" stroke-width="4"/>
+      <text x="878" y="286" fill="#E2E8F0" font-size="24" font-weight="700">6</text>
+      <text x="828" y="214" fill="#E2E8F0" font-size="18" font-weight="700">Validate</text>
+      <text x="792" y="239" fill="#94A3B8" font-size="13">Schema, safety, citations, policy</text>
+    </g>
+    <g>
+      <circle cx="1036" cy="278" r="38" fill="#07111F" stroke="#F59E0B" stroke-width="4"/>
+      <text x="1024" y="286" fill="#E2E8F0" font-size="24" font-weight="700">7</text>
+      <text x="974" y="356" fill="#E2E8F0" font-size="18" font-weight="700">Respond</text>
+      <text x="936" y="382" fill="#94A3B8" font-size="13">UI state, result, next action</text>
+    </g>
+    <g>
+      <circle cx="452" cy="442" r="38" fill="#07111F" stroke="#34D399" stroke-width="4"/>
+      <text x="440" y="450" fill="#E2E8F0" font-size="24" font-weight="700">8</text>
+      <text x="382" y="526" fill="#E2E8F0" font-size="18" font-weight="700">Log and Evaluate</text>
+      <text x="354" y="552" fill="#94A3B8" font-size="13">Cost, latency, quality, feedback</text>
+    </g>
+    <g>
+      <circle cx="306" cy="442" r="38" fill="#07111F" stroke="#38BDF8" stroke-width="4"/>
+      <text x="294" y="450" fill="#E2E8F0" font-size="24" font-weight="700">9</text>
+      <text x="246" y="526" fill="#E2E8F0" font-size="18" font-weight="700">Improve</text>
+      <text x="218" y="552" fill="#94A3B8" font-size="13">Prompts, data, tools, UX, tests</text>
+    </g>
+    <g>
+      <circle cx="160" cy="442" r="38" fill="#07111F" stroke="#38BDF8" stroke-width="4"/>
+      <text x="142" y="450" fill="#E2E8F0" font-size="24" font-weight="700">10</text>
+      <text x="104" y="526" fill="#E2E8F0" font-size="18" font-weight="700">Deploy</text>
+      <text x="72" y="552" fill="#94A3B8" font-size="13">Release, monitor, rollback, iterate</text>
+    </g>
+  </g>
+  <rect x="770" y="448" width="300" height="92" rx="18" fill="url(#card)" stroke="#263653"/>
+  <text x="798" y="486" fill="#E2E8F0" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="700">The model is one step.</text>
+  <text x="798" y="514" fill="#94A3B8" font-family="Inter, Arial, sans-serif" font-size="13">The product is the complete lifecycle around it.</text>
+</svg>

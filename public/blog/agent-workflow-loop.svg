@@ -1,0 +1,49 @@
+<svg width="1200" height="720" viewBox="0 0 1200 720" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">AI Agent Workflow Loop</title>
+  <desc id="desc">An AI agent loop showing goal, context retrieval, planning, tool execution, observation, memory update, evaluation, and final response.</desc>
+  <rect width="1200" height="720" rx="36" fill="#050816"/>
+  <rect x="50" y="50" width="1100" height="620" rx="28" fill="#0B1020" stroke="#263653" stroke-width="2"/>
+  <text x="84" y="110" fill="#F8FAFC" font-family="Inter, Arial, sans-serif" font-size="34" font-weight="700">The Agent Loop</text>
+  <text x="84" y="140" fill="#94A3B8" font-family="Inter, Arial, sans-serif" font-size="16">Agents are difficult because each step can change the next step, the context, and the risk.</text>
+  <defs>
+    <linearGradient id="loop" x1="240" y1="160" x2="960" y2="610" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#38BDF8"/>
+      <stop offset="0.5" stop-color="#34D399"/>
+      <stop offset="1" stop-color="#F59E0B"/>
+    </linearGradient>
+    <linearGradient id="node" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#111B33"/>
+      <stop offset="1" stop-color="#08111F"/>
+    </linearGradient>
+  </defs>
+  <circle cx="600" cy="386" r="190" stroke="url(#loop)" stroke-width="12" stroke-linecap="round" stroke-dasharray="760 120"/>
+  <circle cx="600" cy="386" r="82" fill="#07111F" stroke="#263653" stroke-width="2"/>
+  <text x="557" y="380" fill="#E2E8F0" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="700">Agent</text>
+  <text x="529" y="410" fill="#94A3B8" font-family="Inter, Arial, sans-serif" font-size="14">stateful decision loop</text>
+  <g font-family="Inter, Arial, sans-serif">
+    <rect x="472" y="174" width="256" height="74" rx="18" fill="url(#node)" stroke="#263653"/>
+    <text x="506" y="205" fill="#E2E8F0" font-size="18" font-weight="700">1. Understand Goal</text>
+    <text x="506" y="230" fill="#94A3B8" font-size="13">What outcome should be completed?</text>
+    <rect x="780" y="250" width="256" height="74" rx="18" fill="url(#node)" stroke="#263653"/>
+    <text x="814" y="281" fill="#E2E8F0" font-size="18" font-weight="700">2. Retrieve Context</text>
+    <text x="814" y="306" fill="#94A3B8" font-size="13">Docs, memory, database, history</text>
+    <rect x="780" y="448" width="256" height="74" rx="18" fill="url(#node)" stroke="#263653"/>
+    <text x="814" y="479" fill="#E2E8F0" font-size="18" font-weight="700">3. Use Tools</text>
+    <text x="814" y="504" fill="#94A3B8" font-size="13">APIs, n8n, reports, actions</text>
+    <rect x="472" y="526" width="256" height="74" rx="18" fill="url(#node)" stroke="#263653"/>
+    <text x="506" y="557" fill="#E2E8F0" font-size="18" font-weight="700">4. Observe Result</text>
+    <text x="506" y="582" fill="#94A3B8" font-size="13">Did the tool output solve the step?</text>
+    <rect x="164" y="448" width="256" height="74" rx="18" fill="url(#node)" stroke="#263653"/>
+    <text x="198" y="479" fill="#E2E8F0" font-size="18" font-weight="700">5. Update Memory</text>
+    <text x="198" y="504" fill="#94A3B8" font-size="13">State, user preference, progress</text>
+    <rect x="164" y="250" width="256" height="74" rx="18" fill="url(#node)" stroke="#263653"/>
+    <text x="198" y="281" fill="#E2E8F0" font-size="18" font-weight="700">6. Evaluate</text>
+    <text x="198" y="306" fill="#94A3B8" font-size="13">Quality, safety, cost, finish check</text>
+  </g>
+  <path d="M716 218C766 230 800 252 826 282" stroke="#38BDF8" stroke-width="4" stroke-linecap="round"/>
+  <path d="M908 324C924 370 924 414 908 448" stroke="#34D399" stroke-width="4" stroke-linecap="round"/>
+  <path d="M826 502C790 540 746 558 728 562" stroke="#F59E0B" stroke-width="4" stroke-linecap="round"/>
+  <path d="M472 562C424 552 384 532 354 502" stroke="#F59E0B" stroke-width="4" stroke-linecap="round"/>
+  <path d="M292 448C274 404 274 350 292 324" stroke="#34D399" stroke-width="4" stroke-linecap="round"/>
+  <path d="M374 282C410 244 454 224 472 218" stroke="#38BDF8" stroke-width="4" stroke-linecap="round"/>
+</svg>

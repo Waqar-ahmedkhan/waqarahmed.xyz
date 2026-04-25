@@ -32,7 +32,11 @@ export function ProjectsSection({
       </h2>
       <div className="grid grid-cols-1 gap-3 sm:gap-4 md:gap-5 sm:grid-cols-2 lg:grid-cols-3 print:grid-cols-3 print:gap-2">
         {projects
-          .filter((project) => !project.tech_stack.includes("Medium"))
+          .filter(
+            (project) =>
+              !project.tech_stack.includes("Medium") &&
+              !project.tech_stack.includes("Blog")
+          )
           .map((project, index) => (
             <div
               key={project.id}
