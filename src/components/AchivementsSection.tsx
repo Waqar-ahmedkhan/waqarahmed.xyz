@@ -1,5 +1,3 @@
-"use client";
-
 import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import { Section } from "@/components/ui/section";
 import { ExternalLink } from "lucide-react";
@@ -12,17 +10,17 @@ interface AchievementsSectionProps {
 export function AchievementsSection({ animationDelay = "0.8s" }: AchievementsSectionProps) {
   return (
     <Section
-      className="my-6 sm:my-8 md:my-10 animate-fade-in"
+      className="my-4 sm:my-6 md:my-8 animate-fade-in"
       style={{ animationDelay }}
     >
-      <h2 className="text-lg sm:text-xl md:text-2xl font-bold font-sans text-foreground animate-fade-in-subtle">
+      <h2 className="text-base sm:text-lg md:text-xl font-semibold font-sans text-foreground animate-fade-in-subtle">
         Achievements
       </h2>
-      <div className="space-y-3 sm:space-y-4 md:space-y-5">
+      <div className="space-y-3 sm:space-y-4">
         {RESUME_DATA.achievements.map((achievement, index) => (
           <Card
             key={achievement.title}
-            className="p-4 sm:p-5 border border-border hover:border-gray-700 transition-all duration-300"
+            className="p-4 sm:p-5 border border-border/80 transition-colors duration-300 hover:border-foreground/15"
             style={{ animationDelay: `${0.1 * (index + 1)}s` }}
           >
             <CardHeader className="p-0 pb-2 sm:pb-3">
@@ -35,7 +33,7 @@ export function AchievementsSection({ animationDelay = "0.8s" }: AchievementsSec
                         href={ref.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center hover:text-blue-400 transition-colors duration-200"
+                        className="inline-flex items-center hover:text-foreground transition-colors duration-200"
                         aria-label={ref.label || `View reference for ${achievement.title}`}
                       >
                         <ExternalLink className="h-3 w-3 sm:h-4 sm:w-4" />
@@ -49,7 +47,7 @@ export function AchievementsSection({ animationDelay = "0.8s" }: AchievementsSec
                 {achievement.by} | {achievement.year}
               </p>
               {achievement.description && (
-                <p className="mt-1 sm:mt-2 text-xs sm:text-sm text-muted-foreground">
+                <p className="mt-1 sm:mt-2 text-xs leading-6 sm:text-sm sm:leading-7 text-muted-foreground">
                   {achievement.description}
                 </p>
               )}

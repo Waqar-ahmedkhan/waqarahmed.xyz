@@ -1,27 +1,21 @@
-"use client";
-
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { RESUME_DATA } from "@/data/resume-data";
 import { GlobeIcon, MailIcon } from "lucide-react";
 
-interface HeaderSectionProps {
-  isMobile: boolean;
-}
-
-export function HeaderSection({ isMobile }: HeaderSectionProps) {
+export function HeaderSection() {
   return (
-    <div className="flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4 md:gap-6 border border-border p-4 sm:p-5 rounded-lg transition-all duration-300 hover:border-gray-700 hover:-translate-y-0.5 hover:shadow-lg animate-fade-in-up">
+    <div className="flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-5 md:gap-6 border border-border/80 bg-card/70 p-4 sm:p-5 rounded-lg transition-colors duration-300 hover:border-foreground/15 animate-fade-in-up">
       <div className="flex-1 space-y-2 sm:space-y-3">
-        <h1 className="text-xl sm:text-2xl md:text-3xl font-bold font-sans text-foreground">
+        <h1 className="text-xl sm:text-2xl md:text-3xl font-semibold font-sans text-foreground">
           {RESUME_DATA.name}
         </h1>
-        <p className="text-xs sm:text-sm text-muted-foreground">
+        <p className="max-w-2xl text-xs leading-6 sm:text-sm sm:leading-7 text-muted-foreground">
           {RESUME_DATA.about}
         </p>
         <p className="text-xs sm:text-sm text-muted-foreground">
           <a
-            className="inline-flex gap-x-1.5 items-center hover:text-blue-400 transition-colors duration-200"
+            className="inline-flex gap-x-1.5 items-center underline-offset-4 hover:text-foreground hover:underline transition-colors duration-200"
             href={RESUME_DATA.locationLink}
             target="_blank"
             rel="noopener noreferrer"
@@ -37,10 +31,13 @@ export function HeaderSection({ isMobile }: HeaderSectionProps) {
               variant="outline"
               size="icon"
               asChild
-              className="h-9 w-9 rounded-lg border-border bg-background transition-colors duration-200 hover:border-border hover:bg-accent hover:text-accent-foreground"
+              className="h-9 w-9 rounded-lg border-border/80 bg-background/80 transition-colors duration-200 hover:border-foreground/20 hover:bg-accent hover:text-accent-foreground"
               aria-label={`Send email to ${RESUME_DATA.name}`}
             >
-              <a href={`mailto:${RESUME_DATA.contact.email}`}>
+              <a
+                href={`mailto:${RESUME_DATA.contact.email}`}
+                aria-label={`Email ${RESUME_DATA.name}`}
+              >
                 <MailIcon className="h-4 w-4" />
               </a>
             </Button>
@@ -51,30 +48,31 @@ export function HeaderSection({ isMobile }: HeaderSectionProps) {
               variant="outline"
               size="icon"
               asChild
-              className="h-9 w-9 rounded-lg border-border bg-background transition-colors duration-200 hover:border-border hover:bg-accent hover:text-accent-foreground"
+              className="h-9 w-9 rounded-lg border-border/80 bg-background/80 transition-colors duration-200 hover:border-foreground/20 hover:bg-accent hover:text-accent-foreground"
               aria-label={`Visit ${social.name} profile`}
             >
-              <a href={social.url} target="_blank" rel="noopener noreferrer">
+              <a
+                href={social.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Visit ${RESUME_DATA.name} on ${social.name}`}
+              >
                 <social.icon className="h-4 w-4" />
               </a>
             </Button>
           ))}
         </div>
       </div>
-      <Avatar
-        className={`${
-          isMobile ? "mt-3" : ""
-        } h-20 w-20 sm:h-24 sm:w-24 rounded-lg border border-border`}
-      >
-        <AvatarImage
-          alt={RESUME_DATA.name}
-          src={RESUME_DATA.avatarUrl}
-          className="rounded-lg"
-        />
-        <AvatarFallback className="text-lg sm:text-xl rounded-lg">
-          {RESUME_DATA.initials}
-        </AvatarFallback>
-      </Avatar>
+      <Image
+        alt={`${RESUME_DATA.name} profile photo`}
+        src={RESUME_DATA.avatarUrl}
+        width={96}
+        height={96}
+        sizes="(max-width: 640px) 80px, 96px"
+        quality={70}
+        className="mt-3 h-20 w-20 rounded-lg border border-border/80 object-cover sm:mt-0 sm:h-24 sm:w-24"
+        priority={false}
+      />
     </div>
   );
 }

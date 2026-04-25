@@ -1,22 +1,10 @@
 import { Metadata } from "next";
-import { Sora, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import Script from "next/script";
 import { ThemeProvider } from "@/components/theme-provider";
 import { ThemeToggle } from "@/components/theme-toggle";
 
-const sora = Sora({
-  subsets: ["latin"],
-  display: "swap",
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-sans-family",
-});
-
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-mono-family",
-});
+const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID;
 
 export const metadata: Metadata = {
   title: {
@@ -89,7 +77,7 @@ export const metadata: Metadata = {
     title: "Waqar Ahmed | Full Stack AI Developer",
     description:
       "Full Stack AI Developer solving real product, startup, business, nonprofit, and operations problems with web apps, backend systems, SaaS products, and agentic AI.",
-    images: ["/og.png"],
+    images: ["/image.png"],
   },
   robots: {
     index: true,
@@ -118,26 +106,28 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${sora.variable} ${jetbrainsMono.variable}`}
       suppressHydrationWarning
     >
       <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
         <meta name="format-detection" content="telephone=no" />
-        <link rel="preconnect" href="https://www.googletagmanager.com" />
         <link rel="preconnect" href="https://avatars.githubusercontent.com" />
-        <Script id="gtm-script" strategy="lazyOnload">
-          {`
-            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-            })(window,document,'script','dataLayer','GTM-NPKQCQK3');
-          `}
-        </Script>
+        {GTM_ID ? (
+          <>
+            <link rel="preconnect" href="https://www.googletagmanager.com" />
+            <Script id="gtm-script" strategy="lazyOnload">
+              {`
+                (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+                j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+                'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+                })(window,document,'script','dataLayer','${GTM_ID}');
+              `}
+            </Script>
+          </>
+        ) : null}
         <Script id="json-ld" type="application/ld+json">
           {`
             {
@@ -176,17 +166,19 @@ export default function RootLayout({
         </Script>
       </head>
       <body
-        className={`${sora.className} bg-background text-foreground transition-colors duration-300 min-h-screen`}
+        className="min-h-screen bg-background text-foreground transition-colors duration-300"
         suppressHydrationWarning
       >
-        <noscript>
-          <iframe
-            src="https://www.googletagmanager.com/ns.html?id=GTM-NPKQCQK3"
-            height="0"
-            width="0"
-            style={{ display: "none", visibility: "hidden" }}
-          ></iframe>
-        </noscript>
+        {GTM_ID ? (
+          <noscript>
+            <iframe
+              src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
+              height="0"
+              width="0"
+              style={{ display: "none", visibility: "hidden" }}
+            ></iframe>
+          </noscript>
+        ) : null}
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
@@ -196,9 +188,9 @@ export default function RootLayout({
           <div className="fixed top-4 right-4 z-50">
             <ThemeToggle />
           </div>
-          <main className="container mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
             {children}
-          </main>
+          </div>
         </ThemeProvider>
       </body>
     </html>

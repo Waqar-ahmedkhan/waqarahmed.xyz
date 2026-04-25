@@ -1,5 +1,3 @@
-"use client";
-
 import { Card, CardHeader, CardContent, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 
@@ -8,22 +6,24 @@ interface Props {
   description: string;
   tags: readonly string[];
   link?: string;
-  isMobile: boolean;
 }
 
 export function ProjectCard({ title, description, tags, link }: Props) {
+  const isExternalLink = link?.startsWith("http");
+
   return (
-    <Card className="flex flex-col h-[200px] sm:h-[220px] border border-border p-4 hover:border-gray-700 transition-all duration-300">
+    <Card className="flex h-[210px] flex-col border border-border/80 p-4 transition-colors duration-300 hover:border-foreground/15 sm:h-[220px]">
       <CardHeader className="p-0 pb-2">
         <CardTitle className="text-sm sm:text-base font-semibold text-foreground">
           {link ? (
             <a
               href={link}
-              target="_blank"
-              className="inline-flex items-center gap-1.5 hover:text-blue-400 transition-colors duration-200"
+              target={isExternalLink ? "_blank" : undefined}
+              rel={isExternalLink ? "noopener noreferrer" : undefined}
+              className="inline-flex items-center gap-1.5 underline-offset-4 hover:text-foreground hover:underline transition-colors duration-200"
             >
               {title}
-              <span className="h-1 w-1 rounded-full bg-green-500"></span>
+              <span className="h-1.5 w-1.5 rounded-full bg-primary"></span>
             </a>
           ) : (
             title
@@ -34,13 +34,13 @@ export function ProjectCard({ title, description, tags, link }: Props) {
         </div>
       </CardHeader>
       <CardContent className="p-0 flex-1">
-        <p className="text-xs sm:text-sm text-muted-foreground line-clamp-3">
+        <p className="text-xs leading-6 sm:text-sm sm:leading-6 text-muted-foreground line-clamp-3">
           {description}
         </p>
-        <div className="mt-2 flex flex-wrap gap-1">
+        <div className="mt-3 flex flex-wrap gap-1">
           {tags.map((tag) => (
             <Badge
-              className="px-1 py-0 text-[10px] sm:text-xs print:text-[8px]"
+              className="px-1.5 py-0 text-[10px] sm:text-xs print:text-[8px]"
               variant="secondary"
               key={tag}
             >

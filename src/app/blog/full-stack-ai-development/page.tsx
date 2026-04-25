@@ -130,7 +130,7 @@ export default function FullStackAiDevelopmentBlogPage() {
           Back to portfolio
         </Link>
 
-        <header className="overflow-hidden rounded-lg border border-border bg-card shadow-sm">
+        <header className="overflow-hidden rounded-lg border border-border bg-card shadow-none">
           <div className="border-b border-border p-5 sm:p-8 lg:p-10">
             <div className="mb-5 flex flex-wrap gap-2">
               {["Full Stack AI", "Agentic AI", "Production Systems", "AI Engineering"].map((tag) => (
@@ -142,7 +142,7 @@ export default function FullStackAiDevelopmentBlogPage() {
                 </span>
               ))}
             </div>
-            <h1 className="max-w-4xl text-3xl font-extrabold leading-tight text-foreground sm:text-5xl">
+            <h1 className="max-w-4xl text-3xl font-semibold leading-tight text-foreground sm:text-5xl">
               Most people think AI development means sending a prompt to OpenAI.
               Real Full Stack AI is much bigger.
             </h1>
@@ -171,19 +171,19 @@ export default function FullStackAiDevelopmentBlogPage() {
 
         <section className="mt-6 grid gap-3 sm:grid-cols-3">
           {heroStats.map((item) => (
-            <div key={item.label} className="rounded-lg border border-border bg-card p-4 shadow-sm">
+            <div key={item.label} className="rounded-lg border border-border bg-card p-4 shadow-none">
               <div className="text-xs uppercase text-muted-foreground">{item.label}</div>
-              <div className="mt-2 text-2xl font-extrabold text-foreground">{item.value}</div>
+              <div className="mt-2 text-2xl font-semibold text-foreground">{item.value}</div>
               <p className="mt-1 text-xs leading-5 text-muted-foreground">{item.detail}</p>
             </div>
           ))}
         </section>
 
-        <section className="mt-6 rounded-lg border border-border bg-card p-5 shadow-sm sm:p-6">
+        <section className="mt-6 rounded-lg border border-border bg-card p-5 shadow-none sm:p-6">
           <div className="grid gap-5 lg:grid-cols-[220px_1fr]">
             <div>
               <p className="text-xs font-medium uppercase text-muted-foreground">Core distinction</p>
-              <h2 className="mt-2 text-2xl font-bold">Prompt wrapper vs real AI product</h2>
+              <h2 className="mt-2 text-2xl font-semibold">Prompt wrapper vs real AI product</h2>
             </div>
             <div className="grid gap-3">
               {comparisonRows.map((row) => (
@@ -207,7 +207,7 @@ export default function FullStackAiDevelopmentBlogPage() {
           alt="Full Stack AI request lifecycle from user intent through auth, retrieval, planning, tools, validation, response, logging, and deployment"
           width={1200}
           height={720}
-          className="mt-6 w-full rounded-lg border border-border bg-black shadow-sm"
+          className="mt-6 w-full rounded-lg border border-border bg-black shadow-none"
         />
 
         <section className="mt-10 grid gap-6 lg:grid-cols-[minmax(0,1fr)_320px]">
@@ -316,7 +316,7 @@ export default function FullStackAiDevelopmentBlogPage() {
               alt="Production AI product loop from problem framing to UI, orchestration, evaluation, deployment, and improvement"
               width={1200}
               height={720}
-              className="w-full rounded-lg border border-border bg-black shadow-sm"
+              className="w-full rounded-lg border border-border bg-black shadow-none"
             />
 
             <ArticleSection id="retrieval-tools" title="Vector search turns private knowledge into useful context">
@@ -429,8 +429,8 @@ export default function FullStackAiDevelopmentBlogPage() {
           </div>
 
           <aside className="h-fit space-y-5 lg:sticky lg:top-8">
-            <div className="rounded-lg border border-border bg-card p-5 shadow-sm">
-              <h2 className="text-base font-bold">Read The Essay</h2>
+            <div className="rounded-lg border border-border bg-card p-5 shadow-none">
+              <h2 className="text-base font-semibold">Read The Essay</h2>
               <nav className="mt-4 grid gap-2">
                 {tableOfContents.map((item) => (
                   <a
@@ -443,8 +443,8 @@ export default function FullStackAiDevelopmentBlogPage() {
                 ))}
               </nav>
             </div>
-            <div className="rounded-lg border border-border bg-card p-5 shadow-sm">
-              <h2 className="text-base font-bold">Production AI Checklist</h2>
+            <div className="rounded-lg border border-border bg-card p-5 shadow-none">
+              <h2 className="text-base font-semibold">Production AI Checklist</h2>
               <ul className="mt-4 space-y-3">
                 {checklist.map((item) => (
                   <li key={item} className="flex gap-2 text-sm leading-6 text-muted-foreground">
@@ -454,12 +454,12 @@ export default function FullStackAiDevelopmentBlogPage() {
                 ))}
               </ul>
             </div>
-            <div className="rounded-lg border border-border bg-card p-5 shadow-sm">
-              <h2 className="text-base font-bold">Core Layers</h2>
+            <div className="rounded-lg border border-border bg-card p-5 shadow-none">
+              <h2 className="text-base font-semibold">Core Layers</h2>
               <div className="mt-4 grid gap-3">
                 {systemLayers.slice(0, 6).map(({ title, icon: Icon }) => (
                   <div key={title} className="flex items-center gap-3 rounded-lg border border-border bg-background p-3">
-                    <Icon className="h-4 w-4 text-blue-400" />
+                    <Icon className="h-4 w-4 text-primary" />
                     <span className="text-sm text-muted-foreground">{title}</span>
                   </div>
                 ))}
@@ -468,12 +468,12 @@ export default function FullStackAiDevelopmentBlogPage() {
           </aside>
         </section>
 
-        <section className="mt-10 rounded-lg border border-border bg-card p-5 shadow-sm sm:p-8">
-          <h2 className="text-2xl font-bold">What real Full Stack AI includes</h2>
+        <section className="mt-10 rounded-lg border border-border bg-card p-5 shadow-none sm:p-8">
+          <h2 className="text-2xl font-semibold">What real Full Stack AI includes</h2>
           <div className="mt-6 grid gap-4 sm:grid-cols-2">
             {systemLayers.map(({ title, body, icon: Icon }) => (
               <div key={title} className="rounded-xl border border-border bg-background p-4">
-                <Icon className="h-5 w-5 text-blue-400" />
+                <Icon className="h-5 w-5 text-primary" />
                 <h3 className="mt-3 font-semibold">{title}</h3>
                 <p className="mt-2 text-sm leading-6 text-muted-foreground">{body}</p>
               </div>
@@ -481,8 +481,8 @@ export default function FullStackAiDevelopmentBlogPage() {
           </div>
         </section>
 
-        <section className="mt-10 rounded-lg border border-border bg-card p-5 text-center shadow-sm sm:p-8">
-          <h2 className="text-2xl font-bold">Final thought</h2>
+        <section className="mt-10 rounded-lg border border-border bg-card p-5 text-center shadow-none sm:p-8">
+          <h2 className="text-2xl font-semibold">Final thought</h2>
           <p className="mx-auto mt-4 max-w-3xl text-sm leading-7 text-muted-foreground sm:text-base">
             If your AI feature only sends a prompt and displays a response, it is a
             prototype. If it understands users, protects data, retrieves the right
@@ -511,8 +511,8 @@ function ArticleSection({
   children: ReactNode;
 }) {
   return (
-    <section id={id} className="scroll-mt-24 rounded-lg border border-border bg-card p-5 shadow-sm sm:p-8">
-      <h2 className="text-2xl font-bold text-foreground">{title}</h2>
+    <section id={id} className="scroll-mt-24 rounded-lg border border-border bg-card p-5 shadow-none sm:p-8">
+      <h2 className="text-2xl font-semibold text-foreground">{title}</h2>
       <div className="mt-4 space-y-4 text-sm leading-7 text-muted-foreground sm:text-base">
         {children}
       </div>

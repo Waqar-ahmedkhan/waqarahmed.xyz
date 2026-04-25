@@ -141,7 +141,7 @@ export default function WhyAiAgentsAreHarderThanChatbotsPage() {
           Back to portfolio
         </Link>
 
-        <header className="overflow-hidden rounded-lg border border-border bg-card shadow-sm">
+        <header className="overflow-hidden rounded-lg border border-border bg-card shadow-none">
           <div className="border-b border-border p-5 sm:p-8 lg:p-10">
             <div className="mb-5 flex flex-wrap gap-2">
               {["AI Agents", "LangGraph", "Tool Calling", "Vector Search"].map((tag) => (
@@ -153,7 +153,7 @@ export default function WhyAiAgentsAreHarderThanChatbotsPage() {
                 </span>
               ))}
             </div>
-            <h1 className="max-w-4xl text-3xl font-extrabold leading-tight text-foreground sm:text-5xl">
+            <h1 className="max-w-4xl text-3xl font-semibold leading-tight text-foreground sm:text-5xl">
               Why AI Agents Are Harder Than Chatbots
             </h1>
             <p className="mt-5 max-w-3xl text-base leading-8 text-muted-foreground sm:text-lg">
@@ -181,19 +181,19 @@ export default function WhyAiAgentsAreHarderThanChatbotsPage() {
 
         <section className="mt-6 grid gap-3 sm:grid-cols-3">
           {heroStats.map((item) => (
-            <div key={item.label} className="rounded-lg border border-border bg-card p-4 shadow-sm">
+            <div key={item.label} className="rounded-lg border border-border bg-card p-4 shadow-none">
               <div className="text-xs uppercase text-muted-foreground">{item.label}</div>
-              <div className="mt-2 text-2xl font-extrabold text-foreground">{item.value}</div>
+              <div className="mt-2 text-2xl font-semibold text-foreground">{item.value}</div>
               <p className="mt-1 text-xs leading-5 text-muted-foreground">{item.detail}</p>
             </div>
           ))}
         </section>
 
-        <section className="mt-6 rounded-lg border border-border bg-card p-5 shadow-sm sm:p-6">
+        <section className="mt-6 rounded-lg border border-border bg-card p-5 shadow-none sm:p-6">
           <div className="grid gap-5 lg:grid-cols-[220px_1fr]">
             <div>
               <p className="text-xs font-medium uppercase text-muted-foreground">Main idea</p>
-              <h2 className="mt-2 text-2xl font-bold">Agents are harder because they act</h2>
+              <h2 className="mt-2 text-2xl font-semibold">Agents are harder because they act</h2>
             </div>
             <div className="grid gap-3">
               {comparisonRows.map((row) => (
@@ -217,7 +217,7 @@ export default function WhyAiAgentsAreHarderThanChatbotsPage() {
           alt="AI agent workflow loop showing goal understanding, retrieval, tool use, observation, memory, and evaluation"
           width={1200}
           height={720}
-          className="mt-6 w-full rounded-lg border border-border bg-black shadow-sm"
+          className="mt-6 w-full rounded-lg border border-border bg-black shadow-none"
         />
 
         <section className="mt-10 grid gap-6 lg:grid-cols-[minmax(0,1fr)_320px]">
@@ -381,8 +381,8 @@ export default function WhyAiAgentsAreHarderThanChatbotsPage() {
           </div>
 
           <aside className="h-fit space-y-5 lg:sticky lg:top-8">
-            <div className="rounded-lg border border-border bg-card p-5 shadow-sm">
-              <h2 className="text-base font-bold">Read The Essay</h2>
+            <div className="rounded-lg border border-border bg-card p-5 shadow-none">
+              <h2 className="text-base font-semibold">Read The Essay</h2>
               <nav className="mt-4 grid gap-2">
                 {tableOfContents.map((item) => (
                   <a
@@ -395,8 +395,8 @@ export default function WhyAiAgentsAreHarderThanChatbotsPage() {
                 ))}
               </nav>
             </div>
-            <div className="rounded-lg border border-border bg-card p-5 shadow-sm">
-              <h2 className="text-base font-bold">Why Agents Fail</h2>
+            <div className="rounded-lg border border-border bg-card p-5 shadow-none">
+              <h2 className="text-base font-semibold">Why Agents Fail</h2>
               <ul className="mt-4 space-y-3">
                 {failureModes.slice(0, 6).map((item) => (
                   <li key={item} className="flex gap-2 text-sm leading-6 text-muted-foreground">
@@ -409,12 +409,12 @@ export default function WhyAiAgentsAreHarderThanChatbotsPage() {
           </aside>
         </section>
 
-        <section className="mt-10 rounded-lg border border-border bg-card p-5 shadow-sm sm:p-8">
-          <h2 className="text-2xl font-bold">The engineering layers behind agents</h2>
+        <section className="mt-10 rounded-lg border border-border bg-card p-5 shadow-none sm:p-8">
+          <h2 className="text-2xl font-semibold">The engineering layers behind agents</h2>
           <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {agentLayers.map(({ title, body, icon: Icon }) => (
               <div key={title} className="rounded-xl border border-border bg-background p-4">
-                <Icon className="h-5 w-5 text-blue-400" />
+                <Icon className="h-5 w-5 text-primary" />
                 <h3 className="mt-3 font-semibold">{title}</h3>
                 <p className="mt-2 text-sm leading-6 text-muted-foreground">{body}</p>
               </div>
@@ -423,9 +423,9 @@ export default function WhyAiAgentsAreHarderThanChatbotsPage() {
         </section>
 
         <section className="mt-10 grid gap-6 lg:grid-cols-2">
-          <div className="rounded-lg border border-border bg-card p-5 shadow-sm sm:p-8">
-            <h2 className="flex items-center gap-2 text-2xl font-bold">
-              <Layers className="h-6 w-6 text-blue-400" />
+          <div className="rounded-lg border border-border bg-card p-5 shadow-none sm:p-8">
+            <h2 className="flex items-center gap-2 text-2xl font-semibold">
+              <Layers className="h-6 w-6 text-primary" />
               Practical stack map
             </h2>
             <ul className="mt-5 space-y-3">
@@ -437,9 +437,9 @@ export default function WhyAiAgentsAreHarderThanChatbotsPage() {
               ))}
             </ul>
           </div>
-          <div className="rounded-lg border border-border bg-card p-5 shadow-sm sm:p-8">
-            <h2 className="flex items-center gap-2 text-2xl font-bold">
-              <RefreshCcw className="h-6 w-6 text-blue-400" />
+          <div className="rounded-lg border border-border bg-card p-5 shadow-none sm:p-8">
+            <h2 className="flex items-center gap-2 text-2xl font-semibold">
+              <RefreshCcw className="h-6 w-6 text-primary" />
               Final thought
             </h2>
             <p className="mt-5 text-sm leading-7 text-muted-foreground sm:text-base">
@@ -471,8 +471,8 @@ function ArticleSection({
   children: ReactNode;
 }) {
   return (
-    <section id={id} className="scroll-mt-24 rounded-lg border border-border bg-card p-5 shadow-sm sm:p-8">
-      <h2 className="text-2xl font-bold text-foreground">{title}</h2>
+    <section id={id} className="scroll-mt-24 rounded-lg border border-border bg-card p-5 shadow-none sm:p-8">
+      <h2 className="text-2xl font-semibold text-foreground">{title}</h2>
       <div className="mt-4 space-y-4 text-sm leading-7 text-muted-foreground sm:text-base">
         {children}
       </div>

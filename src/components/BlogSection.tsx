@@ -1,5 +1,3 @@
-"use client";
-
 import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Section } from "@/components/ui/section";
@@ -26,10 +24,10 @@ export function BlogSection({
 }: BlogSectionProps) {
   return (
     <Section
-      className="my-6 sm:my-8 md:my-10 animate-fade-in"
+      className="my-4 sm:my-6 md:my-8 animate-fade-in"
       style={{ animationDelay }}
     >
-      <h2 className="text-lg sm:text-xl md:text-2xl font-bold font-sans text-foreground animate-fade-in-subtle">
+      <h2 className="text-base sm:text-lg md:text-xl font-semibold font-sans text-foreground animate-fade-in-subtle">
         Blog
       </h2>
       <div className="text-xs sm:text-sm text-muted-foreground mt-2 sm:mt-3">
@@ -38,14 +36,14 @@ export function BlogSection({
           : "Blog posts are in progress. Visit my Medium profile for updates."}
       </div>
       {blogProjects.length > 0 ? (
-        <div className="grid grid-cols-1 gap-3 sm:gap-4 md:gap-5 sm:grid-cols-2 lg:grid-cols-3 print:grid-cols-3 print:gap-2">
+        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 print:grid-cols-3 print:gap-2">
           {blogProjects.map((post, index) => {
             const isInternalLink = post.link?.startsWith("/");
 
             return (
               <Card
                 key={post.title}
-                className="p-4 sm:p-5 border border-border hover:border-gray-700 transition-all duration-300"
+                className="p-4 sm:p-5 border border-border/80 transition-colors duration-300 hover:border-foreground/15"
                 style={{ animationDelay: `${0.1 * (index + 1)}s` }}
               >
                 <CardHeader className="p-0 pb-2 sm:pb-3">
@@ -57,7 +55,7 @@ export function BlogSection({
                   </div>
                 </CardHeader>
                 <CardContent className="p-0">
-                  <p className="text-xs sm:text-sm text-muted-foreground mt-1 sm:mt-2">
+                  <p className="text-xs leading-6 sm:text-sm sm:leading-6 text-muted-foreground mt-1 sm:mt-2">
                     {generateExcerpt(post.description)}
                   </p>
                   <div className="mt-2 flex flex-wrap gap-1">
@@ -67,7 +65,7 @@ export function BlogSection({
                       .map((tag) => (
                         <span
                           key={tag}
-                          className="rounded-md bg-secondary px-1.5 py-0.5 text-[10px] text-secondary-foreground sm:text-xs"
+                          className="rounded-md border border-border/60 bg-secondary/80 px-1.5 py-0.5 text-[10px] text-secondary-foreground sm:text-xs"
                         >
                           {tag}
                         </span>
@@ -77,7 +75,7 @@ export function BlogSection({
                     <Button
                       variant="link"
                       asChild
-                      className="p-0 h-auto text-xs sm:text-sm text-blue-400 hover:text-blue-500 transition-colors duration-200 mt-2"
+                      className="p-0 h-auto text-xs sm:text-sm text-primary hover:text-primary/80 transition-colors duration-200 mt-2"
                       aria-label={`Read more about ${post.title}`}
                     >
                       <a
@@ -85,7 +83,7 @@ export function BlogSection({
                         target={isInternalLink ? undefined : "_blank"}
                         rel={isInternalLink ? undefined : "noopener noreferrer"}
                       >
-                        Read More
+                        Read {post.title}
                         <ArrowRightIcon className="ml-1 h-3 w-3 sm:h-4 sm:w-4" />
                       </a>
                     </Button>
@@ -99,11 +97,11 @@ export function BlogSection({
         <Button
           variant="link"
           asChild
-          className="p-0 h-auto text-xs sm:text-sm text-blue-400 hover:text-blue-500 transition-colors duration-200 mt-2"
+          className="p-0 h-auto text-xs sm:text-sm text-primary hover:text-primary/80 transition-colors duration-200 mt-2"
           aria-label="Visit Medium profile"
         >
           <a href="https://medium.com" target="_blank" rel="noopener noreferrer">
-            Visit Medium Profile
+            Visit Waqar Ahmed on Medium
             <ArrowRightIcon className="ml-1 h-3 w-3 sm:h-4 sm:w-4" />
           </a>
         </Button>

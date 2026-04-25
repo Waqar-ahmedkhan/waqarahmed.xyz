@@ -2,7 +2,7 @@
 import { cn } from "@/lib/utils";
 import { memo } from "react";
 
-export type ViewMode = "initial" | "simple" | "detailed";
+export type ViewMode = "simple" | "detailed";
 
 const VIEW_MODES = [
   { value: "simple", label: "Simple" },
@@ -30,10 +30,10 @@ const ViewSwitchComponent = ({
   return (
     <div
       className={cn(
-        "relative grid grid-cols-2 items-center overflow-hidden rounded-full border border-border/70 bg-background/95 p-1 shadow-lg shadow-black/5 backdrop-blur-xl",
+        "relative grid grid-cols-2 items-center overflow-hidden rounded-full border border-border/80 bg-background/90 p-1 shadow-sm shadow-black/5 backdrop-blur-xl",
         "transition-[box-shadow,border-color,background-color] duration-300 ease-[var(--ease-out-smooth)] motion-reduce:transition-none",
         "focus-within:border-primary/35 focus-within:ring-2 focus-within:ring-primary/20",
-        "dark:border-white/10 dark:bg-black/80 dark:shadow-black/30",
+        "dark:border-white/10 dark:bg-background/90 dark:shadow-black/20",
         isLarge ? "h-14 w-72" : "h-12 w-64",
         className
       )}

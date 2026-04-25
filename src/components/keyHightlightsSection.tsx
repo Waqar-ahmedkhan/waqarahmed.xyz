@@ -1,5 +1,3 @@
-"use client";
-
 import { Card } from "@/components/ui/card";
 import { Section } from "@/components/ui/section";
 import { RESUME_DATA } from "@/data/resume-data";
@@ -23,27 +21,27 @@ const iconMap: { [key: string]: React.ComponentType<{ className?: string }> } = 
 export function KeyHighlightsSection({ animationDelay = "0.2s" }: KeyHighlightsSectionProps) {
   return (
     <Section
-      className="my-6 sm:my-8 md:my-10 animate-fade-in"
+      className="my-4 sm:my-6 md:my-8 animate-fade-in"
       style={{ animationDelay }}
     >
-      <h2 className="text-lg sm:text-xl md:text-2xl font-bold font-sans text-foreground animate-fade-in-subtle">
+      <h2 className="text-base sm:text-lg md:text-xl font-semibold font-sans text-foreground animate-fade-in-subtle">
         Key Highlights
       </h2>
-      <div className="grid grid-cols-1 gap-3 sm:gap-4 md:gap-5 sm:grid-cols-2 lg:grid-cols-3 print:grid-cols-3 print:gap-2">
+      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 print:grid-cols-3 print:gap-2">
         {RESUME_DATA.keyHighlights.map((point, index) => {
           const Icon = iconMap[point.title] || Star; // Fallback to Star icon
           return (
             <Card
               key={point.title}
-              className="group flex flex-col items-start gap-2 p-4 sm:p-5 h-[120px] sm:h-[140px] border border-border hover:border-gray-700 transition-all duration-300"
+              className="group flex min-h-[118px] flex-col items-start gap-2 p-4 sm:p-5 border border-border/80 transition-colors duration-300 hover:border-foreground/15"
               style={{ animationDelay: `${0.1 * (index + 1)}s` }}
             >
-              <Icon className="h-5 w-5 sm:h-6 sm:w-6 text-foreground transition-transform duration-300 group-hover:scale-110" />
+              <Icon className="h-5 w-5 text-primary transition-colors duration-300" />
               <div>
-                <h3 className="font-semibold text-sm sm:text-base text-foreground">
+                <h3 className="font-semibold text-sm text-foreground">
                   {point.title}
                 </h3>
-                <p className="text-xs sm:text-sm text-muted-foreground mt-1 line-clamp-2">
+                <p className="text-xs sm:text-sm text-muted-foreground mt-1 line-clamp-2 leading-5">
                   {point.description}
                 </p>
               </div>

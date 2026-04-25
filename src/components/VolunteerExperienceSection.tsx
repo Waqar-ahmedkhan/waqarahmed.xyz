@@ -1,5 +1,3 @@
-"use client";
-
 import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import { Section } from "@/components/ui/section";
 import { RESUME_DATA } from "@/data/resume-data";
@@ -13,17 +11,17 @@ export function VolunteerExperienceSection({
 }: VolunteerExperienceSectionProps) {
   return (
     <Section
-      className="my-6 sm:my-8 md:my-10 animate-fade-in"
+      className="my-4 sm:my-6 md:my-8 animate-fade-in"
       style={{ animationDelay }}
     >
-      <h2 className="text-lg sm:text-xl md:text-2xl font-bold font-sans text-foreground animate-fade-in-subtle">
+      <h2 className="text-base sm:text-lg md:text-xl font-semibold font-sans text-foreground animate-fade-in-subtle">
         Volunteer Experience
       </h2>
-      <div className="space-y-3 sm:space-y-4 md:space-y-5">
+      <div className="space-y-3 sm:space-y-4">
         {RESUME_DATA.volunteerExperience.map((volunteer, index) => (
           <Card
             key={volunteer.organization}
-            className="p-4 sm:p-5 border border-border hover:border-gray-700 transition-all duration-300"
+            className="p-4 sm:p-5 border border-border/80 transition-colors duration-300 hover:border-foreground/15"
             style={{ animationDelay: `${0.1 * (index + 1)}s` }}
           >
             <CardHeader className="p-0 pb-2 sm:pb-3">
@@ -40,15 +38,15 @@ export function VolunteerExperienceSection({
               </h4>
             </CardHeader>
             <CardContent className="p-0">
-              <p className="text-xs sm:text-sm text-muted-foreground mt-2">
+              <p className="text-xs leading-6 sm:text-sm sm:leading-7 text-muted-foreground mt-2">
                 {volunteer.description}
               </p>
               {volunteer.bulletPoints && (
-                <ul className="mt-2 sm:mt-3 text-xs sm:text-sm text-muted-foreground space-y-1.5">
+                <ul className="mt-2 sm:mt-3 text-xs sm:text-sm text-muted-foreground space-y-2">
                   {volunteer.bulletPoints.map((point, idx) => (
                     <li
                       key={idx}
-                      className="flex items-start gap-3 border-l-2 border-primary/30 pl-3 py-0.5"
+                      className="flex items-start gap-3 border-l border-primary/25 pl-3 py-0.5 leading-6"
                     >
                       <span>{point.text}</span>
                     </li>
