@@ -12,32 +12,32 @@ export function ProjectCard({ title, description, tags, link }: Props) {
   const isExternalLink = link?.startsWith("http");
 
   return (
-    <Card className="flex h-[210px] flex-col border border-border/80 p-4 transition-colors duration-300 hover:border-foreground/15 sm:h-[220px]">
+    <Card className="flex min-h-[230px] flex-col border border-border/80 p-4 transition-colors duration-300 hover:border-foreground/15">
       <CardHeader className="p-0 pb-2">
-        <CardTitle className="text-sm sm:text-base font-semibold text-foreground">
+        <CardTitle className="text-sm sm:text-base font-semibold leading-6 text-foreground">
           {link ? (
             <a
               href={link}
               target={isExternalLink ? "_blank" : undefined}
               rel={isExternalLink ? "noopener noreferrer" : undefined}
-              className="inline-flex items-center gap-1.5 underline-offset-4 hover:text-foreground hover:underline transition-colors duration-200"
+              className="inline-flex min-w-0 items-center gap-1.5 underline-offset-4 hover:text-foreground hover:underline transition-colors duration-200"
             >
-              {title}
-              <span className="h-1.5 w-1.5 rounded-full bg-primary"></span>
+              <span className="line-clamp-2">{title}</span>
+              <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-primary"></span>
             </a>
           ) : (
-            title
+            <span className="line-clamp-2">{title}</span>
           )}
         </CardTitle>
         <div className="hidden font-mono text-xs text-muted-foreground print:visible">
           {link?.replace("https://", "").replace("www.", "").replace("/", "")}
         </div>
       </CardHeader>
-      <CardContent className="p-0 flex-1">
+      <CardContent className="flex flex-1 flex-col p-0">
         <p className="text-xs leading-6 sm:text-sm sm:leading-6 text-muted-foreground line-clamp-3">
           {description}
         </p>
-        <div className="mt-3 flex flex-wrap gap-1">
+        <div className="mt-auto flex flex-wrap gap-1 pt-3">
           {tags.map((tag) => (
             <Badge
               className="px-1.5 py-0 text-[10px] sm:text-xs print:text-[8px]"

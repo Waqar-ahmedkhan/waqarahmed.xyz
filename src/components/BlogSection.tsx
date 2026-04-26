@@ -43,18 +43,18 @@ export function BlogSection({
             return (
               <Card
                 key={post.title}
-                className="p-4 sm:p-5 border border-border/80 transition-colors duration-300 hover:border-foreground/15"
+                className="flex min-h-[230px] flex-col p-4 sm:p-5 border border-border/80 transition-colors duration-300 hover:border-foreground/15"
                 style={{ animationDelay: `${0.1 * (index + 1)}s` }}
               >
                 <CardHeader className="p-0 pb-2 sm:pb-3">
-                  <h3 className="font-semibold text-sm sm:text-base text-foreground">
+                  <h3 className="line-clamp-2 font-semibold text-sm leading-6 sm:text-base sm:leading-6 text-foreground">
                     {post.title}
                   </h3>
                   <div className="text-xs sm:text-sm text-muted-foreground">
                     Article | 2026
                   </div>
                 </CardHeader>
-                <CardContent className="p-0">
+                <CardContent className="flex flex-1 flex-col p-0">
                   <p className="text-xs leading-6 sm:text-sm sm:leading-6 text-muted-foreground mt-1 sm:mt-2">
                     {generateExcerpt(post.description)}
                   </p>
@@ -75,16 +75,17 @@ export function BlogSection({
                     <Button
                       variant="link"
                       asChild
-                      className="p-0 h-auto text-xs sm:text-sm text-primary hover:text-primary/80 transition-colors duration-200 mt-2"
+                      className="mt-auto h-auto max-w-full justify-start p-0 pt-3 text-xs sm:text-sm text-primary hover:text-primary/80 transition-colors duration-200"
                       aria-label={`Read more about ${post.title}`}
                     >
                       <a
                         href={post.link}
                         target={isInternalLink ? undefined : "_blank"}
                         rel={isInternalLink ? undefined : "noopener noreferrer"}
+                        className="min-w-0"
                       >
-                        Read {post.title}
-                        <ArrowRightIcon className="ml-1 h-3 w-3 sm:h-4 sm:w-4" />
+                        <span>Read article</span>
+                        <ArrowRightIcon className="h-3 w-3 shrink-0 sm:h-4 sm:w-4" />
                       </a>
                     </Button>
                   )}

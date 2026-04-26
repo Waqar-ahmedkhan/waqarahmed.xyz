@@ -51,10 +51,10 @@ export default function Page() {
           <KeyHighlightsSection />
           <WorkExperienceSection />
           <EducationSection />
-          <SkillsSection />
-          <CertificationsSection />
           <ProjectsSection projects={projects} />
           <BlogSection blogProjects={blogProjects} generateExcerpt={generateExcerpt} />
+          <SkillsSection />
+          <CertificationsSection />
           <AchievementsSection />
           <VolunteerExperienceSection />
         </section>

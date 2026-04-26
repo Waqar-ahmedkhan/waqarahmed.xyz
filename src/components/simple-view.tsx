@@ -31,7 +31,7 @@ export function SimpleView() {
       <div className="flex min-h-[100svh] flex-col items-center justify-center bg-background px-4 py-20 text-foreground sm:px-6">
         <div className="w-full max-w-2xl text-center">
           <div className="animate-text-reveal-1 mx-auto mb-5 inline-flex rounded-full border border-border/80 bg-card/80 px-4 py-1.5 text-[11px] font-medium text-muted-foreground sm:text-xs">
-            Web Apps / SaaS / Agentic AI
+            Full Stack / SaaS / Secure APIs
           </div>
           <h1 className="animate-text-reveal-1 mb-4 text-4xl font-semibold sm:text-5xl transition-colors duration-300">
             {RESUME_DATA.name}
@@ -54,24 +54,32 @@ export function SimpleView() {
             </a>
           </p>
           <div className="flex flex-wrap justify-center gap-2">
-            {links.map(({ key, href, label, icon }, i) => (
-              <Button
-                key={key}
-                variant="outline"
-                size="icon"
-                className={contactButtonClass}
-                style={{
-                  animation: `slideUpFade 0.5s var(--ease-out-smooth) ${(delay + i * 0.08).toFixed(2)}s forwards`,
-                  opacity: 0,
-                  transform: "translateY(10px)",
-                }}
-                asChild
-              >
-                <a href={href} target={key === "email" ? undefined : "_blank"} rel={key === "email" ? undefined : "noopener noreferrer"} aria-label={label}>
-                  {icon}
-                </a>
-              </Button>
-            ))}
+            {links.map(({ key, href, label, icon }, i) => {
+              const isEmail = key === "email";
+              return (
+                <Button
+                  key={key}
+                  variant="outline"
+                  size="icon"
+                  className={contactButtonClass}
+                  style={{
+                    animation: `slideUpFade 0.5s var(--ease-out-smooth) ${(delay + i * 0.08).toFixed(2)}s forwards`,
+                    opacity: 0,
+                    transform: "translateY(10px)",
+                  }}
+                  asChild
+                >
+                  <a
+                    href={href}
+                    target={isEmail ? undefined : "_blank"}
+                    rel={isEmail ? undefined : "noopener noreferrer"}
+                    aria-label={label}
+                  >
+                    {icon}
+                  </a>
+                </Button>
+              );
+            })}
           </div>
         </div>
       </div>
