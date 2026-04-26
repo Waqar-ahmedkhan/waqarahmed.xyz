@@ -39,7 +39,7 @@ export function WorkExperienceSection({ animationDelay = "0.3s" }: WorkExperienc
                   ) : (
                     <span>{work.company}</span>
                   )}
-                  <span className="inline-flex gap-x-1 mt-1 sm:mt-0">
+                  <span className="inline-flex flex-wrap gap-1 mt-1 sm:mt-0">
                     {work.badges.map((badge) => (
                       <Badge
                         variant="secondary"

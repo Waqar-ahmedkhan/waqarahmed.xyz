@@ -8,28 +8,30 @@ const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID;
 
 export const metadata: Metadata = {
   title: {
-    default: "Waqar Ahmed | Full Stack AI Developer",
+    default: "Waqar Ahmed | Full Stack Developer",
     template: "%s | Waqar Ahmed Portfolio",
   },
   description:
-    "Waqar Ahmed is a Full Stack AI Developer with 3+ years of experience turning real business problems into startup MVPs, SaaS apps, dashboards, backend APIs, web apps, and agentic AI systems.",
+    "Waqar Ahmed is a Full Stack Developer with 3+ years of experience building React/Next.js products, Node/NestJS APIs, SaaS dashboards, real-time chat/video features, secure product workflows, and agentic AI solutions.",
   keywords: [
     "Waqar Ahmed",
-    "Full Stack AI Developer",
     "Full Stack Developer",
-    "DevOps Engineer",
-    "AI Engineer",
+    "Secure API Developer",
+    "Real-Time Video",
     "Startup MVP Developer",
     "SaaS Developer",
     "Coworking SaaS",
     "Product Engineer",
     "Entrepreneurship",
-    "Agentic AI",
-    "LangChain",
-    "LangGraph",
+    "Secure APIs",
+    "WebRTC",
+    "Database Indexing",
     "OpenAI API",
-    "Machine Learning",
-    "MLOps",
+    "Agentic AI",
+    "AI SDKs",
+    "LangChain",
+    "RAG",
+    "Tool Calling",
     "Next.js",
     "React",
     "Node.js",
@@ -57,9 +59,9 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://waqarahmed.xyz",
     siteName: "Waqar Ahmed Portfolio",
-    title: "Waqar Ahmed | Full Stack AI Developer",
+    title: "Waqar Ahmed | Full Stack Developer",
     description:
-      "Explore Waqar Ahmed's portfolio of startup MVPs, SaaS apps, product dashboards, backend APIs, agentic AI systems, nonprofit platforms, business websites, and web apps.",
+      "Explore Waqar Ahmed's portfolio of scalable web apps, SaaS dashboards, real-time chat/video products, secure backend APIs, nonprofit revamps, AI SDK experiments, and agentic AI solutions.",
     images: [
       {
         url: "/image.png",
@@ -74,9 +76,9 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     site: "@Mr___WaQAR",
     creator: "@Mr___WaQAR",
-    title: "Waqar Ahmed | Full Stack AI Developer",
+    title: "Waqar Ahmed | Full Stack Developer",
     description:
-      "Full Stack AI Developer solving real product, startup, business, nonprofit, and operations problems with web apps, backend systems, SaaS products, and agentic AI.",
+      "Full Stack Developer solving real product, startup, business, nonprofit, and operations problems with web apps, backend systems, SaaS products, secure APIs, and agentic AI workflows.",
     images: ["/image.png"],
   },
   robots: {
@@ -134,8 +136,8 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "Person",
               "name": "Waqar Ahmed",
-              "jobTitle": "Full Stack AI Developer",
-              "description": "Full Stack AI Developer with 3+ years of experience turning business problems into startup MVPs, SaaS apps, dashboards, backend APIs, agentic AI systems, nonprofit platforms, company websites, and web apps.",
+              "jobTitle": "Full Stack Developer",
+              "description": "Full Stack Developer with 3+ years of experience building React/Next.js products, Node/NestJS APIs, SaaS dashboards, real-time chat/video features, secure product workflows, AI SDK integrations, and agentic AI solutions.",
               "url": "https://waqarahmed.xyz",
               "sameAs": [
                 "https://github.com/Waqar-ahmedkhan",
@@ -151,7 +153,7 @@ export default function RootLayout({
                 "addressLocality": "Islamabad",
                 "addressCountry": "Pakistan"
               },
-              "email": "contact@waqarahmed.xyz",
+              "email": "waqar@waqarahmed.xyz",
               "image": "https://avatars.githubusercontent.com/u/150153359?s=400",
               "worksFor": {
                 "@type": "Organization",

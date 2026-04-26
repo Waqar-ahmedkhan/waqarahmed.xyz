@@ -140,14 +140,14 @@ export const RESUME_DATA = {
   location: "Islamabad, Pakistan",
   locationLink: "https://www.google.com/maps/place/Islamabad",
   about:
-    "Full Stack AI Developer solving real business problems with web apps and agentic AI systems",
+    "Full Stack Developer building scalable web apps, SaaS workflows, secure APIs, real-time products, and agentic AI solutions.",
   summary:
-    "Full Stack AI Developer with 3+ years of experience turning messy business ideas into working software: startup MVPs, SaaS apps, dashboards, backend APIs, company websites, nonprofit platforms, AI assistants, and agentic AI workflows. I work across React, Next.js, Node.js, TypeScript, databases, Docker, AWS, OpenAI API, LangChain, and LangGraph, with a product-first problem-solving mindset: understand the problem, design the system, ship the feature, measure the value, and keep improving the product.",
+    "Full Stack Developer with 3+ years of experience building React/Next.js products, Node/NestJS APIs, SaaS dashboards, real-time chat/video features, secure product workflows, and agentic AI solutions. Recent work includes scaling random video calling to 10K daily users, improving crash resistance, adding database indexes, building OTP/auth flows, shipping serverless coworking SaaS modules, revamping nonprofit web experiences, and exploring AI SDKs, tool-calling workflows, RAG, and automation systems. Strong in TypeScript, PostgreSQL/MongoDB, Prisma ORM, WebSocket/WebRTC, AWS-oriented delivery, security-minded API design, OpenAI API, LangChain, and agentic product architecture.",
   avatarUrl:
     "https://avatars.githubusercontent.com/u/150153359?s=400&u=e098fda35355c395f842fed288c8bafc339e28fb&v=4",
   personalWebsiteUrl: "https://waqarahmed.xyz",
   contact: {
-    email: "contact@waqarahmed.xyz",
+    email: "waqar@waqarahmed.xyz",
     tel: "+92-3700-057225",
     social: [
       social("GitHub", "https://github.com/Waqar-ahmedkhan"),
@@ -162,27 +162,11 @@ export const RESUME_DATA = {
   education: [
     {
       school: "Kohat University of Science and Technology, Kohat, Pakistan",
-      degree: "Bachelor of Science in Computer Science",
-      start: "2021",
-      end: "2025",
-      description:
-        "Focused on advanced topics in computer science, including artificial intelligence, distributed systems, and software engineering.",
-    },
-    {
-      school: "Fazaia Inter College, Kohat, Pakistan",
-      degree: "Intermediate (FSc in Computer Science)",
+      degree: "Bachelor of Science in Computer Science, CGPA: 3.5/4.0",
       start: "2020",
-      end: "2021",
+      end: "2024",
       description:
-        "Achieved academic excellence with a strong emphasis on science, mathematics, and computer studies.",
-    },
-    {
-      school: "Fauji Foundation High School, Kohat, Pakistan",
-      degree: "Matriculation (Science Group)",
-      start: "2018",
-      end: "2019",
-      description:
-        "Established a strong academic foundation with a focus on analytical and problem-solving skills.",
+        "Focused on software engineering, backend systems, artificial intelligence, distributed systems, and applied product development.",
     },
   ],
   work: [
@@ -193,92 +177,107 @@ export const RESUME_DATA = {
       start: "Aug 2025",
       end: "Present",
       description:
-        "Building business-facing web apps, SaaS workflows, backend integrations, and AI-enabled product features for company and client projects.",
+        "Current full-stack role focused on client product delivery, SaaS modules, responsive web experiences, React Native screens, and API-driven workflows.",
       bulletPoints: bullets(
-        "Architected and improved Space Manager, a coworking SaaS product that centralizes bookings, customers, availability, reporting, and admin workflows.",
-        "Built and shipped user-facing website and product flows for Geekinate, Shifa Foundation, Twinhub, Next-Chat, Secure Pulse, and Lilia using modern React/Next.js patterns.",
-        "Connected responsive interfaces with APIs, databases, authentication, reporting, deployment workflows, and AI features to solve real operational problems."
+        "Owned full-stack web and mobile delivery across Space Manager, Shifa Foundation USA, Twinhub/coworking websites, Lilia web, and Lilia React Native app.",
+        "Built Space Manager serverless SaaS modules for spaces, bookings, customers, dashboards, reports, and admin operations.",
+        "Delivered React/Next.js pages, React Native screens, reusable UI components, backend integrations, and API-driven dashboard/admin workflows.",
+        "Collaborated with marketing on the Shifa Foundation USA revamp, translating content and brand requirements into responsive, launch-ready website sections."
       ),
     },
     {
-      company: "Viral Mobitech (Private) Limited",
-      badges: ["Hybrid", "Full-Time"],
+      company: "Viral Mobitech Private Limited",
+      badges: ["Islamabad", "Project-based"],
       title: "Full-Stack Developer",
       start: "Dec 2024",
       end: "Dec 2025",
       description:
-        "Delivered full-stack product features across frontend interfaces, backend APIs, MongoDB workflows, and production application improvements.",
+        "Project-based full-stack work across real-time communication, booking/video workflows, security-sensitive APIs, and deployment-ready product features.",
       bulletPoints: bullets(
-        "Designed and built reusable React interfaces connected to Node.js APIs and MongoDB-backed data flows for real product use cases.",
-        "Turned product and design requirements into complete releases across UI, API integration, validation, state handling, and edge-case fixes.",
-        "Improved user flows, resolved production defects, supported performance work, and shipped reliable features through agile delivery cycles."
+        "Built full-stack features across Bondvia, Meetany, Secure Pulse, and Next-Chat using React.js, Node.js/Express, PostgreSQL, MongoDB, and Prisma ORM.",
+        "Scaled Bondvia random video calling to 10K daily users by indexing database queries, optimizing APIs, debugging crash sources, and strengthening secure call flows.",
+        "Improved Meetany reliability and user safety by adding security layers, safer call controls, content-safety/moderation paths, and deployment scaling support.",
+        "Built Next-Chat OTP verification, authentication, onboarding APIs, and protected Secure Pulse product workflows.",
+        "Supported CI/CD and observability with Docker, GitHub Actions, GitLab CI/CD, ArgoCD, Helm, Prometheus, and Grafana."
       ),
     },
     {
       company: "National Incubation Center (NIC), Kohat",
       badges: ["Founder", "Incubated"],
-      title: "Startup Founder & Full-Stack Developer",
-      start: "Jan 2024",
+      title: "Full-Stack Developer / Startup Technical Mentor",
+      start: "Jan 2023",
       end: "Dec 2024",
       description:
-        "Built startup MVP direction at NIC Kohat by converting early ideas into product scope, technical architecture, dashboards, and launch-ready workflows.",
+        "Built startup MVPs, dashboards, backend APIs, internal tools, and product validation paths while mentoring early-stage teams.",
       bulletPoints: bullets(
-        "Designed MVP user journeys, screens, APIs, data models, and practical architecture for startup ideas moving from validation to execution.",
-        "Built dashboard and reporting workflows that helped track startup progress, operational activity, and decision-making signals.",
-        "Worked with mentors, founders, and startup teams on product validation, technical tradeoffs, launch preparation, and execution."
+        "Built startup MVPs, dashboards, backend APIs, and internal tools using React.js, Next.js, Firebase, GraphQL, PostgreSQL, Express.js, and Node.js.",
+        "Translated unclear founder requirements into user flows, product screens, data models, API contracts, and launch-ready MVP plans.",
+        "Implemented JWT/OAuth authentication, containerized deployments, AWS, Kubernetes, CI/CD workflows, and product validation paths.",
+        "Mentored early-stage teams through ideation, MVP development, launch preparation, and hackathon execution."
       ),
     },
     {
-      company: "Kust Incubation Center (KIC), Pakistan",
+      company: "KUST Incubation Center (KIC), Pakistan",
       badges: ["Engagement-Based"],
       title: "Technology & Research Contributor",
-      start: "2024",
-      end: "2025",
+      start: "Jun 2023",
+      end: "Jun 2025",
       description:
-        "Supported AI-focused entrepreneurship, research planning, grant direction, and technical mentorship for students and early-stage founders.",
+        "Contributed part-time to full-stack and AI product direction for student founders, AI/ML ideas, and product delivery roadmaps.",
       bulletPoints: bullets(
-        "Helped teams evaluate product feasibility, validation priorities, technical architecture, and implementation paths before building.",
-        "Delivered mentorship on MLOps, full-stack engineering, DevOps, web app delivery, and practical agentic AI implementation.",
-        "Guided students and founders toward engineering workflows that turn ideas into usable products, proposals, and prototypes."
+        "Helped teams turn AI/ML ideas into feasible web app MVP plans, full-stack architecture directions, and product delivery roadmaps.",
+        "Guided practical model/API integration using HuggingFace, TensorFlow, MLflow, Docker, GitOps, and product-focused AI delivery practices."
       ),
     },
   ] as WorkEntry[],
   skills: [
-    "JavaScript",
     "TypeScript",
-    "React",
+    "JavaScript",
+    "Python",
+    "SQL",
+    "React.js",
     "Next.js",
+    "React Native",
+    "Redux",
+    "Tailwind CSS",
+    "Material UI",
     "Node.js",
     "Express.js",
-    "MongoDB",
-    "Firebase",
+    "NestJS",
+    "REST APIs",
+    "OpenAPI",
+    "GraphQL",
+    "WebSocket",
+    "WebRTC",
     "PostgreSQL",
+    "MongoDB",
     "MySQL",
-    "Python",
+    "Redis",
+    "Prisma ORM",
+    "Firebase",
+    "Database indexing",
+    "JWT",
+    "OAuth",
+    "RBAC",
+    "Secure API design",
+    "Rate limiting",
+    "Content-safety workflows",
+    "AWS",
     "Docker",
     "Kubernetes",
-    "Ansible",
     "Terraform",
-    "AWS",
-    "OpenAI API",
-    "LangChain",
-    "LangGraph",
-    "AI Agents",
-    "RAG",
-    "Redux",
-    "Material UI",
-    "Vite",
+    "Helm",
+    "GitHub Actions",
+    "GitLab CI/CD",
+    "ArgoCD",
     "Prometheus",
     "Grafana",
-    "MLOps",
-    "GraphQL",
-    "REST APIs",
-    "Git",
-    "CI/CD",
-    "turborepo",
-    "monorepo",
-    "OOP",
-    "Prisma",
+    "OpenAI API",
+    "LangChain",
+    "RAG",
+    "Pinecone",
+    "HuggingFace",
+    "n8n",
   ],
   certifications: [
     {
@@ -340,20 +339,6 @@ export const RESUME_DATA = {
   ],
   achievements: [
     {
-      title: "Founder at NIC Kohat",
-      by: "National Incubation Center, Kohat",
-      year: "2024",
-      description:
-        "Recognized as a founder at NIC Kohat, working on startup MVP development, product validation, technical execution, and practical problem solving.",
-    },
-    {
-      title: "Top Coder in Islamabad",
-      by: "Islamabad, Pakistan",
-      year: "2026",
-      description:
-        "Recognized for strong problem-solving, competitive programming, and full-stack engineering performance in Islamabad's developer ecosystem.",
-    },
-    {
       title: "Best Poster Award – Tech-Talks & Posters Symposium 2025",
       by: "Institute of Computing, Kohat University of Science and Technology",
       year: "2025",
@@ -366,16 +351,23 @@ export const RESUME_DATA = {
         ),
       ],
     },
+    {
+      title: "Mentorship and Hackathon Leadership",
+      by: "NIC Kohat, KUST, and student innovation communities",
+      year: "2024 - Present",
+      description:
+        "Mentored 100+ students and developers, and organized or contributed to 5+ hackathons and student innovation events.",
+    },
   ],
   keyHighlights: [
-    { title: "Experience", description: "3+ years shipping web apps, SaaS products, and agentic AI systems" },
+    { title: "Experience", description: "3+ years building React/Next.js products, Node APIs, SaaS dashboards, and secure workflows" },
     { title: "Teaching", description: "Mentored 100+ learners on AI, web, DevOps, and MVP building" },
-    { title: "Community", description: "Active across startup, founder, AI, and developer ecosystems" },
+    { title: "Community", description: "Organized or contributed to 5+ hackathons and student innovation events" },
     { title: "Certifications", description: "7 Coursera credentials across ML, AWS, DevOps, and data" },
-    { title: "Hackathons", description: "Organized and won 5+ innovation, AI, and coding events" },
-    { title: "Open Source", description: "Public work across web apps, AI systems, and agentic workflows" },
-    { title: "Innovation", description: "Best Poster Award for EduAI, a real education problem solver" },
-    { title: "Startups", description: "Built startup MVPs and SaaS workflows from problem framing to delivery" },
+    { title: "Hackathons", description: "Built and mentored teams through MVP development and launch preparation" },
+    { title: "Open Source", description: "Public work across web apps, AI systems, backend APIs, and automation workflows" },
+    { title: "Innovation", description: "Best Project Poster Award for EduAI at Tech-Talks and Posters Symposium 2025" },
+    { title: "Startups", description: "Translated founder requirements into user flows, data models, API contracts, and MVP plans" },
   ],
   projects: [
     {
@@ -393,10 +385,35 @@ export const RESUME_DATA = {
       link: link("Read article", "/blog/full-stack-ai-development"),
     },
     {
-      title: "EduAI: Personalized Learning Platform",
-      techStack: ["Python", "TensorFlow", "React", "Firebase"],
+      title: "Bondvia: Random Video Calling",
+      techStack: ["Node.js", "WebRTC", "PostgreSQL", "MongoDB", "Prisma"],
       description:
-        "Designed and built an AI-powered learning platform that personalizes education workflows for students instead of using one-size-fits-all content.",
+        "Scaled random video calling to 10K daily users by improving matching reliability, database indexes, API performance, crash resistance, and safer call-session handling.",
+    },
+    {
+      title: "Meetany: Booking / Video Platform",
+      techStack: ["React", "Node.js", "Security", "CI/CD", "Monitoring"],
+      description:
+        "Strengthened high-traffic booking/video workflows with deployment scaling support, additional security layers, abuse-risk controls, and content-safety handling for a 10M+ user platform.",
+    },
+    {
+      title: "Space Manager: Coworking SaaS",
+      techStack: ["React", "Vite", "Redux", "Material UI", "Vercel", "Serverless"],
+      description:
+        "Built serverless coworking SaaS workflows for spaces, bookings, customers, dashboards, reports, and admin management.",
+      link: link("spacemanager.vercel.app", "https://spacemanager.vercel.app/"),
+    },
+    {
+      title: "Next-Chat: Communication Platform",
+      techStack: ["Node.js", "Express.js", "REST APIs", "Authentication", "OTP"],
+      description:
+        "Built backend APIs for OTP verification, authentication, onboarding, and deployment-ready communication workflows for international users.",
+    },
+    {
+      title: "EduAI: AI-Powered LMS Platform",
+      techStack: ["React", "Firebase", "HuggingFace", "AI", "RBAC"],
+      description:
+        "Built an AI learning platform with course creation, adaptive quizzes, role-based access, recommendation direction, summarization/Q&A, and deployment architecture.",
       link: link("github.com", "https://github.com/Waqar-ahmedkhan/EduAI"),
     },
     {
@@ -408,13 +425,6 @@ export const RESUME_DATA = {
         "github.com",
         "https://github.com/Waqar-ahmedkhan/recommender_model_for_EduAI"
       ),
-    },
-    {
-      title: "Space Manager",
-      techStack: ["React", "Vite", "Redux", "Material UI", "MUI X", "Vercel"],
-      description:
-        "Contributed to a coworking SaaS platform that centralizes bookings, customers, availability, reporting, and admin workflows for space operators.",
-      link: link("spacemanager.vercel.app", "https://spacemanager.vercel.app/"),
     },
     {
       title: "Geekinate Main Website",
@@ -435,22 +445,16 @@ export const RESUME_DATA = {
         "Improved nonprofit web flows around campaign clarity, donor trust, mobile responsiveness, and donation-path friction.",
     },
     {
-      title: "Next-Chat Backend And OTP",
-      techStack: ["Node.js", "Express.js", "REST APIs", "Authentication"],
-      description:
-        "Built backend authentication and OTP flows that improve onboarding trust, account verification, and messaging readiness.",
-    },
-    {
       title: "Secure Pulse Backend Stabilization",
       techStack: ["Backend APIs", "Debugging", "Platform Stability"],
       description:
         "Stabilized backend APIs by resolving reliability issues, reducing delivery blockers, and improving maintainability.",
     },
     {
-      title: "Lilia Plant-Based LLM",
-      techStack: ["LLM Apps", "AI Product", "RAG"],
+      title: "Lilia Web and React Native App",
+      techStack: ["React", "React Native", "Node.js", "MongoDB"],
       description:
-        "Developed domain-specific LLM product direction for plant-based knowledge, retrieval workflows, and AI decision support.",
+        "Delivered web and mobile learning product work across reusable UI, app screens, backend integrations, and organization-ready workflows.",
     },
     {
       title: "Al Khair Al Arab Website",
