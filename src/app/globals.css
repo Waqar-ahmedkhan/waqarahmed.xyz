@@ -82,6 +82,7 @@
   --sidebar-ring: oklch(0.5 0.25 260 / 0.8);
   --ease-smooth: cubic-bezier(0.25, 0.1, 0.25, 1);
   --ease-out-smooth: cubic-bezier(0.33, 1, 0.68, 1);
+  color-scheme: light;
 }
 
 .dark {
@@ -112,6 +113,15 @@
   --sidebar-accent-foreground: oklch(0.85 0.01 240);
   --sidebar-border: oklch(0.3 0.02 240);
   --sidebar-ring: oklch(0.6 0.25 260 / 0.8);
+  color-scheme: dark;
+}
+
+html {
+  background-color: #fcfcfd;
+}
+
+html.dark {
+  background-color: #0a0a0d;
 }
 
 @keyframes fade-in-up {
@@ -187,12 +197,14 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    @apply bg-background text-foreground;
   }
   * {
     @apply border-border outline-ring/50;
   }
   body {
     @apply bg-background text-foreground font-sans;
+    min-height: 100svh;
     font-feature-settings: "kern" 1, "liga" 1;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;

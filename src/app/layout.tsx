@@ -5,6 +5,33 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { ThemeToggle } from "@/components/theme-toggle";
 
 const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID;
+const LIGHT_THEME_COLOR = "#fcfcfd";
+const DARK_THEME_COLOR = "#0a0a0d";
+
+const themeBootScript = `
+  (function() {
+    try {
+      var storageKey = "theme";
+      var storedTheme = localStorage.getItem(storageKey);
+      var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      var resolvedTheme = storedTheme === "dark" || storedTheme === "light"
+        ? storedTheme
+        : prefersDark
+          ? "dark"
+          : "light";
+      var root = document.documentElement;
+      root.classList.remove("light", "dark");
+      root.classList.add(resolvedTheme);
+      root.style.colorScheme = resolvedTheme;
+
+      var themeColor = resolvedTheme === "dark" ? "${DARK_THEME_COLOR}" : "${LIGHT_THEME_COLOR}";
+      var themeMeta = document.querySelector('meta[name="theme-color"]:not([media])');
+      if (themeMeta) {
+        themeMeta.setAttribute("content", themeColor);
+      }
+    } catch (_) {}
+  })();
+`;
 
 export const metadata: Metadata = {
   title: {
@@ -94,7 +121,6 @@ export const metadata: Metadata = {
     },
   },
   other: {
-    "theme-color": "#0f172a",
     "apple-mobile-web-app-title": "Waqar Ahmed Portfolio",
     "application-name": "Waqar Ahmed Portfolio",
   },
@@ -111,6 +137,18 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
+        <meta name="theme-color" content={LIGHT_THEME_COLOR} />
+        <meta
+          name="theme-color"
+          media="(prefers-color-scheme: light)"
+          content={LIGHT_THEME_COLOR}
+        />
+        <meta
+          name="theme-color"
+          media="(prefers-color-scheme: dark)"
+          content={DARK_THEME_COLOR}
+        />
+        <script dangerouslySetInnerHTML={{ __html: themeBootScript }} />
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
