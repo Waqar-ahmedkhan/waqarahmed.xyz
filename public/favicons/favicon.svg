@@ -1,22 +1,83 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
-  <title id="title">Waqar Ahmed favicon</title>
-  <desc id="desc">A compact WA monogram for Waqar Ahmed's portfolio.</desc>
-  <rect width="512" height="512" rx="112" fill="#0a0a0d"/>
-  <path
-    d="M96 152 154 360 228 178 302 360 360 152"
-    fill="none"
-    stroke="#5eead4"
-    stroke-width="46"
-    stroke-linecap="round"
-    stroke-linejoin="round"
-  />
-  <path
-    d="M344 360 414 152 486 360M374 282h82"
-    fill="none"
-    stroke="#f8fafc"
-    stroke-width="38"
-    stroke-linecap="round"
-    stroke-linejoin="round"
-  />
-  <circle cx="414" cy="152" r="16" fill="#14b8a6"/>
+  <title id="title">Waqar Ahmed crowned W favicon</title>
+  <desc id="desc">A sharp crowned W monogram on a pure black background with a subtle animated royal glint.</desc>
+  <style>
+    @keyframes w-pulse {
+      0%, 100% { opacity: 0.94; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.018); }
+    }
+
+    @keyframes w-sweep {
+      0%, 14% { transform: translateX(-170px) skewX(-12deg); opacity: 0; }
+      30% { opacity: 0.48; }
+      48%, 100% { transform: translateX(620px) skewX(-12deg); opacity: 0; }
+    }
+
+    @keyframes crown-glow {
+      0%, 100% { filter: drop-shadow(0 0 0 rgb(255 216 108 / 0)); transform: translateY(0); }
+      50% { filter: drop-shadow(0 0 16px rgb(255 216 108 / 0.55)); transform: translateY(-4px); }
+    }
+
+    @keyframes star-pop {
+      0%, 35%, 100% { opacity: 0; transform: scale(0.55) rotate(0deg); }
+      50% { opacity: 1; transform: scale(1) rotate(18deg); }
+      62% { opacity: 0.5; transform: scale(0.78) rotate(30deg); }
+    }
+
+    #w-mark {
+      animation: w-pulse 2.8s ease-in-out infinite;
+      transform-box: fill-box;
+      transform-origin: center;
+    }
+
+    #w-shine {
+      animation: w-sweep 3.6s ease-in-out infinite;
+    }
+
+    #crown {
+      animation: crown-glow 2.8s ease-in-out infinite;
+      transform-box: fill-box;
+      transform-origin: center;
+    }
+
+    #star {
+      animation: star-pop 2.8s ease-in-out infinite;
+      transform-box: fill-box;
+      transform-origin: center;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      #w-mark,
+      #w-shine,
+      #crown,
+      #star {
+        animation: none;
+      }
+    }
+  </style>
+  <defs>
+    <clipPath id="w-clip">
+      <path d="M74 166h66l42 172 52-172h44l52 172 42-172h66l-76 264h-66l-40-134-40 134h-66L74 166Z"/>
+    </clipPath>
+  </defs>
+  <rect width="512" height="512" fill="#000"/>
+  <path id="star" d="M388 74 399 99 426 110 399 121 388 146 377 121 350 110 377 99Z" fill="#fff3bf"/>
+  <g id="crown">
+    <path d="M162 138 190 78 234 118 256 58 278 118 322 78 350 138Z" fill="#ffd76a"/>
+    <path d="M174 138h164v30H174Z" fill="#f5b942"/>
+    <path d="M198 116 234 136 256 100 278 136 314 116 326 138H186Z" fill="#fff0a8" opacity="0.45"/>
+  </g>
+  <g id="w-mark">
+    <path
+      d="M74 166h66l42 172 52-172h44l52 172 42-172h66l-76 264h-66l-40-134-40 134h-66L74 166Z"
+      fill="#f8fafc"
+    />
+    <g clip-path="url(#w-clip)">
+      <path id="w-shine" d="M-40 148h62l-78 300h-62Z" fill="#fff"/>
+    </g>
+    <path
+      d="M235 166h42l-21 74-21-74Zm19 148 22 80-20 36-20-36 18-80Z"
+      fill="#000"
+    />
+  </g>
 </svg>

@@ -1,12 +1,14 @@
 import { Metadata } from "next";
 import "./globals.css";
 import Script from "next/script";
+import { AnimatedFavicon } from "@/components/animated-favicon";
 import { ThemeProvider } from "@/components/theme-provider";
 import { ThemeToggle } from "@/components/theme-toggle";
 
 const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID;
-const LIGHT_THEME_COLOR = "#fcfcfd";
-const DARK_THEME_COLOR = "#0a0a0d";
+const LIGHT_THEME_COLOR = "#f8f8f8";
+const DARK_THEME_COLOR = "#000000";
+const FAVICON_VERSION = "20260510-4";
 
 const themeBootScript = `
   (function() {
@@ -151,26 +153,46 @@ export default function RootLayout({
           content={DARK_THEME_COLOR}
         />
         <script dangerouslySetInnerHTML={{ __html: themeBootScript }} />
-        <link rel="icon" href="/favicons/favicon.ico" sizes="any" />
-        <link rel="icon" href="/favicons/favicon.svg" type="image/svg+xml" />
         <link
           rel="icon"
-          href="/favicons/favicon-32x32.png"
+          href={`/favicons/favicon.svg?v=${FAVICON_VERSION}`}
+          type="image/svg+xml"
+        />
+        <link
+          rel="icon"
+          href={`/favicons/favicon.ico?v=${FAVICON_VERSION}`}
+          sizes="any"
+        />
+        <link
+          rel="icon"
+          href={`/favicons/favicon-32x32.png?v=${FAVICON_VERSION}`}
           type="image/png"
           sizes="32x32"
         />
         <link
           rel="icon"
-          href="/favicons/favicon-16x16.png"
+          href={`/favicons/favicon-16x16.png?v=${FAVICON_VERSION}`}
           type="image/png"
           sizes="16x16"
         />
-        <link rel="shortcut icon" href="/favicons/favicon.ico" />
-        <link rel="apple-touch-icon" href="/favicons/apple-touch-icon.png" />
+        <link
+          rel="icon"
+          href={`/favicons/favicon-animated.gif?v=${FAVICON_VERSION}`}
+          type="image/gif"
+          sizes="64x64"
+        />
+        <link
+          rel="shortcut icon"
+          href={`/favicons/favicon.ico?v=${FAVICON_VERSION}`}
+        />
+        <link
+          rel="apple-touch-icon"
+          href={`/favicons/apple-touch-icon.png?v=${FAVICON_VERSION}`}
+        />
         <link
           rel="mask-icon"
           href="/favicons/safari-pinned-tab.svg"
-          color="#14b8a6"
+          color="#000000"
         />
         <link rel="manifest" href="/favicons/site.webmanifest" />
         <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
@@ -228,9 +250,10 @@ export default function RootLayout({
         </Script>
       </head>
       <body
-        className="min-h-screen bg-background text-foreground transition-colors duration-300"
+        className="min-h-screen overflow-x-hidden bg-background text-foreground transition-colors duration-300"
         suppressHydrationWarning
       >
+        <div className="site-black-background" aria-hidden="true" />
         {GTM_ID ? (
           <noscript>
             <iframe
@@ -247,11 +270,14 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <div className="fixed top-4 right-4 z-50">
-            <ThemeToggle />
-          </div>
-          <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
-            {children}
+          <AnimatedFavicon />
+          <div className="relative z-10">
+            <div className="fixed top-4 right-4 z-50">
+              <ThemeToggle />
+            </div>
+            <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
+              {children}
+            </div>
           </div>
         </ThemeProvider>
       </body>
