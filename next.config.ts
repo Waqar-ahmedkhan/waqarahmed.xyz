@@ -88,13 +88,27 @@ const nextConfig: NextConfig = {
         ],
       },
       {
-        source: "/favicon.ico",
+        source: "/favicons/:path*",
         headers: [
           {
             key: "Cache-Control",
             value: "public, max-age=31536000, immutable",
           },
         ],
+      },
+    ];
+  },
+  async redirects() {
+    return [
+      {
+        source: "/favicon.ico",
+        destination: "/favicons/favicon.ico",
+        permanent: true,
+      },
+      {
+        source: "/site.webmanifest",
+        destination: "/favicons/site.webmanifest",
+        permanent: true,
       },
     ];
   },

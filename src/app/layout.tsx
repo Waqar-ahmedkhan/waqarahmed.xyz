@@ -123,6 +123,8 @@ export const metadata: Metadata = {
   other: {
     "apple-mobile-web-app-title": "Waqar Ahmed Portfolio",
     "application-name": "Waqar Ahmed Portfolio",
+    "msapplication-TileColor": DARK_THEME_COLOR,
+    "msapplication-config": "/favicons/browserconfig.xml",
   },
 };
 
@@ -149,8 +151,28 @@ export default function RootLayout({
           content={DARK_THEME_COLOR}
         />
         <script dangerouslySetInnerHTML={{ __html: themeBootScript }} />
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <link rel="icon" href="/favicons/favicon.ico" sizes="any" />
+        <link rel="icon" href="/favicons/favicon.svg" type="image/svg+xml" />
+        <link
+          rel="icon"
+          href="/favicons/favicon-32x32.png"
+          type="image/png"
+          sizes="32x32"
+        />
+        <link
+          rel="icon"
+          href="/favicons/favicon-16x16.png"
+          type="image/png"
+          sizes="16x16"
+        />
+        <link rel="shortcut icon" href="/favicons/favicon.ico" />
+        <link rel="apple-touch-icon" href="/favicons/apple-touch-icon.png" />
+        <link
+          rel="mask-icon"
+          href="/favicons/safari-pinned-tab.svg"
+          color="#14b8a6"
+        />
+        <link rel="manifest" href="/favicons/site.webmanifest" />
         <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
         <meta name="format-detection" content="telephone=no" />
         <link rel="preconnect" href="https://avatars.githubusercontent.com" />

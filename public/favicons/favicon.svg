@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">Waqar Ahmed favicon</title>
+  <desc id="desc">A compact WA monogram for Waqar Ahmed's portfolio.</desc>
+  <rect width="512" height="512" rx="112" fill="#0a0a0d"/>
+  <path
+    d="M96 152 154 360 228 178 302 360 360 152"
+    fill="none"
+    stroke="#5eead4"
+    stroke-width="46"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+  <path
+    d="M344 360 414 152 486 360M374 282h82"
+    fill="none"
+    stroke="#f8fafc"
+    stroke-width="38"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+  <circle cx="414" cy="152" r="16" fill="#14b8a6"/>
+</svg>
