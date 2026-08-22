@@ -1,7 +1,6 @@
 import { Metadata } from "next";
 import "./globals.css";
 import Script from "next/script";
-import { AnimatedFavicon } from "@/components/animated-favicon";
 import { ThemeProvider } from "@/components/theme-provider";
 import { ThemeToggle } from "@/components/theme-toggle";
 
@@ -176,12 +175,6 @@ export default function RootLayout({
           sizes="16x16"
         />
         <link
-          rel="icon"
-          href={`/favicons/favicon-animated.gif?v=${FAVICON_VERSION}`}
-          type="image/gif"
-          sizes="64x64"
-        />
-        <link
           rel="shortcut icon"
           href={`/favicons/favicon.ico?v=${FAVICON_VERSION}`}
         />
@@ -270,7 +263,6 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <AnimatedFavicon />
           <div className="relative z-10">
             <div className="fixed top-4 right-4 z-50">
               <ThemeToggle />
