@@ -1,13 +1,36 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import { useCallback, useEffect, useState, type ReactNode } from "react";
+import { useCallback, useEffect, useState, useSyncExternalStore, type ReactNode } from "react";
 import { ViewSwitch, type ViewMode } from "@/components/view-switch";
+
+const VIEW_MODE_STORAGE_KEY = "portfolioViewMode";
+const VIEW_MODE_CHANGE_EVENT = "portfolio-view-mode-change";
+const DEFAULT_VIEW_MODE: ViewMode = "detailed";
 
 const ChatbotWidget = dynamic(
   () => import("@/components/ChatbotWidget").then((m) => m.ChatbotWidget),
   { ssr: false, loading: () => null }
 );
+
+const getStoredViewMode = (): ViewMode => {
+  try {
+    const savedViewMode = localStorage.getItem(VIEW_MODE_STORAGE_KEY);
+    return savedViewMode === "simple" || savedViewMode === "detailed" ? savedViewMode : DEFAULT_VIEW_MODE;
+  } catch {
+    return DEFAULT_VIEW_MODE;
+  }
+};
+
+const subscribeToViewMode = (onStoreChange: () => void) => {
+  window.addEventListener("storage", onStoreChange);
+  window.addEventListener(VIEW_MODE_CHANGE_EVENT, onStoreChange);
+
+  return () => {
+    window.removeEventListener("storage", onStoreChange);
+    window.removeEventListener(VIEW_MODE_CHANGE_EVENT, onStoreChange);
+  };
+};
 
 interface PortfolioViewShellProps {
   simple: ReactNode;
@@ -18,25 +41,11 @@ export function PortfolioViewShell({
   simple,
   detailed,
 }: PortfolioViewShellProps) {
-  const [viewMode, setViewMode] = useState<ViewMode>("detailed");
+  const viewMode = useSyncExternalStore(subscribeToViewMode, getStoredViewMode, () => DEFAULT_VIEW_MODE);
   const [showChatbot, setShowChatbot] = useState(false);
 
   useEffect(() => {
-    try {
-      const savedViewMode = localStorage.getItem("portfolioViewMode") as ViewMode | null;
-      if (savedViewMode === "simple" || savedViewMode === "detailed") {
-        setViewMode(savedViewMode);
-      }
-    } catch (error) {
-      if (process.env.NODE_ENV === "development") {
-        console.error("Failed to read view mode from localStorage:", error);
-      }
-    }
-  }, []);
-
-  useEffect(() => {
     if (viewMode !== "detailed") {
-      setShowChatbot(false);
       return;
     }
 
@@ -56,9 +65,11 @@ export function PortfolioViewShell({
   }, [viewMode]);
 
   const handleViewModeChange = useCallback((mode: ViewMode) => {
-    setViewMode(mode);
+    setShowChatbot(false);
+
     try {
-      localStorage.setItem("portfolioViewMode", mode);
+      localStorage.setItem(VIEW_MODE_STORAGE_KEY, mode);
+      window.dispatchEvent(new Event(VIEW_MODE_CHANGE_EVENT));
     } catch (error) {
       if (process.env.NODE_ENV === "development") {
         console.error("Failed to save view mode to localStorage:", error);

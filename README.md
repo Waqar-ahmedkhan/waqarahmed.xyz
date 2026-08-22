@@ -86,3 +86,7 @@ Hi there! I'm **Waqar**, a passionate **Full Stack Developer**, **DevOps Enginee
 ---
 
 ⭐ **Thanks for visiting! Feel free to reach out and collaborate. Let's build something amazing with AI and DevOps!**
+
+## Release workflow
+
+See [the release workflow](docs/RELEASE_WORKFLOW.md) for the `development-alpha` → `staging` → `main` promotion and deployment process.
