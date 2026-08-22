@@ -1,0 +1,87 @@
+# Portfolio Build Prompt (paste this into your AI coding agent)
+
+You are building/updating a developer portfolio. This project ships with spec files that are the **single source of truth** — but the user may have downloaded only some of them, not all six. Whatever is present is authoritative and must be followed exactly. Whatever is missing must never be silently invented — follow the fallback rules below, which mean either asking me or using clearly-flagged minimal defaults.
+
+## Step 1 — Audit which spec files actually exist
+
+Do not assume all spec files are present. The user may have downloaded only some of them. First, scan the project root and check for each of these by exact filename:
+
+1. `AGENTS.md`
+2. `ARCHITECTURE.md`
+3. `COMPONENTS.md`
+4. `CONTENT_SCHEMA.md`
+5. `DESIGN.md`
+6. `LICENSE`
+
+Report back a simple checklist of what's **present** vs **missing** before doing anything else. Then read every file that IS present, fully, before proceeding — do not skim.
+
+For each file that is **missing**, apply the matching fallback below instead of inventing its contents:
+
+- **`AGENTS.md` missing** → No operating manual available. Don't guess what to keep/replace. Ask me explicitly whether you're building fresh or updating existing code, and proceed cautiously — prefer asking over assuming for anything destructive (deleting/overwriting files).
+- **`ARCHITECTURE.md` missing** → No defined tech stack/folder structure. Do NOT pick a framework or structure yourself. Ask me what stack to use, unless an existing project already has one in place (e.g. a `package.json` with a framework already installed) — in that case, infer it from the existing project and confirm with me before proceeding.
+- **`COMPONENTS.md` missing** → No component spec. Do not invent a component library. Build the minimum components needed to satisfy `CONTENT_SCHEMA.md` and `DESIGN.md` if those exist, keep them simple and undocumented-variant-free, and flag clearly in your build plan that component structure was improvised due to a missing spec.
+- **`CONTENT_SCHEMA.md` missing** → No defined content structure. Ask me what content sections I want (e.g. About, Projects, Skills, Contact) and where I'd like data stored (inline vs. a data file), rather than guessing a schema.
+- **`DESIGN.md` missing** → No defined visual system. Ask me for basic direction (color mode, accent color, font preference) before styling, or use sensible, neutral defaults and clearly flag them as placeholders I can change later — ask me which I'd prefer.
+- **`LICENSE` missing** → No action needed, not required to proceed. Just note it's absent.
+
+**If zero spec files are found**, stop immediately and tell me none were detected — don't build anything. Ask me to confirm the install path or re-run the install command rather than proceeding blind.
+
+**If all six are found**, proceed normally — they are complete and authoritative, follow them exactly with no fallbacks needed.
+
+Whatever mix of present/missing files you find, your build plan in Step 4 must explicitly state, file by file, whether each spec was **followed**, **partially available**, or **missing (fallback/asked user)** — so it's always clear what was spec-driven vs. improvised.
+
+## Step 2 — Detect project state
+
+Check the current folder and report back:
+
+- **Existing project detected** (there's already code beyond the spec files — e.g. `src/`, `package.json`, existing components): treat this as an update. You must reuse and adapt the existing structure/content wherever it already satisfies `ARCHITECTURE.md` and `COMPONENTS.md`, and only change what's needed to bring it into compliance with the spec files. Do not rewrite working code from scratch "for cleanliness." List what you intend to change and why, mapped to a specific spec file.
+- **Fresh/empty project**: treat this as a new build from the spec files.
+
+## Step 3 — Gather missing information (only if needed)
+
+Cross-check `CONTENT_SCHEMA.md` against what already exists in the project:
+
+- If personal content (name, bio, projects, skills, links, images, etc.) required by `CONTENT_SCHEMA.md` already exists in the project (e.g. in a data file, CMS folder, or config), extract and reuse it — don't ask for things you can already find.
+- For anything required by `CONTENT_SCHEMA.md` that is genuinely missing, ask me directly, as a single consolidated list of questions grouped by schema section (e.g. "Profile", "Projects", "Skills", "Social links"). Don't ask one question at a time. Don't ask about anything not required by the schema.
+- If `DESIGN.md` exposes any theme-level choices (color mode, accent color, font pairing, etc.), ask about those in the same batch.
+
+## Step 4 — Confirm before building
+
+Once you have everything you need, output a short build plan before touching any files:
+
+- Which files/components you will create, edit, or leave untouched
+- Which sections of `CONTENT_SCHEMA.md` will be populated with what data
+- Any assumptions you're making, explicitly flagged as assumptions
+
+Wait for my explicit "yes/go/confirmed" before writing any code. Do not start building on your own initiative, even if you're confident.
+
+## Step 5 — Build strictly to spec
+
+Once confirmed:
+
+- Follow `ARCHITECTURE.md` exactly for folder structure, routing, and data flow — don't introduce a different framework, state approach, or file layout.
+- Use only the components and variants defined in `COMPONENTS.md`. If you need a component it doesn't define, stop and ask rather than inventing one.
+- Populate content exactly where `CONTENT_SCHEMA.md` says it must live — don't hardcode personal content inline in components if the schema defines a data layer.
+- Apply `DESIGN.md` precisely (colors, spacing, type scale, breakpoints) rather than default framework styling.
+- Follow every explicit instruction in `AGENTS.md`, including what to preserve vs. replace.
+
+## Step 6 — Self-check before you tell me you're done
+
+Before reporting completion, verify and fix:
+
+- Project installs and builds cleanly with no errors or warnings (run the actual install/build/lint commands from `ARCHITECTURE.md`)
+- No broken imports, unused files, or dead code left behind
+- No missing content fields vs. `CONTENT_SCHEMA.md`
+- No component used outside the variants/props defined in `COMPONENTS.md`
+- Responsive behavior and design tokens match `DESIGN.md`
+- No console errors in dev mode
+
+If any check fails, fix it yourself before reporting — don't hand me a broken build.
+
+## Step 7 — Final report
+
+Summarize: what was built/changed, which files were touched, any assumptions made, and any spec gaps you had to ask about. Do not describe features or structure that aren't actually in the spec files.
+
+---
+
+**Golden rule for the whole task:** if the spec files say it, build it that way. If the spec files don't say it, ask — never improvise architecture, components, content placement, or design on your own judgment.
