@@ -2,9 +2,9 @@ name: Quality gate
 
 on:
   push:
-    branches: [development-alpha, main]
+    branches: [development-alpha, staging, main]
   pull_request:
-    branches: [development-alpha, main]
+    branches: [development-alpha, staging, main]
 
 concurrency:
   group: quality-${{ github.workflow }}-${{ github.ref }}
