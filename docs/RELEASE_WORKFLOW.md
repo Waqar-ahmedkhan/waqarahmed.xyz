@@ -20,27 +20,26 @@ Create the three branches in GitHub and protect each one:
 
 | Branch | Allowed pull-request source | Required status check | Deployment |
 | --- | --- | --- | --- |
-| `development-alpha` | Feature branches | `Lint and production build` | Vercel preview/development |
-| `staging` | `development-alpha` | `Lint and production build` | Vercel staging |
+| `development-alpha` | Feature branches | `Lint and production build` | Vercel preview |
+| `staging` | `development-alpha` | `Lint and production build` | Vercel preview |
 | `main` | `staging` | `Lint and production build` | Vercel production |
 
 For all three rules, require pull requests, require the status check above, require branches to be up to date, and block force pushes and branch deletions. Restrict who can push directly to `staging` and `main`.
 
 ## Deployment provider mapping
 
-This repository includes a Vercel deployment workflow in `.github/workflows/deploy.yml`. It deploys automatically when a commit reaches one of the environment branches:
+Vercel's Git integration owns deployments for this repository. Connect the GitHub repository to the Vercel project and configure `main` as its Production Branch.
 
-- `development-alpha` deploys to Vercel Preview and the GitHub `development` environment.
-- `staging` deploys to the Vercel custom `staging` target and the GitHub `staging` environment.
-- `main` deploys to the Vercel Production target and the protected GitHub `production` environment.
+- `development-alpha` and `staging` receive Vercel preview deployments.
+- `main` receives the Vercel production deployment.
 
-Before the first push, create the GitHub `development`, `staging`, and `production` environments. Add these environment secrets to each environment:
+In Vercel project settings:
 
-- `VERCEL_TOKEN`: a Vercel token with access to the project.
-- `VERCEL_ORG_ID`: the Vercel team or personal-account ID.
-- `VERCEL_PROJECT_ID`: the Vercel project ID.
+- Set **Production Branch** to `main`.
+- Assign `waqarahmed.xyz` to the production deployment.
+- Keep production publicly accessible by disabling Vercel Authentication for production deployments.
 
-Create the Vercel custom environment named `staging`, track the `staging` branch, and attach a staging domain such as `staging.waqarahmed.xyz`. Protect the GitHub `production` environment with required reviewers. GitHub will pause each `main` deployment until an authorized reviewer approves it.
+No Vercel secrets are required in GitHub Actions. GitHub Actions retains only the quality gate in `.github/workflows/ci.yml`.
 
 ## Release numbers
 
