@@ -89,11 +89,18 @@ export interface ResumeData {
   about: string;
   summary: string;
   avatarUrl: string;
+  githubUsername: string;
+  bookingUrl: string;
   personalWebsiteUrl: string;
   contact: {
     email: string;
     tel: string;
     social: SocialLink[];
+    discord: {
+      name: string;
+      description: string;
+      url: string;
+    };
   };
   education: EducationEntry[];
   work: WorkEntry[];
@@ -140,18 +147,25 @@ export const RESUME_DATA = {
   location: "Islamabad, Pakistan",
   locationLink: "https://www.google.com/maps/place/Islamabad",
   about:
-    "Full Stack Developer building scalable web apps, SaaS workflows, secure APIs, real-time products, and agentic AI solutions.",
+    "Senior Full Stack AI Engineer building scalable web apps, SaaS workflows, secure APIs, real-time products, and agentic AI solutions.",
   summary:
-    "Full Stack Developer with 3+ years of experience building React/Next.js products, Node/NestJS APIs, SaaS dashboards, real-time chat/video features, secure product workflows, and agentic AI solutions. Recent work includes scaling random video calling to 10K daily users, improving crash resistance, adding database indexes, building OTP/auth flows, shipping serverless coworking SaaS modules, revamping nonprofit web experiences, and exploring AI SDKs, tool-calling workflows, RAG, and automation systems. Strong in TypeScript, PostgreSQL/MongoDB, Prisma ORM, WebSocket/WebRTC, AWS-oriented delivery, security-minded API design, OpenAI API, LangChain, and agentic product architecture.",
+    "Senior Full Stack AI Engineer with 3+ years of experience building React/Next.js products, Node/NestJS APIs, SaaS dashboards, real-time chat/video features, secure product workflows, and agentic AI solutions. Recent work includes scaling random video calling to 10K daily users, improving crash resistance, adding database indexes, building OTP/auth flows, shipping serverless coworking SaaS modules, revamping nonprofit web experiences, and exploring AI SDKs, tool-calling workflows, RAG, and automation systems. Strong in TypeScript, PostgreSQL/MongoDB, Prisma ORM, WebSocket/WebRTC, AWS-oriented delivery, security-minded API design, OpenAI API, LangChain, and agentic product architecture.",
   avatarUrl:
     "https://avatars.githubusercontent.com/u/150153359?s=400&u=e098fda35355c395f842fed288c8bafc339e28fb&v=4",
+  githubUsername: "Waqar-ahmedkhan",
+  bookingUrl: "https://cal.com/waqar-ahmed",
   personalWebsiteUrl: "https://waqarahmed.xyz",
   contact: {
     email: "waqar@waqarahmed.xyz",
     tel: "+92-3700-057225",
+    discord: {
+      name: "Developer community",
+      description: "Connect with fellow developers",
+      url: "https://discord.gg/A6r2aNC5R",
+    },
     social: [
       social("GitHub", "https://github.com/Waqar-ahmedkhan"),
-      social("LinkedIn", "https://www.linkedin.com/in/waqar-ahmed-49416b237/"),
+      social("LinkedIn", "https://www.linkedin.com/in/waqarahmeddev/"),
       social("X", "https://x.com/Mr___WaQAR"),
       social("Medium", "https://medium.com/@waqarahmed44870"),
       social("Telegram", "https://t.me/waqarahmed"),
@@ -173,7 +187,7 @@ export const RESUME_DATA = {
     {
       company: "Geekinate",
       badges: ["Islamabad I-8", "Full-Time"],
-      title: "Full-Stack Developer",
+      title: "Senior Full Stack AI Engineer",
       start: "Aug 2025",
       end: "Present",
       description:

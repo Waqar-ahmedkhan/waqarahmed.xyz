@@ -1,6 +1,7 @@
 import { RESUME_DATA } from "@/data/resume-data";
 import { SimpleView } from "@/components/simple-view";
 import { HeaderSection } from "@/components/HeaderSection";
+import { GitHubContributionsSection } from "@/components/GitHubContributionsSection";
 import { AboutSection } from "@/components/AboutSection";
 import { KeyHighlightsSection } from "@/components/keyHightlightsSection";
 import { WorkExperienceSection } from "@/components/WorkExperienceSection";
@@ -47,6 +48,7 @@ export default function Page() {
       detailed={
         <section className="mx-auto w-full max-w-5xl space-y-6 text-foreground sm:space-y-8 md:space-y-10 print:bg-white print:text-black">
           <HeaderSection />
+          <GitHubContributionsSection />
           <AboutSection />
           <KeyHighlightsSection />
           <WorkExperienceSection />
