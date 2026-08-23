@@ -41,14 +41,4 @@ In Vercel project settings:
 
 No Vercel secrets are required in GitHub Actions. GitHub Actions retains only the quality gate in `.github/workflows/ci.yml`.
 
-## Release numbers
-
-`.github/workflows/release-please.yml` creates a release pull request whenever `main` changes. It updates `package.json`, `package-lock.json`, and `CHANGELOG.md`, then creates the Git tag and GitHub Release when that release pull request is merged.
-
-Use Conventional Commits for meaningful automatic release numbers:
-
-- `fix: correct mobile navigation` creates a patch release.
-- `feat: add project filtering` creates a minor release.
-- `feat!: redesign portfolio views` or a `BREAKING CHANGE:` footer creates a major release.
-
 The workflow in `.github/workflows/ci.yml` verifies every proposed and promoted change with a locked install, lint, TypeScript validation, and an optimized Next.js production build before it can be deployed.
