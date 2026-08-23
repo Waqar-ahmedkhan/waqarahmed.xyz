@@ -2,10 +2,10 @@ name: Deploy
 
 on:
   push:
-    tags: ["v*"]
+    branches: [development-alpha, staging, main]
 
 concurrency:
-  group: deploy-${{ github.ref }}
+  group: deploy-${{ github.ref_name }}
   cancel-in-progress: true
 
 permissions:
@@ -13,10 +13,15 @@ permissions:
 
 jobs:
   deploy:
-    name: Deploy production
+    name: Deploy ${{ github.ref_name }}
     runs-on: ubuntu-latest
     timeout-minutes: 20
-    environment: production
+    environment: ${{ github.ref_name == 'main' && 'production' || github.ref_name == 'staging' && 'staging' || 'development' }}
+    env:
+      VERCEL_TARGET: ${{ github.ref_name == 'main' && 'production' || github.ref_name == 'staging' && 'staging' || 'preview' }}
+      VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+      VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+      VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
 
     steps:
       - name: Check out source
@@ -31,20 +36,25 @@ jobs:
       - name: Install locked dependencies
         run: npm ci
 
+      - name: Validate Vercel deployment secrets
+        run: |
+          missing_secrets=""
+          for secret_name in VERCEL_TOKEN VERCEL_ORG_ID VERCEL_PROJECT_ID; do
+            if [ -z "${!secret_name}" ]; then
+              missing_secrets="$missing_secrets $secret_name"
+            fi
+          done
+
+          if [ -n "$missing_secrets" ]; then
+            echo "::error::Missing GitHub Environment secret(s):$missing_secrets"
+            exit 1
+          fi
+
       - name: Pull Vercel environment settings
-        run: npx vercel@latest pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
-        env:
-          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+        run: npx vercel@latest pull --yes --environment="$VERCEL_TARGET" --git-branch=${{ github.ref_name }} --token="$VERCEL_TOKEN"
 
       - name: Build deployment artifact
-        run: npx vercel@latest build --token=${{ secrets.VERCEL_TOKEN }}
-        env:
-          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+        run: npx vercel@latest build --target="$VERCEL_TARGET" --token="$VERCEL_TOKEN"
 
       - name: Deploy production
-        run: npx vercel@latest deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}
-        env:
-          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+        run: npx vercel@latest deploy --prebuilt --target="$VERCEL_TARGET" --token="$VERCEL_TOKEN"
