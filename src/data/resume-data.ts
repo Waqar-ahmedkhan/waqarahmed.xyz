@@ -113,7 +113,6 @@ export interface ResumeData {
   publications: unknown[];
 }
 
-
 const SOCIAL_ICONS = {
   GitHub: GitHubIcon,
   LinkedIn: LinkedInIcon,
@@ -126,7 +125,7 @@ const SOCIAL_ICONS = {
 
 function social<K extends keyof typeof SOCIAL_ICONS>(
   name: K,
-  url: string
+  url: string,
 ): { name: K; url: string; icon: (typeof SOCIAL_ICONS)[K] } {
   return { name, url, icon: SOCIAL_ICONS[name] };
 }
@@ -150,8 +149,7 @@ export const RESUME_DATA = {
     "Senior Full Stack AI Engineer building scalable web apps, SaaS workflows, secure APIs, real-time products, and agentic AI solutions.",
   summary:
     "Senior Full Stack AI Engineer with 3+ years of experience building React/Next.js products, Node/NestJS APIs, SaaS dashboards, real-time chat/video features, secure product workflows, and agentic AI solutions. Recent work includes scaling random video calling to 10K daily users, improving crash resistance, adding database indexes, building OTP/auth flows, shipping serverless coworking SaaS modules, revamping nonprofit web experiences, and exploring AI SDKs, tool-calling workflows, RAG, and automation systems. Strong in TypeScript, PostgreSQL/MongoDB, Prisma ORM, WebSocket/WebRTC, AWS-oriented delivery, security-minded API design, OpenAI API, LangChain, and agentic product architecture.",
-  avatarUrl:
-    "https://avatars.githubusercontent.com/u/150153359?s=400&u=e098fda35355c395f842fed288c8bafc339e28fb&v=4",
+  avatarUrl: "/profile/waqar-ahmed.webp",
   githubUsername: "Waqar-ahmedkhan",
   bookingUrl: "https://cal.com/waqar-ahmed",
   personalWebsiteUrl: "https://waqarahmed.xyz",
@@ -159,13 +157,13 @@ export const RESUME_DATA = {
     email: "waqar@waqarahmed.xyz",
     tel: "+92-3700-057225",
     discord: {
-      name: "Developer community",
-      description: "Connect with fellow developers",
+      name: "The Polymaths",
+      description: "AI engineers & researchers",
       url: "https://discord.gg/A6r2aNC5R",
     },
     social: [
       social("GitHub", "https://github.com/Waqar-ahmedkhan"),
-      social("LinkedIn", "https://www.linkedin.com/in/waqarahmeddev/"),
+      social("LinkedIn",   "https://www.linkedin.com/in/waqarahmeddev/"),
       social("X", "https://x.com/Mr___WaQAR"),
       social("Medium", "https://medium.com/@waqarahmed44870"),
       social("Telegram", "https://t.me/waqarahmed"),
@@ -196,7 +194,7 @@ export const RESUME_DATA = {
         "Owned full-stack web and mobile delivery across Space Manager, Shifa Foundation USA, Twinhub/coworking websites, Lilia web, and Lilia React Native app.",
         "Built Space Manager serverless SaaS modules for spaces, bookings, customers, dashboards, reports, and admin operations.",
         "Delivered React/Next.js pages, React Native screens, reusable UI components, backend integrations, and API-driven dashboard/admin workflows.",
-        "Collaborated with marketing on the Shifa Foundation USA revamp, translating content and brand requirements into responsive, launch-ready website sections."
+        "Collaborated with marketing on the Shifa Foundation USA revamp, translating content and brand requirements into responsive, launch-ready website sections.",
       ),
     },
     {
@@ -212,7 +210,7 @@ export const RESUME_DATA = {
         "Scaled Bondvia random video calling to 10K daily users by indexing database queries, optimizing APIs, debugging crash sources, and strengthening secure call flows.",
         "Improved Meetany reliability and user safety by adding security layers, safer call controls, content-safety/moderation paths, and deployment scaling support.",
         "Built Next-Chat OTP verification, authentication, onboarding APIs, and protected Secure Pulse product workflows.",
-        "Supported CI/CD and observability with Docker, GitHub Actions, GitLab CI/CD, ArgoCD, Helm, Prometheus, and Grafana."
+        "Supported CI/CD and observability with Docker, GitHub Actions, GitLab CI/CD, ArgoCD, Helm, Prometheus, and Grafana.",
       ),
     },
     {
@@ -227,7 +225,7 @@ export const RESUME_DATA = {
         "Built startup MVPs, dashboards, backend APIs, and internal tools using React.js, Next.js, Firebase, GraphQL, PostgreSQL, Express.js, and Node.js.",
         "Translated unclear founder requirements into user flows, product screens, data models, API contracts, and launch-ready MVP plans.",
         "Implemented JWT/OAuth authentication, containerized deployments, AWS, Kubernetes, CI/CD workflows, and product validation paths.",
-        "Mentored early-stage teams through ideation, MVP development, launch preparation, and hackathon execution."
+        "Mentored early-stage teams through ideation, MVP development, launch preparation, and hackathon execution.",
       ),
     },
     {
@@ -240,7 +238,7 @@ export const RESUME_DATA = {
         "Contributed part-time to full-stack and AI product direction for student founders, AI/ML ideas, and product delivery roadmaps.",
       bulletPoints: bullets(
         "Helped teams turn AI/ML ideas into feasible web app MVP plans, full-stack architecture directions, and product delivery roadmaps.",
-        "Guided practical model/API integration using HuggingFace, TensorFlow, MLflow, Docker, GitOps, and product-focused AI delivery practices."
+        "Guided practical model/API integration using HuggingFace, TensorFlow, MLflow, Docker, GitOps, and product-focused AI delivery practices.",
       ),
     },
   ] as WorkEntry[],
@@ -361,7 +359,7 @@ export const RESUME_DATA = {
       reference: [
         refLink(
           "LinkedIn Post",
-          "https://www.linkedin.com/posts/institute-of-computing-kust-277822373_fyp2025-techtalks2025-ioc-activity-7354022815928320000--FKO"
+          "https://www.linkedin.com/posts/institute-of-computing-kust-277822373_fyp2025-techtalks2025-ioc-activity-7354022815928320000--FKO",
         ),
       ],
     },
@@ -374,14 +372,45 @@ export const RESUME_DATA = {
     },
   ],
   keyHighlights: [
-    { title: "Experience", description: "3+ years building React/Next.js products, Node APIs, SaaS dashboards, and secure workflows" },
-    { title: "Teaching", description: "Mentored 100+ learners on AI, web, DevOps, and MVP building" },
-    { title: "Community", description: "Organized or contributed to 5+ hackathons and student innovation events" },
-    { title: "Certifications", description: "7 Coursera credentials across ML, AWS, DevOps, and data" },
-    { title: "Hackathons", description: "Built and mentored teams through MVP development and launch preparation" },
-    { title: "Open Source", description: "Public work across web apps, AI systems, backend APIs, and automation workflows" },
-    { title: "Innovation", description: "Best Project Poster Award for EduAI at Tech-Talks and Posters Symposium 2025" },
-    { title: "Startups", description: "Translated founder requirements into user flows, data models, API contracts, and MVP plans" },
+    {
+      title: "Experience",
+      description:
+        "3+ years building React/Next.js products, Node APIs, SaaS dashboards, and secure workflows",
+    },
+    {
+      title: "Teaching",
+      description:
+        "Mentored 100+ learners on AI, web, DevOps, and MVP building",
+    },
+    {
+      title: "Community",
+      description:
+        "Organized or contributed to 5+ hackathons and student innovation events",
+    },
+    {
+      title: "Certifications",
+      description: "7 Coursera credentials across ML, AWS, DevOps, and data",
+    },
+    {
+      title: "Hackathons",
+      description:
+        "Built and mentored teams through MVP development and launch preparation",
+    },
+    {
+      title: "Open Source",
+      description:
+        "Public work across web apps, AI systems, backend APIs, and automation workflows",
+    },
+    {
+      title: "Innovation",
+      description:
+        "Best Project Poster Award for EduAI at Tech-Talks and Posters Symposium 2025",
+    },
+    {
+      title: "Startups",
+      description:
+        "Translated founder requirements into user flows, data models, API contracts, and MVP plans",
+    },
   ],
   projects: [
     {
@@ -389,7 +418,10 @@ export const RESUME_DATA = {
       techStack: ["Blog", "AI Agents", "LangGraph", "Vector Search"],
       description:
         "A practical article explaining why agents are harder than chatbots: tool calling, retrieval, planning, memory, workflow execution, evaluation, cost, and reliability.",
-      link: link("Read article", "/blog/why-ai-agents-are-harder-than-chatbots"),
+      link: link(
+        "Read article",
+        "/blog/why-ai-agents-are-harder-than-chatbots",
+      ),
     },
     {
       title: "Real Full Stack AI Is More Than Prompting OpenAI",
@@ -412,14 +444,27 @@ export const RESUME_DATA = {
     },
     {
       title: "Space Manager: Coworking SaaS",
-      techStack: ["React", "Vite", "Redux", "Material UI", "Vercel", "Serverless"],
+      techStack: [
+        "React",
+        "Vite",
+        "Redux",
+        "Material UI",
+        "Vercel",
+        "Serverless",
+      ],
       description:
         "Built serverless coworking SaaS workflows for spaces, bookings, customers, dashboards, reports, and admin management.",
       link: link("spacemanager.vercel.app", "https://spacemanager.vercel.app/"),
     },
     {
       title: "Next-Chat: Communication Platform",
-      techStack: ["Node.js", "Express.js", "REST APIs", "Authentication", "OTP"],
+      techStack: [
+        "Node.js",
+        "Express.js",
+        "REST APIs",
+        "Authentication",
+        "OTP",
+      ],
       description:
         "Built backend APIs for OTP verification, authentication, onboarding, and deployment-ready communication workflows for international users.",
     },
@@ -437,7 +482,7 @@ export const RESUME_DATA = {
         "Built a recommendation model that turns learner progress signals into relevant content suggestions and adaptive learning support.",
       link: link(
         "github.com",
-        "https://github.com/Waqar-ahmedkhan/recommender_model_for_EduAI"
+        "https://github.com/Waqar-ahmedkhan/recommender_model_for_EduAI",
       ),
     },
     {
@@ -488,7 +533,10 @@ export const RESUME_DATA = {
       techStack: ["React", "Node.js", "MongoDB"],
       description:
         "Designed a startup operations dashboard that turns scattered founder updates into trackable metrics, records, and reporting insight.",
-      link: link("github.com", "https://github.com/waqarahmed/startup-dashboard"),
+      link: link(
+        "github.com",
+        "https://github.com/waqarahmed/startup-dashboard",
+      ),
     },
     {
       title: "Portfolio Website",
@@ -516,14 +564,20 @@ export const RESUME_DATA = {
       techStack: ["AWS Lambda", "DynamoDB", "React"],
       description:
         "Serverless productivity app using managed backend patterns to reduce operations and improve delivery speed.",
-      link: link("github.com", "https://github.com/waqarahmed/serverless-task-manager"),
+      link: link(
+        "github.com",
+        "https://github.com/waqarahmed/serverless-task-manager",
+      ),
     },
     {
       title: "Neural Network",
       techStack: ["Python", "NumPy", "TensorFlow"],
       description:
         "Machine learning project focused on understanding model behavior, training loops, and image classification.",
-      link: link("github.com", "https://github.com/waqarahmed/neural-network-scratch"),
+      link: link(
+        "github.com",
+        "https://github.com/waqarahmed/neural-network-scratch",
+      ),
     },
   ],
   volunteerExperience: [
@@ -540,7 +594,7 @@ export const RESUME_DATA = {
         "Co-organized South KP CodeFest 2024, focusing on real-world problem-solving with 30+ teams.",
         "Facilitated NIC Kohat AI Hackathon 2024, mentoring participants in ML model development.",
         "Organized KUST Innovation Hackathon 2025, promoting DevOps, web apps, and AI solutions.",
-        "Supported KIC CodeJam 2025, guiding 40+ students in competitive programming and full-stack development."
+        "Supported KIC CodeJam 2025, guiding 40+ students in competitive programming and full-stack development.",
       ),
     },
     {
@@ -554,7 +608,7 @@ export const RESUME_DATA = {
         "Conducted a seminar on 'AI and Its Impact in the Medical Field' for MLT students, highlighting AI's role in diagnostics, pathology, and personalized medicine.",
         "Led a seminar on 'AI and Its Use Cases' for matric and other students, introducing AI applications in education, healthcare, and local challenges in Pakistan.",
         "Demonstrated AI tools like Google's Teachable Machine to engage students in hands-on AI exploration.",
-        "Encouraged student participation in tech events and provided guidance on free AI learning resources."
+        "Encouraged student participation in tech events and provided guidance on free AI learning resources.",
       ),
     },
   ],

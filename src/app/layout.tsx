@@ -3,6 +3,8 @@ import "./globals.css";
 import Script from "next/script";
 import { ThemeProvider } from "@/components/theme-provider";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { FluidDotGrid } from "@/components/fluid-dot-grid";
+import { CustomCursor } from "@/components/custom-cursor";
 
 const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID;
 const LIGHT_THEME_COLOR = "#f8f8f8";
@@ -190,7 +192,6 @@ export default function RootLayout({
         <link rel="manifest" href="/favicons/site.webmanifest" />
         <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
         <meta name="format-detection" content="telephone=no" />
-        <link rel="preconnect" href="https://avatars.githubusercontent.com" />
         {GTM_ID ? (
           <>
             <link rel="preconnect" href="https://www.googletagmanager.com" />
@@ -229,7 +230,7 @@ export default function RootLayout({
                 "addressCountry": "Pakistan"
               },
               "email": "waqar@waqarahmed.xyz",
-              "image": "https://avatars.githubusercontent.com/u/150153359?s=400",
+              "image": "https://waqarahmed.xyz/profile/waqar-ahmed.webp",
               "worksFor": {
                 "@type": "Organization",
                 "name": "Geekinate"
@@ -261,8 +262,9 @@ export default function RootLayout({
           attribute="class"
           defaultTheme="system"
           enableSystem
-          disableTransitionOnChange
         >
+          <FluidDotGrid />
+          <CustomCursor />
           <div className="relative z-10">
             <div className="fixed top-4 right-4 z-50">
               <ThemeToggle />

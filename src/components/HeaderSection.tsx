@@ -45,17 +45,23 @@ export function HeaderSection() {
             </a>
           </p>
         </div>
-        <div className="order-1 shrink-0 rounded-xl border border-border/80 bg-background/50 p-1 sm:order-2">
-          <Image
-            alt={`${RESUME_DATA.name} profile photo`}
-            src={RESUME_DATA.avatarUrl}
-            width={112}
-            height={112}
-            sizes="(max-width: 640px) 96px, 112px"
-            quality={70}
-            className="h-24 w-24 rounded-lg object-cover sm:h-28 sm:w-28"
-            priority={false}
+        <div className="group relative order-1 shrink-0 sm:order-2">
+          {/* Dynamic ambient backlight aura */}
+          <div
+            className="absolute -inset-1.5 rounded-2xl bg-gradient-to-tr from-zinc-300 via-zinc-100 to-zinc-400 opacity-60 blur-sm transition-all duration-500 group-hover:opacity-90 dark:from-zinc-800 dark:via-zinc-700 dark:to-zinc-900 dark:opacity-50 dark:group-hover:opacity-80 dark:group-hover:blur-md"
+            aria-hidden="true"
           />
+          <div className="relative rounded-xl border border-border/80 bg-card/90 p-1 shadow-sm backdrop-blur-sm transition-all duration-300 group-hover:scale-[1.02] group-hover:border-foreground/30 dark:bg-zinc-950/80 dark:shadow-[0_0_22px_rgba(255,255,255,0.07)]">
+            <Image
+              alt={`${RESUME_DATA.name} profile photo`}
+              src={RESUME_DATA.avatarUrl}
+              width={112}
+              height={112}
+              unoptimized
+              className="h-24 w-24 rounded-lg object-cover sm:h-28 sm:w-28 transition-transform duration-300 group-hover:contrast-[1.02]"
+              priority={true}
+            />
+          </div>
         </div>
       </div>
 
