@@ -21,13 +21,13 @@ export const metadata: Metadata = {
   description:
     "A practical blog explaining why AI agents are harder than chatbots, covering tools, retrieval, planning, memory, workflow execution, evaluation, cost, and reliability.",
   alternates: {
-    canonical: "https://waqarahmed.xyz/blog/why-ai-agents-are-harder-than-chatbots",
+    canonical: "https://www.buildsbywaqar.xyz/blog/why-ai-agents-are-harder-than-chatbots",
   },
   openGraph: {
     title: "Why AI Agents Are Harder Than Chatbots",
     description:
       "Simple chatbots answer. AI agents plan, retrieve, use tools, remember context, and complete workflows, which makes them more powerful and harder to engineer.",
-    url: "https://waqarahmed.xyz/blog/why-ai-agents-are-harder-than-chatbots",
+    url: "https://www.buildsbywaqar.xyz/blog/why-ai-agents-are-harder-than-chatbots",
     type: "article",
     images: [
       {

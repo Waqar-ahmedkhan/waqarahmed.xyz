@@ -36,7 +36,7 @@ Vercel's Git integration owns deployments for this repository. Connect the GitHu
 In Vercel project settings:
 
 - Set **Production Branch** to `main`.
-- Assign `waqarahmed.xyz` to the production deployment.
+- Assign `buildsbywaqar.xyz` and `www.buildsbywaqar.xyz` to the production deployment.
 - Keep production publicly accessible by disabling Vercel Authentication for production deployments.
 
 No Vercel secrets are required in GitHub Actions. GitHub Actions retains only the quality gate in `.github/workflows/ci.yml`.

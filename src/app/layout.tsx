@@ -77,17 +77,17 @@ export const metadata: Metadata = {
     "AI Development",
     "Web Development",
   ],
-  authors: [{ name: "Waqar Ahmed", url: "https://waqarahmed.xyz" }],
+  authors: [{ name: "Waqar Ahmed", url: "https://www.buildsbywaqar.xyz" }],
   creator: "Waqar Ahmed",
   publisher: "Waqar Ahmed",
-  metadataBase: new URL("https://waqarahmed.xyz"),
+  metadataBase: new URL("https://www.buildsbywaqar.xyz"),
   alternates: {
-    canonical: "https://waqarahmed.xyz/",
+    canonical: "https://www.buildsbywaqar.xyz/",
   },
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://waqarahmed.xyz",
+    url: "https://www.buildsbywaqar.xyz",
     siteName: "Waqar Ahmed Portfolio",
     title: "Waqar Ahmed | Full Stack Developer",
     description:
@@ -214,7 +214,7 @@ export default function RootLayout({
               "name": "Waqar Ahmed",
               "jobTitle": "Full Stack Developer",
               "description": "Full Stack Developer with 3+ years of experience building React/Next.js products, Node/NestJS APIs, SaaS dashboards, real-time chat/video features, secure product workflows, AI SDK integrations, and agentic AI solutions.",
-              "url": "https://waqarahmed.xyz",
+              "url": "https://www.buildsbywaqar.xyz",
               "sameAs": [
                 "https://github.com/Waqar-ahmedkhan",
                 "https://www.linkedin.com/in/waqar-ahmed-49416b237/",
@@ -229,8 +229,8 @@ export default function RootLayout({
                 "addressLocality": "Islamabad",
                 "addressCountry": "Pakistan"
               },
-              "email": "waqar@waqarahmed.xyz",
-              "image": "https://waqarahmed.xyz/profile/waqar-ahmed.webp",
+              "email": "waqarahmed44870@gmail.com",
+              "image": "https://www.buildsbywaqar.xyz/profile/waqar-ahmed.webp",
               "worksFor": {
                 "@type": "Organization",
                 "name": "Geekinate"

@@ -152,9 +152,9 @@ export const RESUME_DATA = {
   avatarUrl: "/profile/waqar-ahmed.webp",
   githubUsername: "Waqar-ahmedkhan",
   bookingUrl: "https://cal.com/waqar-ahmed",
-  personalWebsiteUrl: "https://waqarahmed.xyz",
+  personalWebsiteUrl: "https://www.buildsbywaqar.xyz",
   contact: {
-    email: "waqar@waqarahmed.xyz",
+    email: "waqarahmed44870@gmail.com",
     tel: "+92-3700-057225",
     discord: {
       name: "The Polymaths",
@@ -543,7 +543,7 @@ export const RESUME_DATA = {
       techStack: ["Next.js", "TypeScript", "Tailwind CSS"],
       description:
         "Developer brand platform built to communicate engineering judgment, project ownership, and proof of work.",
-      link: link("waqarahmed.xyz", "https://waqarahmed.xyz"),
+      link: link("buildsbywaqar.xyz", "https://www.buildsbywaqar.xyz"),
     },
     {
       title: "MLOps Pipeline",

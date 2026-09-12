@@ -9,13 +9,13 @@ export const metadata: Metadata = {
   description:
     "A complete guide explaining why real Full Stack AI includes UI, backend, databases, auth, vector search, tool calling, cost control, evaluation, and deployment.",
   alternates: {
-    canonical: "https://waqarahmed.xyz/blog/full-stack-ai-development",
+    canonical: "https://www.buildsbywaqar.xyz/blog/full-stack-ai-development",
   },
   openGraph: {
     title: "Real Full Stack AI Is More Than Prompting OpenAI",
     description:
       "Why production AI products need UI, backend orchestration, databases, auth, retrieval, tools, cost controls, evaluation, and deployment.",
-    url: "https://waqarahmed.xyz/blog/full-stack-ai-development",
+    url: "https://www.buildsbywaqar.xyz/blog/full-stack-ai-development",
     type: "article",
     images: [
       {
