@@ -159,7 +159,7 @@ export const RESUME_DATA = {
     discord: {
       name: "The Polymaths",
       description: "AI engineers & researchers",
-      url: "https://discord.gg/A6r2aNC5R",
+      url: "https://discord.gg/PJ9WSPPwPE",
     },
     social: [
       social("GitHub", "https://github.com/Waqar-ahmedkhan"),
