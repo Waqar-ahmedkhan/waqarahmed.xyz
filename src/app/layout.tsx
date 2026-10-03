@@ -3,8 +3,10 @@ import "./globals.css";
 import Script from "next/script";
 import { ThemeProvider } from "@/components/theme-provider";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { IndustryClock } from "@/components/industry-clock";
 import { FluidDotGrid } from "@/components/fluid-dot-grid";
 import { CustomCursor } from "@/components/custom-cursor";
+import { RESUME_DATA } from "@/data/resume-data";
 
 const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID;
 const LIGHT_THEME_COLOR = "#f8f8f8";
@@ -38,14 +40,22 @@ const themeBootScript = `
 
 export const metadata: Metadata = {
   title: {
-    default: "Waqar Ahmed | Full Stack Developer",
+    default: "Waqar Ahmed | Full Stack AI Engineer",
     template: "%s | Waqar Ahmed Portfolio",
   },
   description:
-    "Waqar Ahmed is a Full Stack Developer with 3+ years of experience building React/Next.js products, Node/NestJS APIs, SaaS dashboards, real-time chat/video features, secure product workflows, and agentic AI solutions.",
+    "Waqar Ahmed is a Full Stack AI Engineer and AI Researcher with 4+ years of experience, 120+ research papers read, and a focus on systems, customers, and products.",
   keywords: [
     "Waqar Ahmed",
     "Full Stack Developer",
+    "Full Stack AI Engineer",
+    "AI Engineer",
+    "AI Researcher",
+    "Agentic AI Engineer",
+    "PashtoGPT",
+    "Low-Resource Language AI",
+    "QLoRA",
+    "LLM Evaluation",
     "Secure API Developer",
     "Real-Time Video",
     "Startup MVP Developer",
@@ -89,9 +99,9 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://www.buildsbywaqar.xyz",
     siteName: "Waqar Ahmed Portfolio",
-    title: "Waqar Ahmed | Full Stack Developer",
+    title: "Waqar Ahmed | Full Stack AI Engineer",
     description:
-      "Explore Waqar Ahmed's portfolio of scalable web apps, SaaS dashboards, real-time chat/video products, secure backend APIs, nonprofit revamps, AI SDK experiments, and agentic AI solutions.",
+      "Explore 4+ years of AI and full-stack engineering: PashtoGPT language research, agentic HR workflows, secure SaaS products, and scalable real-time systems.",
     images: [
       {
         url: "/image.png",
@@ -106,9 +116,9 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     site: "@Mr___WaQAR",
     creator: "@Mr___WaQAR",
-    title: "Waqar Ahmed | Full Stack Developer",
+    title: "Waqar Ahmed | Full Stack AI Engineer",
     description:
-      "Full Stack Developer solving real product, startup, business, nonprofit, and operations problems with web apps, backend systems, SaaS products, secure APIs, and agentic AI workflows.",
+      "Full Stack AI Engineer with 4+ years of experience in AI and agentic workflows. AI-powered products, workflows with human oversight, and PashtoGPT language research.",
     images: ["/image.png"],
   },
   robots: {
@@ -212,8 +222,8 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "Person",
               "name": "Waqar Ahmed",
-              "jobTitle": "Full Stack Developer",
-              "description": "Full Stack Developer with 3+ years of experience building React/Next.js products, Node/NestJS APIs, SaaS dashboards, real-time chat/video features, secure product workflows, AI SDK integrations, and agentic AI solutions.",
+              "jobTitle": "Senior Full Stack AI Engineer",
+              "description": ${JSON.stringify(RESUME_DATA.summary)},
               "url": "https://www.buildsbywaqar.xyz",
               "sameAs": [
                 "https://github.com/Waqar-ahmedkhan",
@@ -266,10 +276,11 @@ export default function RootLayout({
           <FluidDotGrid />
           <CustomCursor />
           <div className="relative z-10">
-            <div className="fixed top-4 right-4 z-50">
+            <div className="fixed top-4 right-4 z-50 flex items-stretch overflow-hidden rounded-sm border border-border/80 bg-background/95 backdrop-blur-md print:hidden">
+              <IndustryClock startDate={RESUME_DATA.industryStartDate} />
               <ThemeToggle />
             </div>
-            <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
+            <div className="mx-auto w-full max-w-6xl px-4 pt-20 sm:px-6 lg:px-8 print:pt-0">
               {children}
             </div>
           </div>

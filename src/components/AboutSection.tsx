@@ -7,11 +7,14 @@ interface AboutSectionProps {
 
 export function AboutSection({ animationDelay = "0.1s" }: AboutSectionProps) {
   const focusAreas = [
-    "Full-stack products",
-    "SaaS dashboards",
-    "Secure APIs",
-    "Agentic AI solutions",
-    "AI SDKs",
+    "AI research",
+    "Systems architecture",
+    "Customer & product understanding",
+    "AI-powered products",
+    "Agentic workflows",
+    "Human-in-the-loop automation",
+    "Pashto language AI",
+    "Secure SaaS systems",
   ];
 
   return (

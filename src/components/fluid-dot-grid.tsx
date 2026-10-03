@@ -9,11 +9,11 @@ interface Dot {
   y: number;
 }
 
-const SPACING = 28;
-const DOT_RADIUS = 1.2;
-const POINTER_RADIUS = 170;
-const POINTER_FADE_DURATION = 650;
-const RIPPLE_DURATION = 1200;
+const SPACING = 32;
+const DOT_RADIUS = 1;
+const POINTER_RADIUS = 185;
+const POINTER_FADE_DURATION = 900;
+const RIPPLE_DURATION = 1400;
 
 export function FluidDotGrid() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -25,7 +25,7 @@ export function FluidDotGrid() {
 
     const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
     const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)");
-    const pointer = { x: 0, y: 0, vx: 0, vy: 0, updatedAt: -Infinity };
+    const pointer = { x: 0, y: 0, targetX: 0, targetY: 0, vx: 0, vy: 0, updatedAt: -Infinity };
     let ripples: { x: number; y: number; startedAt: number }[] = [];
     let dots: Dot[] = [];
     let frame: number | null = null;
@@ -41,7 +41,10 @@ export function FluidDotGrid() {
 
       // Exponential smoothing keeps the same response at 60 Hz and 120 Hz.
       const elapsed = previousTime ? Math.min(time - previousTime, 50) : 16.67;
-      const blend = 1 - Math.exp(-elapsed / 95);
+      const blend = 1 - Math.exp(-elapsed / 120);
+      const pointerBlend = 1 - Math.exp(-elapsed / 55);
+      pointer.x += (pointer.targetX - pointer.x) * pointerBlend;
+      pointer.y += (pointer.targetY - pointer.y) * pointerBlend;
       previousTime = time;
       const interactive = canAnimate();
       const pointerAge = Math.max(0, time - pointer.updatedAt - 80);
@@ -69,14 +72,14 @@ export function FluidDotGrid() {
             const distance = Math.sqrt(distanceSquared);
             // A smooth radial envelope avoids a sharp edge or a jump at the center.
             const envelope = Math.sin(Math.PI * distance / POINTER_RADIUS) ** 2;
-            const displacement = 16 * envelope * pointerStrength;
+            const displacement = 13 * envelope * pointerStrength;
             targetX += dx / distance * displacement;
             targetY += dy / distance * displacement;
           }
           if (distanceSquared < POINTER_RADIUS * POINTER_RADIUS) {
             const wakeEnvelope = (1 - distanceSquared / (POINTER_RADIUS * POINTER_RADIUS)) ** 2;
-            targetX += pointer.vx * 0.035 * wakeEnvelope * pointerStrength;
-            targetY += pointer.vy * 0.035 * wakeEnvelope * pointerStrength;
+            targetX += pointer.vx * 0.022 * wakeEnvelope * pointerStrength;
+            targetY += pointer.vy * 0.022 * wakeEnvelope * pointerStrength;
           }
         }
 
@@ -88,7 +91,7 @@ export function FluidDotGrid() {
           const waveDistance = Math.abs(distance - progress * 480);
           if (distance > 0 && waveDistance < 65) {
             const envelope = (1 + Math.cos(Math.PI * waveDistance / 65)) / 2;
-            const displacement = 12 * envelope * Math.sin(Math.PI * progress) ** 2;
+            const displacement = 9 * envelope * Math.sin(Math.PI * progress) ** 2;
             targetX += dx / distance * displacement;
             targetY += dy / distance * displacement;
           }
@@ -156,22 +159,28 @@ export function FluidDotGrid() {
       const elapsed = now - pointer.updatedAt;
       if (elapsed > 0 && elapsed < 100) {
         const blend = 1 - Math.exp(-elapsed / 40);
-        const vx = Math.max(-700, Math.min(700, (event.clientX - pointer.x) / elapsed * 1000));
-        const vy = Math.max(-700, Math.min(700, (event.clientY - pointer.y) / elapsed * 1000));
+        const vx = Math.max(-700, Math.min(700, (event.clientX - pointer.targetX) / elapsed * 1000));
+        const vy = Math.max(-700, Math.min(700, (event.clientY - pointer.targetY) / elapsed * 1000));
         pointer.vx += (vx - pointer.vx) * blend;
         pointer.vy += (vy - pointer.vy) * blend;
       } else {
         pointer.vx = 0;
         pointer.vy = 0;
       }
-      pointer.x = event.clientX;
-      pointer.y = event.clientY;
+      if (!Number.isFinite(pointer.updatedAt)) {
+        pointer.x = event.clientX;
+        pointer.y = event.clientY;
+      }
+      pointer.targetX = event.clientX;
+      pointer.targetY = event.clientY;
       pointer.updatedAt = now;
       wake();
     };
 
     const onDown = (event: PointerEvent) => {
       if (!canAnimate() || event.pointerType !== "mouse" || event.button !== 0) return;
+      const target = event.target instanceof Element ? event.target : null;
+      if (target?.closest('a, button, input, textarea, select, summary, [role="button"], [contenteditable]')) return;
       // Preserve the previous wave without allowing unbounded work on rapid clicks.
       ripples = [...ripples.slice(-2), { x: event.clientX, y: event.clientY, startedAt: performance.now() }];
       wake();
@@ -203,6 +212,7 @@ export function FluidDotGrid() {
     window.addEventListener("pointerdown", onDown, { passive: true });
     document.documentElement.addEventListener("pointerleave", resetInteraction);
     window.addEventListener("blur", resetInteraction);
+    window.addEventListener("scroll", resetInteraction, { passive: true, capture: true });
     window.addEventListener("resize", onResize, { passive: true });
     document.addEventListener("visibilitychange", onVisibility);
     motion.addEventListener("change", resetInteraction);
@@ -215,6 +225,7 @@ export function FluidDotGrid() {
       window.removeEventListener("pointerdown", onDown);
       document.documentElement.removeEventListener("pointerleave", resetInteraction);
       window.removeEventListener("blur", resetInteraction);
+      window.removeEventListener("scroll", resetInteraction, true);
       window.removeEventListener("resize", onResize);
       document.removeEventListener("visibilitychange", onVisibility);
       motion.removeEventListener("change", resetInteraction);

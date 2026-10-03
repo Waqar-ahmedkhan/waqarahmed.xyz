@@ -24,7 +24,7 @@ export function HeaderSection() {
 
   return (
     <div className="animate-fade-in-up flex flex-col gap-4 rounded-lg border border-border/80 bg-card/70 p-4 transition-colors duration-300 hover:border-foreground/15 sm:gap-5 sm:p-5 md:p-6">
-      <div className="flex flex-col items-center gap-4 sm:flex-row sm:items-start sm:gap-6">
+      <div className="grid grid-cols-1 items-start gap-5 sm:grid-cols-[1fr_auto] sm:gap-6">
         <div className="order-2 flex-1 space-y-2 sm:order-1 sm:space-y-3">
           <h1 className="font-sans text-xl font-semibold text-foreground sm:text-2xl md:text-3xl">
             {RESUME_DATA.name}
@@ -45,7 +45,7 @@ export function HeaderSection() {
             </a>
           </p>
         </div>
-        <div className="group relative order-1 shrink-0 sm:order-2">
+        <div className="group relative order-1 justify-self-center shrink-0 sm:order-2 sm:col-start-2 sm:row-start-1 sm:justify-self-end">
           {/* Dynamic ambient backlight aura */}
           <div
             className="absolute -inset-1.5 rounded-2xl bg-gradient-to-tr from-zinc-300 via-zinc-100 to-zinc-400 opacity-60 blur-sm transition-all duration-500 group-hover:opacity-90 dark:from-zinc-800 dark:via-zinc-700 dark:to-zinc-900 dark:opacity-50 dark:group-hover:opacity-80 dark:group-hover:blur-md"

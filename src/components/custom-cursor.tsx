@@ -21,6 +21,7 @@ export function CustomCursor() {
     const stop = () => {
       visible = false;
       cursor.dataset.visible = "false";
+      cursor.dataset.pressed = "false";
       if (frame !== null) cancelAnimationFrame(frame);
       frame = null;
       previousTime = 0;
@@ -30,7 +31,7 @@ export function CustomCursor() {
       frame = null;
       const elapsed = previousTime ? Math.min(time - previousTime, 50) : 16.67;
       previousTime = time;
-      const blend = 1 - Math.exp(-elapsed / 45);
+      const blend = 1 - Math.exp(-elapsed / 32);
       x += (targetX - x) * blend;
       y += (targetY - y) * blend;
       const settled = Math.abs(targetX - x) + Math.abs(targetY - y) < 0.1;
@@ -66,11 +67,22 @@ export function CustomCursor() {
       }
     };
 
+    const onDown = (event: PointerEvent) => {
+      if (visible && event.pointerType === "mouse" && event.button === 0) cursor.dataset.pressed = "true";
+    };
+
+    const onUp = () => {
+      cursor.dataset.pressed = "false";
+    };
+
     const onKey = (event: KeyboardEvent) => {
       if (event.key === "Tab" || event.key === "Escape") stop();
     };
 
     window.addEventListener("pointermove", onMove, { passive: true });
+    window.addEventListener("pointerdown", onDown, { passive: true });
+    window.addEventListener("pointerup", onUp, { passive: true });
+    window.addEventListener("pointercancel", stop);
     window.addEventListener("blur", stop);
     window.addEventListener("scroll", stop, { passive: true, capture: true });
     window.addEventListener("keydown", onKey);
@@ -81,6 +93,9 @@ export function CustomCursor() {
     return () => {
       stop();
       window.removeEventListener("pointermove", onMove);
+      window.removeEventListener("pointerdown", onDown);
+      window.removeEventListener("pointerup", onUp);
+      window.removeEventListener("pointercancel", stop);
       window.removeEventListener("blur", stop);
       window.removeEventListener("scroll", stop, true);
       window.removeEventListener("keydown", onKey);

@@ -31,7 +31,7 @@ export function SimpleView() {
       <div className="flex min-h-[100svh] flex-col items-center justify-center bg-transparent px-4 py-20 text-foreground sm:px-6">
         <div className="w-full max-w-2xl text-center">
           <div className="animate-text-reveal-1 mx-auto mb-5 inline-flex rounded-full border border-border/80 bg-card/80 px-4 py-1.5 text-[11px] font-medium text-muted-foreground sm:text-xs">
-            Full Stack / SaaS / Secure APIs
+            Full Stack AI Engineer / Agentic AI / 4+ Years
           </div>
           <h1 className="animate-text-reveal-1 mb-4 text-4xl font-semibold sm:text-5xl transition-colors duration-300">
             {RESUME_DATA.name}

@@ -92,6 +92,7 @@ export interface ResumeData {
   githubUsername: string;
   bookingUrl: string;
   personalWebsiteUrl: string;
+  industryStartDate: string;
   contact: {
     email: string;
     tel: string;
@@ -146,13 +147,14 @@ export const RESUME_DATA = {
   location: "Islamabad, Pakistan",
   locationLink: "https://www.google.com/maps/place/Islamabad",
   about:
-    "Senior Full Stack AI Engineer building scalable web apps, SaaS workflows, secure APIs, real-time products, and agentic AI solutions.",
+    "Senior Full Stack AI Engineer & AI Researcher with 4+ years of experience building AI-powered products and agentic workflows, grounded in systems thinking and customer needs.",
   summary:
-    "Senior Full Stack AI Engineer with 3+ years of experience building React/Next.js products, Node/NestJS APIs, SaaS dashboards, real-time chat/video features, secure product workflows, and agentic AI solutions. Recent work includes scaling random video calling to 10K daily users, improving crash resistance, adding database indexes, building OTP/auth flows, shipping serverless coworking SaaS modules, revamping nonprofit web experiences, and exploring AI SDKs, tool-calling workflows, RAG, and automation systems. Strong in TypeScript, PostgreSQL/MongoDB, Prisma ORM, WebSocket/WebRTC, AWS-oriented delivery, security-minded API design, OpenAI API, LangChain, and agentic product architecture.",
+    "Senior Full Stack AI Engineer and AI Researcher with 4+ years of experience turning customer needs into AI-powered products and secure full-stack systems. I have read 120+ research papers to deepen my understanding of AI and inform engineering decisions. My approach connects a detailed understanding of system architecture with customer workflows, product goals, and operational constraints. Work spans agentic HR automation with human approval checkpoints, SaaS products, and real-time video calling scaled to 10K daily users. PashtoGPT brings a research focus to low-resource language AI through Unicode-safe data preparation, Qwen3 instruction-tuning experiments, and held-out evaluation. My engineering focus is retrieval-augmented generation, tool-calling workflows, context engineering, and human oversight, with reliability, latency, and cost treated as product requirements. I connect React/Next.js interfaces, Node/NestJS APIs, and PostgreSQL/MongoDB data systems using TypeScript, Python, OpenAI API, and LangChain.",
   avatarUrl: "/profile/waqar-ahmed.webp",
   githubUsername: "Waqar-ahmedkhan",
   bookingUrl: "https://cal.com/waqar-ahmed",
   personalWebsiteUrl: "https://www.buildsbywaqar.xyz",
+  industryStartDate: "2021-01-01T00:00:00Z",
   contact: {
     email: "waqarahmed44870@gmail.com",
     tel: "+92-3700-057225",
@@ -185,12 +187,13 @@ export const RESUME_DATA = {
     {
       company: "Geekinate",
       badges: ["Islamabad I-8", "Full-Time"],
-      title: "Senior Full Stack AI Engineer",
+      title: "Senior AI Engineer — Agentic AI & Forward Deployed Engineering (FDE)",
       start: "Aug 2025",
       end: "Present",
       description:
-        "Current full-stack role focused on client product delivery, SaaS modules, responsive web experiences, React Native screens, and API-driven workflows.",
+        "Senior AI engineering focused on agentic HR automation and forward deployed product delivery. Translating client requirements into integrated AI-assisted workflows, secure SaaS modules, and web/mobile experiences, with human approval checkpoints for HR operations.",
       bulletPoints: bullets(
+        "Contributed to a stealth agentic HR automation project spanning recruitment and employee operations, with HR approval checkpoints.",
         "Owned full-stack web and mobile delivery across Space Manager, Shifa Foundation USA, Twinhub/coworking websites, Lilia web, and Lilia React Native app.",
         "Built Space Manager serverless SaaS modules for spaces, bookings, customers, dashboards, reports, and admin operations.",
         "Delivered React/Next.js pages, React Native screens, reusable UI components, backend integrations, and API-driven dashboard/admin workflows.",
@@ -200,7 +203,7 @@ export const RESUME_DATA = {
     {
       company: "Viral Mobitech Private Limited",
       badges: ["Islamabad", "Project-based"],
-      title: "Full-Stack Developer",
+      title: "Full Stack AI Engineer",
       start: "Dec 2024",
       end: "Dec 2025",
       description:
@@ -216,7 +219,7 @@ export const RESUME_DATA = {
     {
       company: "National Incubation Center (NIC), Kohat",
       badges: ["Founder", "Incubated"],
-      title: "Full-Stack Developer / Startup Technical Mentor",
+      title: "AI Engineer / Startup Technical Mentor",
       start: "Jan 2023",
       end: "Dec 2024",
       description:
@@ -231,7 +234,7 @@ export const RESUME_DATA = {
     {
       company: "KUST Incubation Center (KIC), Pakistan",
       badges: ["Engagement-Based"],
-      title: "Technology & Research Contributor",
+      title: "AI Engineer — Research Contributor",
       start: "Jun 2023",
       end: "Jun 2025",
       description:
@@ -243,9 +246,17 @@ export const RESUME_DATA = {
     },
   ] as WorkEntry[],
   skills: [
+    "OpenAI API",
+    "LangChain",
+    "RAG",
+    "Python",
+    "Qwen3",
+    "QLoRA",
+    "Instruction tuning",
+    "LLM evaluation",
+    "Unicode-safe data preparation",
     "TypeScript",
     "JavaScript",
-    "Python",
     "SQL",
     "React.js",
     "Next.js",
@@ -284,9 +295,6 @@ export const RESUME_DATA = {
     "ArgoCD",
     "Prometheus",
     "Grafana",
-    "OpenAI API",
-    "LangChain",
-    "RAG",
     "Pinecone",
     "HuggingFace",
     "n8n",
@@ -373,9 +381,19 @@ export const RESUME_DATA = {
   ],
   keyHighlights: [
     {
+      title: "Research",
+      description:
+        "Read 120+ research papers to deepen AI understanding and inform practical engineering decisions",
+    },
+    {
+      title: "Systems & Product",
+      description:
+        "Connect system architecture, customer workflows, and product goals to practical engineering decisions",
+    },
+    {
       title: "Experience",
       description:
-        "3+ years building React/Next.js products, Node APIs, SaaS dashboards, and secure workflows",
+        "4+ years across AI engineering, agentic workflows, full-stack products, and secure SaaS systems",
     },
     {
       title: "Teaching",
@@ -399,7 +417,7 @@ export const RESUME_DATA = {
     {
       title: "Open Source",
       description:
-        "Public work across web apps, AI systems, backend APIs, and automation workflows",
+        "PashtoGPT: open-source Pashto language AI experiments, data auditing, and evaluation tooling",
     },
     {
       title: "Innovation",
@@ -413,6 +431,19 @@ export const RESUME_DATA = {
     },
   ],
   projects: [
+    {
+      title: "PashtoGPT: Low-Resource Language AI Research",
+      techStack: ["Python", "Qwen3", "QLoRA", "Instruction Tuning", "LLM Evaluation", "RAG"],
+      description:
+        "Open-source research toolkit for adapting language models to Pashto: source auditing, Unicode-safe data preparation, Qwen3-1.7B QLoRA experiments, Kaggle training workflows, and held-out evaluation with Belebele and native-speaker review. Includes retrieval and verifier diagnostics. Research stage: no released trained weights or measured quality gains yet.",
+      link: link("View research on GitHub", "https://github.com/Waqar-ahmedkhan/Pashto_GPT"),
+    },
+    {
+      title: "Agentic HR Automation",
+      techStack: ["Agentic AI", "HR Workflows", "Human-in-the-Loop", "Full Stack"],
+      description:
+        "Contributed to a stealth HR automation project at Geekinate spanning recruitment and employee operations, with HR approval checkpoints. Focused on connecting AI-assisted workflows to practical product delivery while keeping people involved in operational decisions.",
+    },
     {
       title: "Why AI Agents Are Harder Than Chatbots",
       techStack: ["Blog", "AI Agents", "LangGraph", "Vector Search"],

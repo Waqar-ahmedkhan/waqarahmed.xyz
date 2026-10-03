@@ -26,7 +26,7 @@ export function ThemeToggle() {
       disabled={!mounted}
       aria-label={label}
       title={label}
-      className="theme-toggle relative flex size-11 items-center justify-center rounded-xl border border-border bg-background/95 text-foreground shadow-sm disabled:opacity-50"
+      className="theme-toggle relative flex w-11 shrink-0 items-center justify-center border-l border-border/80 text-foreground disabled:opacity-50"
     >
       <Sun aria-hidden="true" className={`theme-icon ${isDark ? "theme-icon-visible" : "theme-icon-hidden"}`} />
       <Moon aria-hidden="true" className={`theme-icon ${isDark ? "theme-icon-hidden" : "theme-icon-visible"}`} />
