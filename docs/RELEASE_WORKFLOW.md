@@ -39,6 +39,12 @@ In Vercel project settings:
 - Assign `buildsbywaqar.xyz` and `www.buildsbywaqar.xyz` to the production deployment.
 - Keep production publicly accessible by disabling Vercel Authentication for production deployments.
 
+Production branch tracking must use `main`, even if GitHub's default branch is `master`.
+Every new commit pushed to `main`, including a pushed rebase or merged pull request, triggers a production deployment.
+A local rebase without a push does not trigger a deployment.
+After promotion, verify the Vercel deployment is **Production** and **Ready**, matches the latest `main` commit,
+and serves the updated content on `https://www.buildsbywaqar.xyz`.
+
 No Vercel secrets are required in GitHub Actions. GitHub Actions retains only the quality gate in `.github/workflows/ci.yml`.
 
 The workflow in `.github/workflows/ci.yml` verifies every proposed and promoted change with a locked install, lint, TypeScript validation, and an optimized Next.js production build before it can be deployed.
