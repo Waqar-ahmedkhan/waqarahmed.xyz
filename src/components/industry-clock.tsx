@@ -40,13 +40,28 @@ export function IndustryClock({ startDate }: IndustryClockProps) {
   const [now, setNow] = useState<number | null>(null);
 
   useEffect(() => {
+    const desktop = window.matchMedia('(min-width: 768px)');
+    let interval: ReturnType<typeof setInterval> | undefined;
+    let initialTick: ReturnType<typeof setTimeout> | undefined;
     const tick = () => setNow(Date.now());
-    const initialTick = window.setTimeout(tick, 0);
-    const interval = window.setInterval(tick, SECOND);
+
+    const sync = () => {
+      clearInterval(interval);
+      clearTimeout(initialTick);
+      if (!desktop.matches || document.hidden) return;
+      initialTick = setTimeout(tick, 0);
+      interval = setInterval(tick, SECOND);
+    };
+
+    sync();
+    desktop.addEventListener('change', sync);
+    document.addEventListener('visibilitychange', sync);
 
     return () => {
-      window.clearTimeout(initialTick);
-      window.clearInterval(interval);
+      clearInterval(interval);
+      clearTimeout(initialTick);
+      desktop.removeEventListener('change', sync);
+      document.removeEventListener('visibilitychange', sync);
     };
   }, []);
 
@@ -58,43 +73,56 @@ export function IndustryClock({ startDate }: IndustryClockProps) {
     : `Industry experience since ${since}`;
 
   const year = new Date(startDate).getUTCFullYear();
-  const units = [
-    { label: 'Years', value: experience?.years },
-    { label: 'Months', value: experience?.months },
-    { label: 'Days', value: experience?.days },
+  const seconds = experience?.seconds ?? 0;
+  const minutes = (experience?.minutes ?? 0) + seconds / 60;
+  const hours = ((experience?.hours ?? 0) % 12) + minutes / 60;
+  const hands = [
+    { angle: hours * 30, end: 23, width: 2.5, className: 'text-foreground' },
+    { angle: minutes * 6, end: 16, width: 1.5, className: 'text-foreground' },
+    { angle: seconds * 6, end: 12, width: 1, className: 'text-amber-700 dark:text-amber-400' },
   ];
 
   return (
     <div
-      className='w-[244px] px-3 py-2.5 text-left'
+      className='group relative hidden items-center gap-2.5 px-3 py-2 outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring md:flex'
       role='group'
-      aria-label={description}
-      title={description}
+      tabIndex={0}
+      aria-label={`${description}. Elapsed time ${time}.`}
     >
-      <div className='flex items-center justify-between gap-3 text-[9px] text-muted-foreground'>
-        <span className='font-medium'>Industry experience</span>
-        <span>Since {year}</span>
+      <svg viewBox='0 0 64 64' className='size-12 shrink-0' aria-hidden='true'>
+        <circle cx='32' cy='32' r='29' className='fill-card stroke-border' />
+        {Array.from({ length: 12 }, (_, index) => (
+          <line
+            key={index}
+            x1='32' y1='6' x2='32' y2={index % 3 === 0 ? 11 : 8}
+            transform={`rotate(${index * 30} 32 32)`}
+            className='stroke-muted-foreground/60'
+            strokeWidth={index % 3 === 0 ? 1.5 : 1}
+          />
+        ))}
+        {hands.map((hand, index) => (
+          <line
+            key={index}
+            x1='32' y1='35' x2='32' y2={hand.end}
+            transform={`rotate(${hand.angle} 32 32)`}
+            className={hand.className}
+            stroke='currentColor'
+            strokeWidth={hand.width}
+            strokeLinecap='round'
+          />
+        ))}
+        <circle cx='32' cy='32' r='2' className='fill-foreground' />
+      </svg>
+      <div className='text-left'>
+        <span className='block text-[10px] font-medium text-foreground'>Building since {year}</span>
+        <span className='mt-0.5 block text-[9px] text-muted-foreground'>Industry experience</span>
       </div>
-      <div className='mt-2 flex items-center justify-between gap-3'>
-        <div className='flex gap-4'>
-          {units.map(({ label, value }) => (
-            <div key={label} className='text-center'>
-              <span className='block font-mono text-[19px] font-medium leading-5 tabular-nums tracking-tight text-foreground'>
-                {value === undefined ? '--' : pad(value)}
-              </span>
-              <span className='mt-1 block text-[8px] text-muted-foreground'>{label}</span>
-            </div>
-          ))}
-        </div>
-        <div className='text-right'>
-          <span className='block font-mono text-[12px] leading-5 tabular-nums text-amber-700 dark:text-amber-400/90'>
-            {time}
-          </span>
-          <span className='mt-1 flex items-center justify-end gap-1 text-[8px] text-muted-foreground'>
-            <span className='size-1 rounded-full bg-amber-600 dark:bg-amber-400/80' aria-hidden='true' />
-            Live
-          </span>
-        </div>
+      <div
+        className='pointer-events-none absolute right-0 top-full mt-2 w-64 rounded-lg border border-border bg-background p-3 text-xs leading-5 text-muted-foreground opacity-0 shadow-lg transition-opacity group-hover:opacity-100 group-focus-visible:opacity-100'
+        aria-hidden='true'
+      >
+        <p className='font-medium text-foreground'>{description}</p>
+        <p className='mt-1 font-mono tabular-nums'>Elapsed time · {time}</p>
       </div>
     </div>
   );

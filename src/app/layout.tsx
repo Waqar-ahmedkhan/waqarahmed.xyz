@@ -276,7 +276,7 @@ export default function RootLayout({
           <FluidDotGrid />
           <CustomCursor />
           <div className="relative z-10">
-            <div className="fixed top-4 right-4 z-50 flex items-stretch overflow-hidden rounded-sm border border-border/80 bg-background/95 backdrop-blur-md print:hidden">
+            <div className="fixed top-4 right-4 z-50 flex items-stretch rounded-lg border border-border/80 bg-background/95 backdrop-blur-md print:hidden">
               <IndustryClock startDate={RESUME_DATA.industryStartDate} />
               <ThemeToggle />
             </div>
