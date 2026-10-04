@@ -41,6 +41,7 @@ export function IndustryClock({ startDate }: IndustryClockProps) {
   const [now, setNow] = useState<number | null>(null);
 
   useEffect(() => {
+    const desktop = window.matchMedia('(min-width: 640px)');
     let interval: ReturnType<typeof setInterval> | undefined;
     let initialTick: ReturnType<typeof setTimeout> | undefined;
     const tick = () => setNow(Date.now());
@@ -48,18 +49,20 @@ export function IndustryClock({ startDate }: IndustryClockProps) {
     const sync = () => {
       clearInterval(interval);
       clearTimeout(initialTick);
-      if (document.hidden) return;
+      if (document.hidden || !desktop.matches) return;
       initialTick = setTimeout(tick, 0);
       interval = setInterval(tick, SECOND);
     };
 
     sync();
     document.addEventListener('visibilitychange', sync);
+    desktop.addEventListener('change', sync);
 
     return () => {
       clearInterval(interval);
       clearTimeout(initialTick);
       document.removeEventListener('visibilitychange', sync);
+      desktop.removeEventListener('change', sync);
     };
   }, []);
 
@@ -81,7 +84,7 @@ export function IndustryClock({ startDate }: IndustryClockProps) {
 
   return (
     <div
-      className='industry-clock flex items-center gap-3 rounded-2xl border border-border/80 bg-card px-3 py-2.5 shadow-sm sm:px-4'
+      className='industry-clock hidden items-center gap-3 rounded-2xl border border-border/80 bg-card px-4 py-2.5 shadow-sm sm:flex'
       role='group'
       aria-label={description}
     >

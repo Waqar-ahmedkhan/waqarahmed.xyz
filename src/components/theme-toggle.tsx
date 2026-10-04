@@ -5,9 +5,11 @@ import { useEffect, useRef, useState, useSyncExternalStore } from 'react';
 import { Moon, Sun } from 'lucide-react';
 import { useTheme } from 'next-themes';
 
+import { createShutterSound } from '@/lib/shutter-sound';
+
 const subscribeToHydration = () => () => undefined;
-const SHUTTER_DURATION = 1200;
-const THEME_CHANGE_DELAY = 480;
+const SHUTTER_DURATION = 2200;
+const THEME_CHANGE_DELAY = 880;
 
 export function ThemeToggle() {
   const { resolvedTheme, setTheme } = useTheme();
@@ -18,12 +20,14 @@ export function ThemeToggle() {
   const actionLabel = switching ? 'Reverse theme change' : label;
   const shadeRef = useRef<HTMLSpanElement>(null);
   const animationRef = useRef<Animation | null>(null);
+  const soundRef = useRef<ReturnType<typeof createShutterSound> | null>(null);
   const pendingTheme = useRef<'light' | 'dark' | null>(null);
   const timers = useRef<ReturnType<typeof setTimeout>[]>([]);
 
   useEffect(() => () => {
     timers.current.forEach(clearTimeout);
     animationRef.current?.cancel();
+    soundRef.current?.dispose();
   }, []);
 
   const toggleTheme = () => {
@@ -36,20 +40,28 @@ export function ThemeToggle() {
     pendingTheme.current = nextTheme;
 
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !shade?.animate) {
+      soundRef.current?.stop();
       setTheme(nextTheme);
       pendingTheme.current = null;
       setSwitching(false);
       return;
     }
 
+    try {
+      soundRef.current ??= createShutterSound(SHUTTER_DURATION / 1000);
+      soundRef.current.play();
+    } catch {
+      // Theme switching still works when audio is unavailable or blocked.
+    }
+
     // Restart from the current shade position so another click never snaps it open.
     setSwitching(true);
     animationRef.current = shade.animate([
-      { transform: initialTransform, offset: 0 },
+      { transform: initialTransform, offset: 0, easing: 'cubic-bezier(0.32, 0, 0.2, 1)' },
       { transform: 'translateY(0)', offset: 0.4 },
-      { transform: 'translateY(0)', offset: 0.55 },
+      { transform: 'translateY(0)', offset: 0.55, easing: 'cubic-bezier(0.22, 1, 0.36, 1)' },
       { transform: 'translateY(-100%)', offset: 1 },
-    ], { duration: SHUTTER_DURATION, easing: 'cubic-bezier(0.45, 0, 0.2, 1)' });
+    ], { duration: SHUTTER_DURATION, easing: 'linear' });
     timers.current = [
       setTimeout(() => setTheme(nextTheme), THEME_CHANGE_DELAY),
       setTimeout(() => { pendingTheme.current = null; setSwitching(false); }, SHUTTER_DURATION),
