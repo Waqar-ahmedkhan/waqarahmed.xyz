@@ -7,7 +7,6 @@ import { CalendarDaysIcon, MailIcon } from "lucide-react";
 import { Section } from "@/components/ui/section";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Button } from "@/components/ui/button";
-import { RESUME_DATA } from "@/data/resume-data";
 
 interface Contribution {
   date: string;
@@ -24,9 +23,11 @@ interface ContributionsResponse {
 
 interface GitHubContributionsSectionProps {
   animationDelay?: string;
+  username: string;
+  bookingUrl: string;
+  email: string;
 }
 
-const CONTRIBUTIONS_URL = `https://github-contributions-api.jogruber.de/v4/${RESUME_DATA.githubUsername}?y=last`;
 const LEVEL_CLASSES = [
   "bg-muted/80",
   "bg-muted-foreground/20",
@@ -36,20 +37,23 @@ const LEVEL_CLASSES = [
 ];
 const EMPTY_CONTRIBUTIONS = Array.from({ length: 365 }, (_, index) => ({ date: `Day ${index + 1}`, count: 0, level: 0 }));
 const CACHE_DURATION = 5 * 60 * 1000;
-let contributionCache: { data: ContributionsResponse; storedAt: number } | null = null;
+let contributionCache: { username: string; data: ContributionsResponse; storedAt: number } | null = null;
 
-const getCachedContributions = () => contributionCache && Date.now() - contributionCache.storedAt < CACHE_DURATION
+const getCachedContributions = (username: string) => contributionCache?.username === username
+  && Date.now() - contributionCache.storedAt < CACHE_DURATION
   ? contributionCache.data : null;
 
 const MONTH_FORMATTER = new Intl.DateTimeFormat("en", { month: "short" });
 
-export function GitHubContributionsSection({ animationDelay = "0.05s" }: GitHubContributionsSectionProps) {
-  const [data, setData] = useState<ContributionsResponse | null>(getCachedContributions);
+export function GitHubContributionsSection({
+  animationDelay = "0.05s", username, bookingUrl, email,
+}: GitHubContributionsSectionProps) {
+  const [data, setData] = useState<ContributionsResponse | null>(() => getCachedContributions(username));
 
   const [unavailable, setUnavailable] = useState(false);
 
   useEffect(() => {
-    if (getCachedContributions()) return;
+    if (getCachedContributions(username)) return;
     let active = true;
     const controller = new AbortController();
 
@@ -57,7 +61,8 @@ export function GitHubContributionsSection({ animationDelay = "0.05s" }: GitHubC
 
     const loadContributions = async () => {
       try {
-        const response = await fetch(CONTRIBUTIONS_URL, { signal: controller.signal });
+        const url = `https://github-contributions-api.jogruber.de/v4/${encodeURIComponent(username)}?y=last`;
+        const response = await fetch(url, { signal: controller.signal });
 
         if (!response.ok) {
           throw new Error('Contribution activity unavailable');
@@ -68,7 +73,7 @@ export function GitHubContributionsSection({ animationDelay = "0.05s" }: GitHubC
           throw new Error('Invalid contribution activity');
         }
         if (!active) return;
-        contributionCache = { data: contributions, storedAt: Date.now() };
+        contributionCache = { username, data: contributions, storedAt: Date.now() };
         setData(contributions);
       } catch {
         if (active) setUnavailable(true);
@@ -84,7 +89,7 @@ export function GitHubContributionsSection({ animationDelay = "0.05s" }: GitHubC
       clearTimeout(timeout);
       controller.abort();
     };
-  }, []);
+  }, [username]);
 
   const contributions = data?.contributions ?? EMPTY_CONTRIBUTIONS;
   const totalLabel = data ? `${data.total.lastYear.toLocaleString()} contributions in the last year` : unavailable ? "Contribution activity temporarily unavailable" : "Loading contribution activity";
@@ -137,13 +142,13 @@ export function GitHubContributionsSection({ animationDelay = "0.05s" }: GitHubC
           </p>
           <div className="flex items-center gap-2">
             <Button asChild size="sm" className="h-9">
-              <a href={RESUME_DATA.bookingUrl} target="_blank" rel="noopener noreferrer">
+              <a href={bookingUrl} target="_blank" rel="noopener noreferrer">
                 <CalendarDaysIcon className="size-4" aria-hidden="true" />
                 Book an intro call
               </a>
             </Button>
             <Button asChild size="sm" variant="outline" className="h-9">
-              <a href={`mailto:${RESUME_DATA.contact.email}`}>
+              <a href={`mailto:${email}`}>
                 <MailIcon className="size-4" aria-hidden="true" />
                 Send an email
               </a>

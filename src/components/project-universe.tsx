@@ -6,10 +6,7 @@ import { ArrowLeft, ArrowRight } from 'lucide-react';
 
 import { SectionHeading } from '@/components/ui/section-heading';
 
-import { RESUME_DATA } from '@/data/resume-data';
-
 const TITLES = ['PashtoGPT', 'Agentic HR', 'EduAI', 'Bondvia', 'Space Manager'];
-const PROJECTS = [0, 1, 8, 4, 6].map((index) => RESUME_DATA.projects[index]);
 const SUMMARIES = [
   'Research tooling for adapting language models to Pashto. Data preparation, QLoRA experiments, and evaluation; no released trained weights or measured quality gains yet.',
   'AI-assisted recruitment and employee workflows, with human approval checkpoints for operational decisions.',
@@ -20,11 +17,15 @@ const SUMMARIES = [
 
 const POINTS = [[23, 25], [72, 23], [48, 52], [22, 78], [78, 78]];
 
-export function ProjectUniverse() {
+interface ProjectUniverseProps {
+  projects: { techStack: readonly string[]; link?: { href: string; label: string } }[];
+}
+
+export function ProjectUniverse({ projects }: ProjectUniverseProps) {
   const [selected, setSelected] = useState(0);
-  const project = PROJECTS[selected];
-  const visitedLabel = `${selected + 1} / ${PROJECTS.length}`;
-  const navigate = (direction: number) => setSelected((index) => (index + direction + PROJECTS.length) % PROJECTS.length);
+  const project = projects[selected];
+  const visitedLabel = `${selected + 1} / ${projects.length}`;
+  const navigate = (direction: number) => setSelected((index) => (index + direction + projects.length) % projects.length);
 
   return (
     <section className='universe-panel overflow-hidden rounded-2xl border border-border bg-card print:hidden' aria-label='Interactive project constellation'>

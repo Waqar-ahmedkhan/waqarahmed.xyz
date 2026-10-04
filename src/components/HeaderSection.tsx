@@ -23,7 +23,7 @@ export function HeaderSection() {
   const additionalSocials = RESUME_DATA.contact.social.filter((social) => SECONDARY_SOCIALS.has(social.name));
 
   return (
-    <div className="animate-fade-in-up flex flex-col gap-4 rounded-2xl border border-border/80 bg-card/70 p-4 transition-colors duration-300 hover:border-foreground/15 sm:gap-5 sm:p-5 md:p-6">
+    <div className="flex flex-col gap-4 rounded-2xl border border-border/80 bg-card/70 p-4 transition-colors duration-300 hover:border-foreground/15 sm:gap-5 sm:p-5 md:p-6">
       <div className="grid grid-cols-1 items-start gap-5 sm:grid-cols-[1fr_auto] sm:gap-6">
         <div className="order-2 flex-1 space-y-2 sm:order-1 sm:space-y-3">
           <h1 className="font-sans text-xl font-semibold text-foreground sm:text-2xl md:text-3xl">

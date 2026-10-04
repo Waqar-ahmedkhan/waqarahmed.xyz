@@ -124,6 +124,9 @@ export function FluidDotGrid() {
       // Neutral ink works in both themes without a per-frame theme observer.
       context.fillStyle = "#888888";
       context.fill();
+      if (dots.length && !document.documentElement.classList.contains('dot-grid-ready')) {
+        document.documentElement.classList.add('dot-grid-ready');
+      }
       // Neighbor-only links keep the local network linear in the number of nodes.
       if (pointerActive) {
         const columns = Math.ceil((width + SPACING / 2) / SPACING);
@@ -227,7 +230,9 @@ export function FluidDotGrid() {
       resizeTimer = setTimeout(buildGrid, 100);
     };
 
-    buildGrid();
+    // CSS supplies the same grid before hydration; initialize canvas at idle.
+    const idleId = window.requestIdleCallback?.(buildGrid, { timeout: 1000 });
+    const initialTimer = idleId === undefined ? setTimeout(buildGrid, 0) : undefined;
     window.addEventListener("pointermove", onMove, { passive: true });
     window.addEventListener("pointerdown", onDown, { passive: true });
     document.documentElement.addEventListener("pointerleave", resetInteraction);
@@ -240,7 +245,10 @@ export function FluidDotGrid() {
 
     return () => {
       if (frame !== null) cancelAnimationFrame(frame);
+      if (idleId !== undefined) window.cancelIdleCallback?.(idleId);
+      clearTimeout(initialTimer);
       clearTimeout(resizeTimer);
+      document.documentElement.classList.remove('dot-grid-ready');
       window.removeEventListener("pointermove", onMove);
       window.removeEventListener("pointerdown", onDown);
       document.documentElement.removeEventListener("pointerleave", resetInteraction);

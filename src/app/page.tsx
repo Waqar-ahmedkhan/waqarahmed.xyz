@@ -50,8 +50,12 @@ export default function Page() {
         <div className="mx-auto w-full max-w-5xl space-y-4 print:block">
         <section className="min-w-0 space-y-6 text-foreground sm:space-y-8 md:space-y-10 print:bg-white print:text-black">
           <div id="profile" className="scroll-mt-6"><HeaderSection /></div>
-          <ProjectUniverse />
-          <GitHubContributionsSection />
+          <ProjectUniverse projects={[0, 1, 8, 4, 6].map((index) => ({
+            techStack: RESUME_DATA.projects[index].techStack.slice(0, 4),
+            link: RESUME_DATA.projects[index].link,
+          }))} />
+          <GitHubContributionsSection username={RESUME_DATA.githubUsername}
+            bookingUrl={RESUME_DATA.bookingUrl} email={RESUME_DATA.contact.email} />
           <div id="research" className="scroll-mt-6"><AboutSection /></div>
           <KeyHighlightsSection />
           <div id="experience" className="scroll-mt-6"><WorkExperienceSection /></div>
