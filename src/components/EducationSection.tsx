@@ -1,5 +1,6 @@
 import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import { Section } from "@/components/ui/section";
+import { SectionHeading } from "@/components/ui/section-heading";
 import { RESUME_DATA } from "@/data/resume-data";
 
 interface EducationSectionProps {
@@ -9,12 +10,10 @@ interface EducationSectionProps {
 export function EducationSection({ animationDelay = "0.4s" }: EducationSectionProps) {
   return (
     <Section
-      className="my-4 sm:my-6 md:my-8 animate-fade-in"
+      className="animate-fade-in"
       style={{ animationDelay }}
     >
-      <h2 className="text-base sm:text-lg md:text-xl font-semibold font-sans text-foreground animate-fade-in-subtle">
-        Education
-      </h2>
+      <SectionHeading>Education</SectionHeading>
       <div className="space-y-3 sm:space-y-4">
         {RESUME_DATA.education.map((education, index) => (
           <Card

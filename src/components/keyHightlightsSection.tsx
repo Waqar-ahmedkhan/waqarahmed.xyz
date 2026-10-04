@@ -1,5 +1,6 @@
 import { Card } from "@/components/ui/card";
 import { Section } from "@/components/ui/section";
+import { SectionHeading } from "@/components/ui/section-heading";
 import { RESUME_DATA } from "@/data/resume-data";
 import { Briefcase, Code, Users, Award, Rocket, BookOpen, Globe, Star } from "lucide-react";
 
@@ -21,12 +22,10 @@ const iconMap: { [key: string]: React.ComponentType<{ className?: string }> } = 
 export function KeyHighlightsSection({ animationDelay = "0.2s" }: KeyHighlightsSectionProps) {
   return (
     <Section
-      className="my-4 sm:my-6 md:my-8 animate-fade-in"
+      className="animate-fade-in"
       style={{ animationDelay }}
     >
-      <h2 className="text-base sm:text-lg md:text-xl font-semibold font-sans text-foreground animate-fade-in-subtle">
-        Key Highlights
-      </h2>
+      <SectionHeading>Key Highlights</SectionHeading>
       <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 print:grid-cols-3 print:gap-2">
         {RESUME_DATA.keyHighlights.map((point, index) => {
           const Icon = iconMap[point.title] || Star; // Fallback to Star icon

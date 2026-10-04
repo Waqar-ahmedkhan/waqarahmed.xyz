@@ -1,5 +1,6 @@
 import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import { Section } from "@/components/ui/section";
+import { SectionHeading } from "@/components/ui/section-heading";
 import { RESUME_DATA } from "@/data/resume-data";
 
 interface CertificationsSectionProps {
@@ -9,12 +10,10 @@ interface CertificationsSectionProps {
 export function CertificationsSection({ animationDelay = "0.55s" }: CertificationsSectionProps) {
   return (
     <Section
-      className="my-4 sm:my-6 md:my-8 animate-fade-in"
+      className="animate-fade-in"
       style={{ animationDelay }}
     >
-      <h2 className="text-base sm:text-lg md:text-xl font-semibold font-sans text-foreground animate-fade-in-subtle">
-        Certifications
-      </h2>
+      <SectionHeading>Certifications</SectionHeading>
       <div className="space-y-3 sm:space-y-4">
         {RESUME_DATA.certifications.map((certification, index) => (
           <Card

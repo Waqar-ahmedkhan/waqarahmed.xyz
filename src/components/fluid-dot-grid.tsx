@@ -9,7 +9,7 @@ interface Dot {
   y: number;
 }
 
-const SPACING = 32;
+const SPACING = 44;
 const DOT_RADIUS = 1;
 const POINTER_RADIUS = 185;
 const POINTER_FADE_DURATION = 900;
@@ -124,6 +124,26 @@ export function FluidDotGrid() {
       // Neutral ink works in both themes without a per-frame theme observer.
       context.fillStyle = "#888888";
       context.fill();
+      // Neighbor-only links keep the local network linear in the number of nodes.
+      if (pointerActive) {
+        const columns = Math.ceil((width + SPACING / 2) / SPACING);
+        context.beginPath();
+        for (let index = 0; index < dots.length; index += 1) {
+          const dot = dots[index];
+          const proximity = Math.hypot(dot.x - pointer.x, dot.y - pointer.y);
+          if (proximity > 145 || index % 3 !== 0) continue;
+          const neighbors = [index % columns < columns - 1 ? index + 1 : -1, index + columns];
+          for (const neighborIndex of neighbors) {
+            const neighbor = dots[neighborIndex];
+            if (!neighbor) continue;
+            context.moveTo(dot.x, dot.y);
+            context.lineTo(neighbor.x, neighbor.y);
+          }
+        }
+        context.strokeStyle = `rgba(136, 136, 136, ${pointerStrength * 0.65})`;
+        context.lineWidth = 0.7;
+        context.stroke();
+      }
       if (pointerActive || ripples.length > 0 || unsettled) frame = requestAnimationFrame(render);
     };
 

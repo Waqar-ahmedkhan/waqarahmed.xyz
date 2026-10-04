@@ -154,7 +154,7 @@ export const RESUME_DATA = {
   githubUsername: "Waqar-ahmedkhan",
   bookingUrl: "https://cal.com/waqar-ahmed",
   personalWebsiteUrl: "https://www.buildsbywaqar.xyz",
-  industryStartDate: "2021-01-01T00:00:00Z",
+  industryStartDate: "2022-01-21T00:00:00Z",
   contact: {
     email: "waqarahmed44870@gmail.com",
     tel: "+92-3700-057225",

@@ -28,19 +28,19 @@ function getExperience(startDate: string, now: number) {
 
   if (getAnniversary(months) > current.getTime()) months -= 1;
 
-  const days = Math.floor((current.getTime() - getAnniversary(months)) / (DAY * SECOND));
+  const years = Math.floor(months / 12);
+  const days = Math.floor((current.getTime() - getAnniversary(years * 12)) / (DAY * SECOND));
   const hours = Math.floor(elapsed / 3600) % 24;
   const minutes = Math.floor(elapsed / 60) % 60;
   const seconds = elapsed % 60;
 
-  return { years: Math.floor(months / 12), months: months % 12, days, hours, minutes, seconds, elapsed };
+  return { years, days, hours, minutes, seconds, elapsed };
 }
 
 export function IndustryClock({ startDate }: IndustryClockProps) {
   const [now, setNow] = useState<number | null>(null);
 
   useEffect(() => {
-    const desktop = window.matchMedia('(min-width: 768px)');
     let interval: ReturnType<typeof setInterval> | undefined;
     let initialTick: ReturnType<typeof setTimeout> | undefined;
     const tick = () => setNow(Date.now());
@@ -48,19 +48,17 @@ export function IndustryClock({ startDate }: IndustryClockProps) {
     const sync = () => {
       clearInterval(interval);
       clearTimeout(initialTick);
-      if (!desktop.matches || document.hidden) return;
+      if (document.hidden) return;
       initialTick = setTimeout(tick, 0);
       interval = setInterval(tick, SECOND);
     };
 
     sync();
-    desktop.addEventListener('change', sync);
     document.addEventListener('visibilitychange', sync);
 
     return () => {
       clearInterval(interval);
       clearTimeout(initialTick);
-      desktop.removeEventListener('change', sync);
       document.removeEventListener('visibilitychange', sync);
     };
   }, []);
@@ -69,35 +67,33 @@ export function IndustryClock({ startDate }: IndustryClockProps) {
   const since = new Date(startDate).toLocaleDateString('en-US', { month: 'short', year: 'numeric', timeZone: 'UTC' });
   const time = experience ? `${pad(experience.hours)}:${pad(experience.minutes)}:${pad(experience.seconds)}` : '--:--:--';
   const description = experience
-    ? `${experience.years} years, ${experience.months} months and ${experience.days} days of industry experience, since ${since}`
+    ? `${experience.years} years and ${experience.days} days of industry experience, since ${since}`
     : `Industry experience since ${since}`;
 
-  const year = new Date(startDate).getUTCFullYear();
   const seconds = experience?.seconds ?? 0;
   const minutes = (experience?.minutes ?? 0) + seconds / 60;
   const hours = ((experience?.hours ?? 0) % 12) + minutes / 60;
   const hands = [
     { angle: hours * 30, end: 23, width: 2.5, className: 'text-foreground' },
     { angle: minutes * 6, end: 16, width: 1.5, className: 'text-foreground' },
-    { angle: seconds * 6, end: 12, width: 1, className: 'text-amber-700 dark:text-amber-400' },
+    { angle: seconds * 6, end: 12, width: 1, className: 'text-foreground' },
   ];
 
   return (
     <div
-      className='group relative hidden items-center gap-2.5 px-3 py-2 outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring md:flex'
+      className='industry-clock flex items-center gap-3 rounded-2xl border border-border/80 bg-card px-3 py-2.5 shadow-sm sm:px-4'
       role='group'
-      tabIndex={0}
-      aria-label={`${description}. Elapsed time ${time}.`}
+      aria-label={description}
     >
-      <svg viewBox='0 0 64 64' className='size-12 shrink-0' aria-hidden='true'>
-        <circle cx='32' cy='32' r='29' className='fill-card stroke-border' />
+      <svg viewBox='0 0 64 64' className='size-11 shrink-0 sm:size-14' aria-hidden='true'>
+        <circle cx='32' cy='32' r='29' className='fill-none stroke-border' strokeWidth='0.6' />
         {Array.from({ length: 12 }, (_, index) => (
           <line
             key={index}
             x1='32' y1='6' x2='32' y2={index % 3 === 0 ? 11 : 8}
             transform={`rotate(${index * 30} 32 32)`}
-            className='stroke-muted-foreground/60'
-            strokeWidth={index % 3 === 0 ? 1.5 : 1}
+            className={index % 3 === 0 ? 'stroke-muted-foreground/70' : 'stroke-muted-foreground/30'}
+            strokeWidth={index % 3 === 0 ? 1.2 : 0.7}
           />
         ))}
         {hands.map((hand, index) => (
@@ -111,18 +107,18 @@ export function IndustryClock({ startDate }: IndustryClockProps) {
             strokeLinecap='round'
           />
         ))}
-        <circle cx='32' cy='32' r='2' className='fill-foreground' />
+        <circle cx='32' cy='32' r='1.7' className='fill-foreground' />
       </svg>
-      <div className='text-left'>
-        <span className='block text-[10px] font-medium text-foreground'>Building since {year}</span>
-        <span className='mt-0.5 block text-[9px] text-muted-foreground'>Industry experience</span>
-      </div>
-      <div
-        className='pointer-events-none absolute right-0 top-full mt-2 w-64 rounded-lg border border-border bg-background p-3 text-xs leading-5 text-muted-foreground opacity-0 shadow-lg transition-opacity group-hover:opacity-100 group-focus-visible:opacity-100'
-        aria-hidden='true'
-      >
-        <p className='font-medium text-foreground'>{description}</p>
-        <p className='mt-1 font-mono tabular-nums'>Elapsed time · {time}</p>
+      <div className='min-w-24 text-left' aria-hidden='true'>
+        <span className='block text-[9px] font-medium uppercase tracking-[0.12em] text-muted-foreground'>Industry experience</span>
+        <span className='mt-1 block text-xl font-semibold leading-none tracking-tight tabular-nums'>
+          {experience ? experience.years : '--'}<span className='mr-3 ml-1 text-[10px] font-medium text-muted-foreground'>years</span>
+          {experience ? experience.days : '--'}<span className='ml-1 text-[10px] font-medium text-muted-foreground'>days</span>
+        </span>
+        <span className='mt-1 block font-mono text-[11px] font-medium tracking-wider text-foreground tabular-nums'>
+          {time}
+        </span>
+        <span className='mt-0.5 block text-[9px] text-muted-foreground'>since {since}</span>
       </div>
     </div>
   );

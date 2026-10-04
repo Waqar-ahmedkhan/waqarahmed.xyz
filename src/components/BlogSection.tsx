@@ -1,6 +1,7 @@
 import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Section } from "@/components/ui/section";
+import { SectionHeading } from "@/components/ui/section-heading";
 import { ArrowRightIcon } from "lucide-react";
 
 interface BlogProject {
@@ -24,13 +25,11 @@ export function BlogSection({
 }: BlogSectionProps) {
   return (
     <Section
-      className="my-4 sm:my-6 md:my-8 animate-fade-in"
+      className="animate-fade-in"
       style={{ animationDelay }}
     >
-      <h2 className="text-base sm:text-lg md:text-xl font-semibold font-sans text-foreground animate-fade-in-subtle">
-        Blog
-      </h2>
-      <div className="text-xs sm:text-sm text-muted-foreground mt-2 sm:mt-3">
+      <SectionHeading>Blog</SectionHeading>
+      <div className="text-xs sm:text-sm text-muted-foreground">
         {blogProjects.length > 0
           ? "Explore my latest insights and articles:"
           : "Blog posts are in progress. Visit my Medium profile for updates."}

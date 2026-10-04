@@ -13,6 +13,7 @@ import { BlogSection } from "@/components/BlogSection";
 import { AchievementsSection } from "@/components/AchivementsSection";
 import { VolunteerExperienceSection } from "@/components/VolunteerExperienceSection";
 import { PortfolioViewShell } from "@/components/portfolio-view-shell";
+import { ProjectUniverse } from "@/components/project-universe";
 
 interface Project {
   id: number;
@@ -46,20 +47,23 @@ export default function Page() {
     <PortfolioViewShell
       simple={<SimpleView />}
       detailed={
-        <section className="mx-auto w-full max-w-5xl space-y-6 text-foreground sm:space-y-8 md:space-y-10 print:bg-white print:text-black">
-          <HeaderSection />
+        <div className="mx-auto w-full max-w-5xl space-y-4 print:block">
+        <section className="min-w-0 space-y-6 text-foreground sm:space-y-8 md:space-y-10 print:bg-white print:text-black">
+          <div id="profile" className="scroll-mt-6"><HeaderSection /></div>
+          <ProjectUniverse />
           <GitHubContributionsSection />
-          <AboutSection />
+          <div id="research" className="scroll-mt-6"><AboutSection /></div>
           <KeyHighlightsSection />
-          <WorkExperienceSection />
+          <div id="experience" className="scroll-mt-6"><WorkExperienceSection /></div>
           <EducationSection />
-          <ProjectsSection projects={projects} />
+          <div id="projects" className="scroll-mt-6"><ProjectsSection projects={projects} /></div>
           <BlogSection blogProjects={blogProjects} generateExcerpt={generateExcerpt} />
           <SkillsSection />
           <CertificationsSection />
           <AchievementsSection />
           <VolunteerExperienceSection />
         </section>
+        </div>
       }
     />
   );

@@ -30,7 +30,7 @@ export function ThemeProvider({ children, ...props }: ThemeProviderProps) {
       }
 
       root.classList.add("theme-transitioning");
-      timeout = setTimeout(finishTransition, 420);
+      timeout = setTimeout(finishTransition, 300);
     };
 
     // Includes system-theme changes and updates from other tabs.

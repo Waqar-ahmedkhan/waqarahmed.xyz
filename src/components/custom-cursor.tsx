@@ -31,7 +31,7 @@ export function CustomCursor() {
       frame = null;
       const elapsed = previousTime ? Math.min(time - previousTime, 50) : 16.67;
       previousTime = time;
-      const blend = 1 - Math.exp(-elapsed / 32);
+      const blend = 1 - Math.exp(-elapsed / 22);
       x += (targetX - x) * blend;
       y += (targetY - y) * blend;
       const settled = Math.abs(targetX - x) + Math.abs(targetY - y) < 0.1;
@@ -53,7 +53,8 @@ export function CustomCursor() {
 
       targetX = event.clientX;
       targetY = event.clientY;
-      cursor.dataset.interactive = String(Boolean(target?.closest(INTERACTIVE_TARGETS)));
+      const interactive = String(Boolean(target?.closest(INTERACTIVE_TARGETS)));
+      if (cursor.dataset.interactive !== interactive) cursor.dataset.interactive = interactive;
       if (!visible) {
         x = targetX;
         y = targetY;

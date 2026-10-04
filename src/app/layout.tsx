@@ -276,11 +276,11 @@ export default function RootLayout({
           <FluidDotGrid />
           <CustomCursor />
           <div className="relative z-10">
-            <div className="fixed top-4 right-4 z-50 flex items-stretch rounded-lg border border-border/80 bg-background/95 backdrop-blur-md print:hidden">
+            <div className="portfolio-toolbar mx-auto flex w-full max-w-5xl items-center justify-end gap-3 px-4 pt-3 sm:px-0 print:hidden">
               <IndustryClock startDate={RESUME_DATA.industryStartDate} />
               <ThemeToggle />
             </div>
-            <div className="mx-auto w-full max-w-6xl px-4 pt-20 sm:px-6 lg:px-8 print:pt-0">
+            <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8 print:pt-0">
               {children}
             </div>
           </div>

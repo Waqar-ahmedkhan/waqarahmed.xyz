@@ -94,7 +94,7 @@ export function PortfolioViewShell({
 
   return (
     <div className="relative bg-transparent">
-      <main className="relative mx-auto min-h-screen scroll-my-12 overflow-auto py-8 pb-28 sm:py-10 md:py-12 print:p-12">
+      <main className="relative mx-auto min-h-screen scroll-my-12 overflow-auto pt-2 pb-28 print:p-12">
         {detailed}
 
         <div className="fixed bottom-4 left-1/2 z-50 -translate-x-1/2 sm:bottom-6 md:bottom-8">

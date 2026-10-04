@@ -1,4 +1,5 @@
 import { Section } from "@/components/ui/section";
+import { SectionHeading } from "@/components/ui/section-heading";
 import { ProjectCard } from "@/components/project-card";
 
 interface Project {
@@ -20,12 +21,10 @@ export function ProjectsSection({
 }: ProjectsSectionProps) {
   return (
     <Section
-      className="my-4 sm:my-6 md:my-8 animate-fade-in"
+      className="animate-fade-in"
       style={{ animationDelay }}
     >
-      <h2 className="text-base sm:text-lg md:text-xl font-semibold font-sans text-foreground animate-fade-in-subtle">
-        Projects
-      </h2>
+      <SectionHeading>Projects</SectionHeading>
       <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 print:grid-cols-3 print:gap-2">
         {projects
           .filter(

@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { CalendarDaysIcon, MailIcon } from "lucide-react";
 
 import { Section } from "@/components/ui/section";
+import { SectionHeading } from "@/components/ui/section-heading";
 import { Button } from "@/components/ui/button";
 import { RESUME_DATA } from "@/data/resume-data";
 
@@ -34,38 +35,59 @@ const LEVEL_CLASSES = [
   "bg-foreground/75",
 ];
 const EMPTY_CONTRIBUTIONS = Array.from({ length: 365 }, (_, index) => ({ date: `Day ${index + 1}`, count: 0, level: 0 }));
+const CACHE_DURATION = 5 * 60 * 1000;
+let contributionCache: { data: ContributionsResponse; storedAt: number } | null = null;
+
+const getCachedContributions = () => contributionCache && Date.now() - contributionCache.storedAt < CACHE_DURATION
+  ? contributionCache.data : null;
+
 const MONTH_FORMATTER = new Intl.DateTimeFormat("en", { month: "short" });
 
 export function GitHubContributionsSection({ animationDelay = "0.05s" }: GitHubContributionsSectionProps) {
-  const [data, setData] = useState<ContributionsResponse | null>(null);
+  const [data, setData] = useState<ContributionsResponse | null>(getCachedContributions);
+
+  const [unavailable, setUnavailable] = useState(false);
 
   useEffect(() => {
+    if (getCachedContributions()) return;
+    let active = true;
     const controller = new AbortController();
+
+    const timeout = setTimeout(() => controller.abort(), 8000);
 
     const loadContributions = async () => {
       try {
         const response = await fetch(CONTRIBUTIONS_URL, { signal: controller.signal });
 
         if (!response.ok) {
-          return;
+          throw new Error('Contribution activity unavailable');
         }
 
         const contributions = (await response.json()) as ContributionsResponse;
-        setData(contributions);
-      } catch (error) {
-        if (error instanceof Error && error.name !== "AbortError") {
-          return;
+        if (!Array.isArray(contributions.contributions) || !Number.isFinite(contributions.total?.lastYear)) {
+          throw new Error('Invalid contribution activity');
         }
+        if (!active) return;
+        contributionCache = { data: contributions, storedAt: Date.now() };
+        setData(contributions);
+      } catch {
+        if (active) setUnavailable(true);
+      } finally {
+        clearTimeout(timeout);
       }
     };
 
     loadContributions();
 
-    return () => controller.abort();
+    return () => {
+      active = false;
+      clearTimeout(timeout);
+      controller.abort();
+    };
   }, []);
 
   const contributions = data?.contributions ?? EMPTY_CONTRIBUTIONS;
-  const totalLabel = data ? `${data.total.lastYear.toLocaleString()} contributions in the last year` : "Loading contribution activity";
+  const totalLabel = data ? `${data.total.lastYear.toLocaleString()} contributions in the last year` : unavailable ? "Contribution activity temporarily unavailable" : "Loading contribution activity";
   const monthLabels = data
     ? Array.from(
         new Map(
@@ -78,7 +100,8 @@ export function GitHubContributionsSection({ animationDelay = "0.05s" }: GitHubC
     : ["Aug", "Sep", "Oct", "Nov", "Dec", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"];
 
   return (
-    <Section className="my-4 animate-fade-in sm:my-6 md:my-8" style={{ animationDelay }}>
+    <Section className="animate-fade-in" style={{ animationDelay }}>
+      <SectionHeading>Activity</SectionHeading>
       <div className="rounded-lg border border-border/80 bg-card/80 p-3 transition-colors duration-300 hover:border-foreground/15 sm:p-4">
         <div className="overflow-x-auto rounded-md border border-border/70 bg-background/70 p-3 sm:p-4">
           <div className="min-w-[660px]">

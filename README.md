@@ -1,12 +1,19 @@
 # Waqar Ahmed Khan
 
-**Senior Full Stack AI Engineer | Agentic AI | Forward Deployed Engineering (FDE)**
+**AI Engineer | Agentic Systems & LLM Applications | Applied NLP Research**
 
 Islamabad, Pakistan · [Email](mailto:waqarahmed44870@gmail.com) · [Portfolio](https://www.buildsbywaqar.xyz) · [Book a conversation](https://cal.com/waqar-ahmed)
 
-I build AI-powered products that connect models, tools, and data to real customer workflows. My work spans full-stack engineering, agentic automation, applied AI research, and deployment, with a focus on reliable systems that people can use and trust.
+I build AI systems that connect language models, tools, and data to practical product workflows. My work combines agent engineering, retrieval-augmented generation, full-stack development, and applied NLP research. I focus on the engineering around the model: useful context, secure integrations, human oversight, and reliable delivery.
 
-At Geekinate, my role combines senior AI engineering with forward deployed delivery: understanding client needs, designing integrations, and shipping web, mobile, and AI-assisted workflows. My research explores language-model adaptation for Pashto and practical evaluation for low-resource language AI.
+At Geekinate, I work across senior AI engineering and forward deployed delivery, translating client requirements into web, mobile, and AI-assisted workflows. Alongside product development, I maintain PashtoGPT, an open-source research toolkit exploring language-model adaptation and evaluation for Pashto.
+
+## Research and engineering interests
+
+- **Reliable agents:** How tool selection, context, workflow boundaries, and human approval affect the reliability of model-assisted actions.
+- **Low-resource language adaptation:** Data quality, Unicode-safe preprocessing, parameter-efficient tuning, and evaluation for Pashto.
+- **Retrieval and evaluation:** How retrieved evidence, held-out benchmarks, verifier diagnostics, and native-speaker feedback inform system quality.
+- **AI product systems:** Connecting model behavior to interfaces, authentication, APIs, data models, deployment, and customer needs.
 
 ## Engineering focus
 
@@ -53,6 +60,19 @@ Built serverless workflows for spaces, bookings, customers, dashboards, reports,
 - **Backend and data:** Node.js, NestJS, Express, REST APIs, PostgreSQL, MongoDB, Prisma, Redis, Firebase.
 - **Infrastructure:** Docker, Kubernetes, AWS, GitHub Actions, GitLab CI/CD, ArgoCD, Helm, Prometheus, Grafana.
 - **Real-time systems:** WebRTC, Socket.IO.
+
+## Experience and recognition
+
+- **Geekinate — Senior AI Engineer, Agentic AI & FDE:** August 2025–present. AI-assisted HR workflows and web/mobile delivery across SaaS, education, and client products.
+- **Viral Mobitech — Full Stack AI Engineer, project-based:** December 2024–December 2025. Real-time communication, authentication, secure APIs, and operational reliability.
+- **National Incubation Center, Kohat — AI Engineer / Startup Technical Mentor:** January 2023–December 2024. Startup MVPs, product architecture, and technical mentorship.
+- **Education:** BS Computer Science, Kohat University of Science and Technology, 2020–2024; CGPA 3.5/4.0.
+- **Recognition:** Best Project Poster Award for EduAI at KUST's Tech-Talks & Posters Symposium 2025; mentorship of 100+ students and developers.
+
+## Resumes
+
+- [Agentic AI Engineer — LLM systems and applied NLP](output/pdf/Agentic_AI_Engineer_Resume.pdf)
+- [Full Stack AI Engineer — AI products and platform delivery](output/pdf/Full_Stack_AI_Engineer.pdf)
 
 ## Writing and community
 

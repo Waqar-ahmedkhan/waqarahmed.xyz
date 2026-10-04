@@ -1,5 +1,6 @@
 import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import { Section } from "@/components/ui/section";
+import { SectionHeading } from "@/components/ui/section-heading";
 import { ExternalLink } from "lucide-react";
 import { RESUME_DATA } from "@/data/resume-data";
 
@@ -10,12 +11,10 @@ interface AchievementsSectionProps {
 export function AchievementsSection({ animationDelay = "0.8s" }: AchievementsSectionProps) {
   return (
     <Section
-      className="my-4 sm:my-6 md:my-8 animate-fade-in"
+      className="animate-fade-in"
       style={{ animationDelay }}
     >
-      <h2 className="text-base sm:text-lg md:text-xl font-semibold font-sans text-foreground animate-fade-in-subtle">
-        Achievements
-      </h2>
+      <SectionHeading>Achievements</SectionHeading>
       <div className="space-y-3 sm:space-y-4">
         {RESUME_DATA.achievements.map((achievement, index) => (
           <Card

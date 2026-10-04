@@ -23,7 +23,7 @@ export function HeaderSection() {
   const additionalSocials = RESUME_DATA.contact.social.filter((social) => SECONDARY_SOCIALS.has(social.name));
 
   return (
-    <div className="animate-fade-in-up flex flex-col gap-4 rounded-lg border border-border/80 bg-card/70 p-4 transition-colors duration-300 hover:border-foreground/15 sm:gap-5 sm:p-5 md:p-6">
+    <div className="animate-fade-in-up flex flex-col gap-4 rounded-2xl border border-border/80 bg-card/70 p-4 transition-colors duration-300 hover:border-foreground/15 sm:gap-5 sm:p-5 md:p-6">
       <div className="grid grid-cols-1 items-start gap-5 sm:grid-cols-[1fr_auto] sm:gap-6">
         <div className="order-2 flex-1 space-y-2 sm:order-1 sm:space-y-3">
           <h1 className="font-sans text-xl font-semibold text-foreground sm:text-2xl md:text-3xl">
@@ -46,20 +46,20 @@ export function HeaderSection() {
           </p>
         </div>
         <div className="group relative order-1 justify-self-center shrink-0 sm:order-2 sm:col-start-2 sm:row-start-1 sm:justify-self-end">
-          {/* Dynamic ambient backlight aura */}
+          {/* Static blur keeps the soft portrait lighting inexpensive to animate. */}
           <div
-            className="absolute -inset-1.5 rounded-2xl bg-gradient-to-tr from-zinc-300 via-zinc-100 to-zinc-400 opacity-60 blur-sm transition-all duration-500 group-hover:opacity-90 dark:from-zinc-800 dark:via-zinc-700 dark:to-zinc-900 dark:opacity-50 dark:group-hover:opacity-80 dark:group-hover:blur-md"
+            className="absolute -inset-1.5 rounded-2xl bg-gradient-to-tr from-zinc-300 via-zinc-100 to-zinc-400 opacity-60 blur-sm transition-opacity duration-180 group-hover:opacity-90 dark:from-zinc-800 dark:via-zinc-700 dark:to-zinc-900 dark:opacity-50 dark:group-hover:opacity-80"
             aria-hidden="true"
           />
-          <div className="relative rounded-xl border border-border/80 bg-card/90 p-1 shadow-sm backdrop-blur-sm transition-all duration-300 group-hover:scale-[1.02] group-hover:border-foreground/30 dark:bg-zinc-950/80 dark:shadow-[0_0_22px_rgba(255,255,255,0.07)]">
+          <div className="relative rounded-xl border border-border/80 bg-card/90 p-1 shadow-sm transition-[transform,border-color] duration-180 group-hover:scale-[1.02] group-hover:border-foreground/30 dark:bg-zinc-950/80 dark:shadow-[0_0_22px_rgba(255,255,255,0.07)]">
             <Image
               alt={`${RESUME_DATA.name} profile photo`}
               src={RESUME_DATA.avatarUrl}
               width={112}
               height={112}
-              unoptimized
-              className="h-24 w-24 rounded-lg object-cover sm:h-28 sm:w-28 transition-transform duration-300 group-hover:contrast-[1.02]"
-              priority={true}
+              className="h-24 w-24 rounded-lg object-cover sm:h-28 sm:w-28"
+              sizes="(max-width: 639px) 96px, 112px"
+              preload
             />
           </div>
         </div>

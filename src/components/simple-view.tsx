@@ -3,10 +3,9 @@ import { RESUME_DATA } from "@/data/resume-data";
 import { GlobeIcon, MailIcon } from "lucide-react";
 
 const contactButtonClass =
-  "h-9 w-9 rounded-lg border border-border/80 bg-card/80 transition-colors duration-200 hover:border-foreground/20 hover:bg-accent hover:text-accent-foreground";
+  "h-11 w-11 rounded-lg border border-border/80 bg-card/80 transition-colors duration-200 hover:border-foreground/20 hover:bg-accent hover:text-accent-foreground";
 
 export function SimpleView() {
-  const delay = 0.8;
   const links: { key: string; href: string; label: string; icon: React.ReactNode }[] = [];
 
   if (RESUME_DATA.contact.email) {
@@ -28,21 +27,21 @@ export function SimpleView() {
 
   return (
     <>
-      <div className="flex min-h-[100svh] flex-col items-center justify-center bg-transparent px-4 py-20 text-foreground sm:px-6">
+      <div className="flex flex-col items-center bg-transparent px-4 pt-3 pb-24 sm:pt-4 text-foreground sm:px-6">
         <div className="w-full max-w-2xl text-center">
-          <div className="animate-text-reveal-1 mx-auto mb-5 inline-flex rounded-full border border-border/80 bg-card/80 px-4 py-1.5 text-[11px] font-medium text-muted-foreground sm:text-xs">
+          <div className="mx-auto mb-5 inline-flex rounded-full border border-border/80 bg-card/80 px-4 py-1.5 text-[11px] font-medium text-muted-foreground sm:text-xs">
             Full Stack AI Engineer / Agentic AI / 4+ Years
           </div>
-          <h1 className="animate-text-reveal-1 mb-4 text-4xl font-semibold sm:text-5xl transition-colors duration-300">
+          <h1 className="mb-4 text-4xl font-semibold sm:text-5xl transition-colors duration-300">
             {RESUME_DATA.name}
           </h1>
-          <p className="animate-text-reveal-2 mx-auto mb-4 max-w-xl text-base leading-7 text-muted-foreground sm:text-lg transition-colors duration-300">
+          <p className="mx-auto mb-4 max-w-xl text-base leading-7 text-muted-foreground sm:text-lg transition-colors duration-300">
             {RESUME_DATA.about}
           </p>
-          <p className="animate-text-reveal-3 mx-auto mb-6 max-w-xl text-xs leading-6 text-muted-foreground sm:text-sm sm:leading-7 transition-colors duration-300">
+          <p className="mx-auto mb-6 max-w-xl text-xs leading-6 text-muted-foreground sm:text-sm sm:leading-7 transition-colors duration-300">
             {RESUME_DATA.summary}
           </p>
-          <p className="animate-text-reveal-4 mb-8 flex items-center justify-center text-xs text-muted-foreground transition-all duration-300">
+          <p className="mb-8 flex items-center justify-center text-xs text-muted-foreground transition-colors duration-180">
             <GlobeIcon className="mr-1 h-3 w-3" />
             <a
               className="underline-offset-4 transition-colors duration-200 hover:text-foreground hover:underline"
@@ -54,7 +53,7 @@ export function SimpleView() {
             </a>
           </p>
           <div className="flex flex-wrap justify-center gap-2">
-            {links.map(({ key, href, label, icon }, i) => {
+            {links.map(({ key, href, label, icon }) => {
               const isEmail = key === "email";
               return (
                 <Button
@@ -62,11 +61,6 @@ export function SimpleView() {
                   variant="outline"
                   size="icon"
                   className={contactButtonClass}
-                  style={{
-                    animation: `slideUpFade 0.5s var(--ease-out-smooth) ${(delay + i * 0.08).toFixed(2)}s forwards`,
-                    opacity: 0,
-                    transform: "translateY(10px)",
-                  }}
                   asChild
                 >
                   <a

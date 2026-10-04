@@ -1,6 +1,7 @@
 import { ChevronDown, ExternalLink } from 'lucide-react';
 
 import { Section } from '@/components/ui/section';
+import { SectionHeading } from '@/components/ui/section-heading';
 
 import { RESUME_DATA } from '@/data/resume-data';
 
@@ -33,13 +34,9 @@ function CompanyMark({ company }: { company: string }) {
 
 export function WorkExperienceSection({ animationDelay = '0.3s' }: WorkExperienceSectionProps) {
   return (
-    <Section className='my-4 animate-fade-in sm:my-6 md:my-8' style={{ animationDelay }}>
-      <h2 className='mb-5 inline-flex items-center gap-2 font-sans text-base font-semibold text-foreground sm:text-lg md:text-xl'>
-        <span className='text-muted-foreground/50' aria-hidden='true'>[</span>
-        Work Experience
-        <span className='text-muted-foreground/50' aria-hidden='true'>]</span>
-      </h2>
-      <div className='relative rounded-lg border border-dashed border-border bg-card/50 px-3 py-2 sm:px-5 sm:py-3'>
+    <Section className='animate-fade-in' style={{ animationDelay }}>
+      <SectionHeading>Work Experience</SectionHeading>
+      <div className='relative rounded-lg border border-dashed border-border bg-card/50 px-3 py-2 sm:px-5 sm:py-2'>
         <div className='absolute bottom-8 left-[22px] top-8 border-l border-dashed border-muted-foreground/35 sm:left-[30px]' aria-hidden='true' />
         {RESUME_DATA.work.map((work) => {
           const isActive = work.end === 'Present';
@@ -54,8 +51,8 @@ export function WorkExperienceSection({ animationDelay = '0.3s' }: WorkExperienc
 
           return (
             <details key={work.company} className='group relative ml-6 border-b border-border/50 last:border-b-0 sm:ml-7'>
-              <summary className='flex cursor-pointer list-none items-center gap-3 rounded-md py-5 outline-none hover:bg-muted/30 focus-visible:ring-2 focus-visible:ring-ring sm:gap-4 [&::-webkit-details-marker]:hidden'>
-                <span className={`absolute -left-[20px] top-8 size-2.5 rounded-full sm:-left-[23px] ${dotClass}`} aria-hidden='true' />
+              <summary className='flex cursor-pointer list-none items-center gap-3 rounded-md py-4 outline-none hover:bg-muted/30 focus-visible:ring-2 focus-visible:ring-ring sm:gap-4 [&::-webkit-details-marker]:hidden'>
+                <span className={`absolute -left-[20px] top-7 size-2.5 rounded-full sm:-left-[23px] ${dotClass}`} aria-hidden='true' />
                 <CompanyMark company={work.company} />
                 <span className='min-w-0 flex-1'>
                   <span className='flex flex-wrap items-center gap-x-2 gap-y-1'>

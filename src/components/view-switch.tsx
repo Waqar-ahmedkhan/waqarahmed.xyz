@@ -30,7 +30,7 @@ const ViewSwitchComponent = ({
   return (
     <div
       className={cn(
-        "relative grid grid-cols-2 items-center overflow-hidden rounded-full border border-border/80 bg-background/90 p-1 shadow-sm shadow-black/5 backdrop-blur-xl",
+        "relative grid grid-cols-2 items-center overflow-hidden rounded-full border border-border/80 bg-background/90 p-1 shadow-sm shadow-black/5 backdrop-blur-md",
         "transition-[box-shadow,border-color,background-color] duration-300 ease-[var(--ease-out-smooth)] motion-reduce:transition-none",
         "focus-within:border-primary/35 focus-within:ring-2 focus-within:ring-primary/20",
         "dark:border-white/10 dark:bg-background/90 dark:shadow-black/20",
@@ -43,7 +43,7 @@ const ViewSwitchComponent = ({
       <div
         className={cn(
           "pointer-events-none absolute left-1 top-1 h-[calc(100%-0.5rem)] w-[calc(50%-0.25rem)] rounded-full bg-primary shadow-sm shadow-primary/25",
-          "translate-x-0 transform-gpu transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] will-change-transform motion-reduce:transition-none",
+          "translate-x-0 transform-gpu transition-transform duration-240 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none",
           activeMode === "detailed" && "translate-x-full"
         )}
       />
