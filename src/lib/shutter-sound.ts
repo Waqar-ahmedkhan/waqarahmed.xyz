@@ -11,8 +11,8 @@ export function createShutterSound() {
 
   const stop = () => {
     if (!source || !volume) return;
-    volume.gain.setTargetAtTime(0, context.currentTime, 0.015);
-    source.stop(context.currentTime + 0.06);
+    volume.gain.setTargetAtTime(0, context.currentTime, 0.02);
+    source.stop(context.currentTime + 0.1);
     source = null;
     volume = null;
   };
@@ -22,21 +22,26 @@ export function createShutterSound() {
 
     if (!source) {
       const noise = context.createBufferSource();
+      const lowCut = context.createBiquadFilter();
       const filter = context.createBiquadFilter();
       const gain = context.createGain();
       noise.buffer = buffer;
       noise.loop = true;
+      lowCut.type = 'highpass';
+      lowCut.frequency.value = 110;
+      lowCut.Q.value = 0.4;
       filter.type = 'lowpass';
-      filter.frequency.value = 650;
+      filter.frequency.value = 480;
+      filter.Q.value = 0.4;
       gain.gain.value = 0;
-      noise.connect(filter).connect(gain).connect(context.destination);
-      noise.onended = () => { noise.disconnect(); filter.disconnect(); gain.disconnect(); };
+      noise.connect(lowCut).connect(filter).connect(gain).connect(context.destination);
+      noise.onended = () => { noise.disconnect(); lowCut.disconnect(); filter.disconnect(); gain.disconnect(); };
       source = noise;
       volume = gain;
       noise.start();
     }
 
-    volume?.gain.setTargetAtTime(0.006 + Math.min(1, Math.max(0, speed)) * 0.02, context.currentTime, 0.025);
+    volume?.gain.setTargetAtTime(0.003 + Math.min(1, Math.max(0, speed)) * 0.012, context.currentTime, 0.035);
   };
 
   const dispose = () => {

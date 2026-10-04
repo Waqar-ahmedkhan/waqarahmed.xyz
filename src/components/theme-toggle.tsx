@@ -9,7 +9,7 @@ import { useTheme } from 'next-themes';
 import { createShutterSound } from '@/lib/shutter-sound';
 
 const subscribeToHydration = () => () => undefined;
-const SETTLE_DURATION = 380;
+const SETTLE_DURATION = 440;
 const OPEN_POSITION = 0.16;
 const SHADE_TRAVEL = 0.68;
 const clamp = (value: number) => Math.max(0, Math.min(1, value));
@@ -212,7 +212,7 @@ export function ThemeToggle() {
           <span ref={shadeRef} className='flight-shade'><Moon className='flight-shade-moon' /><span /></span>
         </span>
       </button>
-      <span id={hintId} className='flight-hint'>Pull down · push up<span className='sr-only'>. Down selects dark mode; up selects light mode. You can also tap, or use arrow keys.</span></span>
+      <span id={hintId} className='sr-only'>Pull down for night; push up for day. You can also tap, or use arrow keys.</span>
     </div>
   );
 }

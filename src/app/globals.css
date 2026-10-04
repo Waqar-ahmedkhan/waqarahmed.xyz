@@ -295,8 +295,7 @@ html.theme-transitioning .dot-surface {
 }
 
 /* A miniature cabin window: daylight clouds become a moonlit sky. */
-.flight-control { display: flex; flex-direction: column; align-items: center; gap: 7px; }
-.flight-hint { font-size: 9px; line-height: 1.2; letter-spacing: 0.02em; color: var(--muted-foreground); white-space: nowrap; }
+.flight-control { display: flex; align-items: center; }
 .flight-window {
   position: relative;
   width: 80px;
@@ -319,7 +318,7 @@ html.theme-transitioning .dot-surface {
 @media (hover: hover) and (pointer: fine) {
   .flight-window:hover { transform: translateY(-2px); box-shadow: 0 5px 22px #88888830; }
 }
-.flight-window[data-dragging='true'] { transform: none; cursor: grabbing; }
+.flight-window[data-dragging='true'] { transform: none; transition: none; cursor: grabbing; }
 .flight-window:focus-visible { outline: 2px solid var(--foreground); outline-offset: 4px; }
 .flight-sky {
   position: relative;
