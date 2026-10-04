@@ -8,8 +8,8 @@ import { useTheme } from 'next-themes';
 import { createShutterSound } from '@/lib/shutter-sound';
 
 const subscribeToHydration = () => () => undefined;
-const SHUTTER_DURATION = 2200;
-const THEME_CHANGE_DELAY = 880;
+const SHUTTER_DURATION = 1600;
+const THEME_CHANGE_DELAY = 640;
 
 export function ThemeToggle() {
   const { resolvedTheme, setTheme } = useTheme();

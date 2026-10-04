@@ -207,7 +207,7 @@ html.theme-transitioning,
 html.theme-transitioning body,
 html.theme-transitioning .site-black-background {
   transition-property: background-color, border-color, color, fill, stroke, box-shadow !important;
-  transition-duration: 600ms !important;
+  transition-duration: 450ms !important;
   transition-timing-function: ease-in-out !important;
   transition-delay: 0s !important;
 }
@@ -321,7 +321,7 @@ html.theme-transitioning .dot-surface {
   height: 100%;
   overflow: hidden;
   border-radius: 25px;
-  background: linear-gradient(#4099df, #a9dfff 65%, #f7e4c8);
+  background: linear-gradient(#79b5e3, #c8e7fa 65%, #fff3de);
   box-shadow: inset 0 0 0 2px #00000020, inset 0 2px 8px #00000045;
 }
 .flight-sky::before {
@@ -443,9 +443,6 @@ html.theme-transitioning .dot-surface {
 .industry-clock {
   background: var(--card);
 }
-
-/* Keep the cabin illustration within the monochrome portfolio palette. */
-.flight-window { filter: grayscale(1); }
 
 @media (max-width: 639px) {
   .portfolio-toolbar { justify-content: center; }
